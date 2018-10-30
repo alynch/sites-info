@@ -24,7 +24,7 @@ class ApplicationGroupsController extends Controller
      */
     public function index()
     {
-        $groups = ApplicationGroups::all();
+        $groups = ApplicationGroups::with('applications')->get();
 
         return view('application_groups.index')
             ->with('groups', $groups);

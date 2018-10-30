@@ -24,7 +24,7 @@ class EnvironmentsController extends Controller
      */
     public function index()
     {
-        $environments = Environments::orderBy('sort_order')->get();
+        $environments = Environments::with('applications')->orderBy('sort_order')->get();
 
         return view('environments.index')
             ->with('environments', $environments);
