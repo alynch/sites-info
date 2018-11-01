@@ -21,7 +21,7 @@
                         @if ($site->status['running'])
                             <img src="images/ok.png" alt="OK"/>
                         @else
-                            Down
+                            <img src="images/down.svg" alt="Down"/>
                         @endif
                     </span>
                     <h5 class="card-title">
@@ -80,7 +80,11 @@
                     <strong>{{ $environment->name }}:</strong>
                     {{ $environment->pivot->url }}
                     @if ($environment->status)
-                        {{ ($environment->status['running']) ? 'OK' : 'Down' }}
+                        @if ($environment->status['running'])
+                            OK <img width="25" src="images/checked.svg" alt="OK"/>
+                        @else
+                            <img width="25" src="images/down.svg" alt="Down"/>
+                        @endif
                         <br/>
                         {{ $environment->status['ip'] }}
                         @if (isset($environment->status['headers']))
