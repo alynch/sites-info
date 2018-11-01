@@ -28,7 +28,6 @@ class ApplicationGroupsController extends Controller
 
         return view('application_groups.index')
             ->with('groups', $groups);
-
     }
 
     /**
@@ -51,6 +50,10 @@ class ApplicationGroupsController extends Controller
      */
     public function store(Request $request)
     {
+        $validatedData = $request->validate([
+            'name' => 'required',
+        ]);
+
         ApplicationGroups::create(request()->all());
 
         return redirect('/application-groups');
@@ -87,6 +90,10 @@ class ApplicationGroupsController extends Controller
      */
     public function update(Request $request, ApplicationGroups $application_group)
     {
+        $validatedData = $request->validate([
+            'name' => 'required',
+        ]);
+
         $application_group->update(request()->all());
 
         return redirect('/application-groups');

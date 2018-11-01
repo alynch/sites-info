@@ -1,6 +1,7 @@
 <div class="card">
 
 <div class="card-body">
+@include('errors')
 
 <div class="form-group">
     <label>Name:

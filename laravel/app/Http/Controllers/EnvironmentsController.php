@@ -28,7 +28,6 @@ class EnvironmentsController extends Controller
 
         return view('environments.index')
             ->with('environments', $environments);
-
     }
 
     /**
@@ -51,6 +50,13 @@ class EnvironmentsController extends Controller
      */
     public function store(Request $request)
     {
+        $validatedData = $request->validate([
+            'name' => 'required',
+            'code' => 'required',
+            'description' => 'nullable',
+            'sort_order' => 'required',
+        ]);
+
         Environments::create(request()->all());
 
         return redirect('/environments');
@@ -88,7 +94,13 @@ class EnvironmentsController extends Controller
      */
     public function update(Request $request, Environments $environment)
     {
-        $environment->update(request()->all());
+        $validatedData = $request->validate([
+            'name' => 'required',
+            'code' => 'required',
+            'sort_order' => 'required',
+        ]);
+
+        $environment->update($validatedData);
 
         return redirect('/environments');
     }

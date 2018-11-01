@@ -17,6 +17,13 @@ class ApplicationsController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+
+        $this->validationRules = [
+            'name' => 'required',
+            'group_id' => 'required',
+            'description' => 'nullable',
+            'env.*' => 'nullable|url'
+        ];
     }
 
     /**
@@ -57,7 +64,9 @@ class ApplicationsController extends Controller
      */
     public function store(Request $request)
     {
-        $application = Applications::create(request()->all());
+        $validatedData = $request->validate($this->validationRules);
+
+        $application = Applications::create($validatedData);
 
         if (request('env')) {
             $env = collect(request('env'));
@@ -68,7 +77,7 @@ class ApplicationsController extends Controller
             })->filter();
 
             $application->environments()->sync($env);
-	}
+        }
 
         return redirect('/applications');
     }
@@ -120,8 +129,9 @@ class ApplicationsController extends Controller
     public function update(Request $request, Applications $application)
     {
 
+        $validatedData = $request->validate($this->validationRules);
 
-        $application->update(request()->all());
+        $application->update($validatedData);
 
         if (request('env')) {
             $env = collect(request('env'));
@@ -132,8 +142,6 @@ class ApplicationsController extends Controller
             })->filter();
 
             $application->environments()->sync($env);
-
-
         }
         return redirect('/applications');
     }

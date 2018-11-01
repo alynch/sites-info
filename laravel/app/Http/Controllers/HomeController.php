@@ -31,29 +31,30 @@ class HomeController extends Controller
 
         foreach ($sites as $site) {
             foreach ($site->environments as $environment) {
+                \Log::info($environment->pivot->url);
                 if ($environment->pivot->url) {
-			$environment->status = 
-				Cache::remember($environment->pivot->url, $minutes, function() use ($environment) {
-					return $this->checkSite($environment->pivot->url);
-				});
-		}
-		if ($environment->code == 'prod') {
-			$site->url = $environment->pivot->url;
-			$site->status = $environment->status;
-		}
-	    }
-	    $site->secondary = $site->environments->filter(function($value) {
-		return $value->code != 'prod';
-	    });
+                    $environment->status =
+                        Cache::remember($environment->pivot->url, $minutes, function () use ($environment) {
+                            return $this->checkSite($environment->pivot->url);
+                        });
+                }
+                if ($environment->code == 'prod') {
+                    $site->url = $environment->pivot->url;
+                    $site->status = $environment->status;
+                }
+            }
+            $site->secondary = $site->environments->filter(function ($value) {
+                return $value->code != 'prod';
+            });
         }
 
-	/*
+    /*
         foreach ($sites as $site) {
             $site->status = Cache::remember($site->url, $minutes, function () use ($site) {
                 return $this->checkSite($site->url);
             });
-	}
-	*/
+    }
+    */
 
         return view('home')
             ->with('sites', $sites);
@@ -77,28 +78,27 @@ class HomeController extends Controller
                     }
                 }
                 try {
-                $response = $client->get($site . '/version');
-                if ($response->getStatusCode() == '200') {
-                    $info['details'] = json_decode($response->getBody(), true);
-                }
+                    $response = $client->get($site . '/version');
+                    if ($response->getStatusCode() == '200') {
+                        $info['details'] = json_decode($response->getBody(), true);
+                    }
                 } catch (\GuzzleHttp\Exception\ClientException $e) {
-
+                    //
                 }
             }
         } catch (\GuzzleHttp\Exception\ConnectException $e) {
             $info['ip'] = '';
             $info['running'] = false;
-	}
-	catch (\GuzzleHttp\Exception\ClientException $e) {
-		if ($e->getResponse()) {
-			$host = $e->getRequest()->getUri()->getHost();
-                	$info['ip'] = gethostbyname($host);
-			$info['running'] = true;
-		} else {
-            $info['ip'] = '';
-	    $info['running'] = false;
-		}
-	}
+        } catch (\GuzzleHttp\Exception\ClientException $e) {
+            if ($e->getResponse()) {
+                $host = $e->getRequest()->getUri()->getHost();
+                $info['ip'] = gethostbyname($host);
+                $info['running'] = true;
+            } else {
+                $info['ip'] = '';
+                $info['running'] = false;
+            }
+        }
         return $info;
     }
 }

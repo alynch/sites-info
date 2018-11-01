@@ -10,7 +10,7 @@
       <input type="text" class="form-control"
             id="env-{{ $environment->id }}"
             name="env[{{ $environment->id }}]" 
-            value="{{ $environment->url }}"/>
+            value="{{ $environment->url ?: old('env.' . $environment->id) }}"/>
     </div>
     </div>
 @endforeach
