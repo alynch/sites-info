@@ -19,7 +19,7 @@
                 <div class="card-header">
                     <span class="float-right">
                         @if ($site->status['running'])
-                            OK
+                            <img src="images/ok.png" alt="OK"/>
                         @else
                             Down
                         @endif
