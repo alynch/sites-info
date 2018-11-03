@@ -27,6 +27,16 @@ class HomeController extends Controller
         $sites = \App\Applications::with('environments')->orderBy('name')
             ->get();
 
+        return view('home')
+            ->with('sites', $sites);
+    }
+
+    public function dashboard()
+    {
+        $sites = \App\Applications::with('environments')->orderBy('name')
+            ->get();
+
+
         $minutes = 10;
 
         foreach ($sites as $site) {
@@ -56,7 +66,7 @@ class HomeController extends Controller
     }
     */
 
-        return view('home')
+        return view('dashboard')
             ->with('sites', $sites);
     }
 
