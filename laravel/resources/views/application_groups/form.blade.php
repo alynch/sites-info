@@ -1,24 +1,24 @@
 <div class="card">
 
-<div class="card-body">
-@include('errors')
+    <div class="card-body">
 
-<div class="form-group">
-    <label>Name:
-    <input type="text" name="name" class="form-control" value="{{ $group->name }}"/>
-    </label>
-</div>
+        @include('errors')
 
-<div class="form-group">
-    <label>Description:
-    <textarea name="description" class="form-control">{{ $group->description }}</textarea>
-    </label>
-</div>
+	<div class="form-group">
+	    <label for="name">Name:</label>
+	    <input type="text" id="name" name="name" class="form-control"
+		value="{{ $group->name ?: old('name') }}" />
+	</div>
 
-<div>
-    <input type="submit" class="btn btn-primary" value="Save">
-</div>
+	<div class="form-group">
+	    <label for="description">Description: </label>
+	    <textarea id="description" name="description" class="form-control">{{ $group->description }}</textarea>
+	</div>
 
-</div>
+        <div>
+            <input type="submit" class="btn btn-primary" value="Save">
+        </div>
+
+    </div>
 </div>
 
