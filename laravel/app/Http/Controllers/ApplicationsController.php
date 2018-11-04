@@ -170,17 +170,14 @@ class ApplicationsController extends Controller
         $minutes = 10;
         foreach ($application->environments as $environment) {
             if ($environment->pivot->url) {
-                $s = new \App\SiteInfo($environment->pivot->url);
-                $environment->status = $s->checkSite();
+                $environment->status = Cache::remember($environment->pivot->url, $minutes, function () use ($environment) {
+                    $s = new \App\SiteInfo($environment->pivot->url);
+                    return $s->checkSite();
+                });
             }
         }
 
         //dd($application->environments);
-
-        /*
-        Cache::remember($environment->pivot->url, $minutes, function () use ($environment) {
-        });
-        */
 
         $response = new StreamedResponse(function () use ($application) {
             ob_flush();
