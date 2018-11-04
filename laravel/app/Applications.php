@@ -22,7 +22,8 @@ class Applications extends Model
             'application_id',
             'environment_id'
         )->withPivot('url')
-        ->withTimestamps();
+        ->withTimestamps()
+        ->orderBy('sort_order');
     }
 
     public function production()

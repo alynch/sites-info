@@ -29,12 +29,17 @@
         </span>
 
         <div class="collapse" :id="'env' + item.id">
-            <div class="card-body">
-                <strong>Production:</strong>
-                <div v-for="(item, index) in headers">
-                    {{ index }}: {{ item }}
-                </div>
-            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item" v-for="env in cardData">
+                    <strong>{{ env.name }}:</strong>
+                    <div>{{ env.pivot.url }}</div>
+                    <div>{{ env.status.ip }}</div>
+
+                    <div v-for="(item, index) in env.status.headers">
+                        {{ index }}: {{ item }}
+                    </div>
+                </li>
+            </ul
         </div>
     </div>
 </div>
@@ -71,12 +76,11 @@
                     card.cardData = JSON.parse(event.data);
 
                     console.log(card.cardData);
-                    console.log(event.data);
                     if (event.data) {
-                        card.status = (card.cardData.status.running) ? 'OK' : 'Down';
-                        card.ip = card.cardData.status.ip;
-                        card.url = card.cardData.pivot.url;
-                        card.headers = card.cardData.status.headers;
+                        card.status = (card.cardData[0].status.running) ? 'OK' : 'Down';
+                        card.ip = card.cardData[0].status.ip;
+                        card.url = card.cardData[0].pivot.url;
+                        card.headers = card.cardData[0].status.headers;
                         event.target.close();
                     } else {
                     }

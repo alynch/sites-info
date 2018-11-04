@@ -167,66 +167,28 @@ class ApplicationsController extends Controller
 
         $application = Applications::with('environments')->find($id);
 
-
         $minutes = 10;
-            foreach ($application->environments as $environment) {
-                if ($environment->pivot->url) {
-                    $environment->status =
-                        Cache::remember($environment->pivot->url, $minutes, function () use ($environment) {
-                            return $this->checkSite($environment->pivot->url);
-                        });
-
-                    $response = new StreamedResponse(function () use ($environment) {
-                        ob_flush();
-                        flush();
-                        echo 'data: ' . $environment . "\n\n";
-                    });
-                }
+        foreach ($application->environments as $environment) {
+            if ($environment->pivot->url) {
+                $s = new \App\SiteInfo($environment->pivot->url);
+                $environment->status = $s->checkSite();
             }
+        }
+
+        //dd($application->environments);
+
+        /*
+        Cache::remember($environment->pivot->url, $minutes, function () use ($environment) {
+        });
+        */
+
+        $response = new StreamedResponse(function () use ($application) {
+            ob_flush();
+            flush();
+            echo 'data: ' . $application->environments . "\n\n";
+        });
 
         $response->headers->set('Content-Type', 'text/event-stream');
         return $response;
-    }
-
-    protected function checkSite($site)
-    {
-
-        $info = [];
-        try {
-            $client = new \GuzzleHttp\Client(['base_url' => $site]);
-            $response = $client->get($site);
-
-            if ($response) {
-                $info['running'] = true;
-                $info['ip'] = gethostbyname(preg_replace('#^https?://#', '', rtrim($site, '/')));
-                $headers = ['Server', 'X-Powered-By'];
-                foreach ($headers as $header) {
-                    if ($value = $response->getHeader($header)) {
-                        $info['headers'][$header] = $value;
-                    }
-                }
-                try {
-                    $response = $client->get($site . '/version');
-                    if ($response->getStatusCode() == '200') {
-                        $info['details'] = json_decode($response->getBody(), true);
-                    }
-                } catch (\GuzzleHttp\Exception\ClientException $e) {
-                    //
-                }
-            }
-        } catch (\GuzzleHttp\Exception\ConnectException $e) {
-            $info['ip'] = '';
-            $info['running'] = false;
-        } catch (\GuzzleHttp\Exception\ClientException $e) {
-            if ($e->getResponse()) {
-                $host = $e->getRequest()->getUri()->getHost();
-                $info['ip'] = gethostbyname($host);
-                $info['running'] = true;
-            } else {
-                $info['ip'] = '';
-                $info['running'] = false;
-            }
-        }
-        return $info;
     }
 }
