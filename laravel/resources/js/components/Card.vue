@@ -20,11 +20,11 @@
             </div>
         </div>
 
-        <span v-if="status === 'OK'" class="float-right">
+        <span v-if="cardData" class="float-right">
         <button class="btn btn-link float-right" type="button" data-toggle="collapse" 
                 :data-target="'#env' + item.id" aria-expanded="false" 
                 aria-controls="collapseExample"> 
-                Environments details
+                Details
           </button> 
         </span>
 
@@ -32,9 +32,15 @@
             <ul class="list-group list-group-flush">
                 <li class="list-group-item" v-for="env in cardData">
                     <strong>{{ env.name }}:</strong>
+                    <span class="float-right">
+                    <span v-if="env.status.running">OK</span>
+                    <span v-else>Down</span>
+                    </span>
+
                     <div class="url">
                         <a :href="env.pivot.url">{{ env.pivot.url }}</a>
                     </div>
+
                     <div>{{ env.status.ip }}</div>
 
                     <div v-for="(item, index) in env.status.headers">
@@ -77,7 +83,6 @@
                 es.addEventListener('message', function(event) {
                     card.cardData = JSON.parse(event.data);
 
-                    console.log(card.cardData);
                     if (event.data) {
                         card.status = (card.cardData[0].status.running) ? 'OK' : 'Down';
                         card.ip = card.cardData[0].status.ip;
@@ -85,6 +90,13 @@
                         card.headers = card.cardData[0].status.headers;
                         event.target.close();
                     } else {
+                    }
+                }, false);
+
+                es.addEventListener('error', function(event) {
+                    if (event.readyState == EventSource.CLOSED) {
+                        console.log(EventSource);
+                        card.status = 'Down';
                     }
                 }, false);
             }
