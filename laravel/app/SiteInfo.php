@@ -2,10 +2,17 @@
 
 namespace App;
 
+use GuzzleHttp\Client;
+use GuzzleHttp\Psr7\Request;
+use GuzzleHttp\Exception\ClientException;
+use GuzzleHttp\Exception\ConnectException;
+
 class SiteInfo
 {
 
     protected $site;
+    protected $headers = ['Server', 'X-Powered-By'];
+
     /**
      * Create a new controller instance.
      *
@@ -22,14 +29,17 @@ class SiteInfo
 
         $info = [];
         try {
-            $client = new \GuzzleHttp\Client(['base_url' => $this->site]);
+            $client = new Client(['base_url' => $this->site]);
+            $request = new Request('GET', $this->site);
             $response = $client->get($this->site);
 
             if ($response) {
+
                 $info['running'] = true;
-                $info['ip'] = gethostbyname(preg_replace('#^https?://#', '', rtrim($this->site, '/')));
-                $headers = ['Server', 'X-Powered-By'];
-                foreach ($headers as $header) {
+                $host = $request->getUri()->getHost();
+                $info['ip'] = gethostbyname($host);
+
+                foreach ($this->headers as $header) {
                     if ($value = $response->getHeader($header)) {
                         $info['headers'][$header] = $value;
                     }
@@ -39,14 +49,14 @@ class SiteInfo
                     if ($response->getStatusCode() == '200') {
                         $info['details'] = json_decode($response->getBody(), true);
                     }
-                } catch (\GuzzleHttp\Exception\ClientException $e) {
+                } catch (ClientException $e) {
                     //
                 }
             }
-        } catch (\GuzzleHttp\Exception\ConnectException $e) {
+        } catch (ConnectException $e) {
             $info['ip'] = '';
             $info['running'] = false;
-        } catch (\GuzzleHttp\Exception\ClientException $e) {
+        } catch (ClientException $e) {
             if ($e->getResponse()) {
                 $host = $e->getRequest()->getUri()->getHost();
                 $info['ip'] = gethostbyname($host);
