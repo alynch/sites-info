@@ -32,7 +32,9 @@
             <ul class="list-group list-group-flush">
                 <li class="list-group-item" v-for="env in cardData">
                     <strong>{{ env.name }}:</strong>
-                    <div>{{ env.pivot.url }}</div>
+                    <div class="url">
+                        <a :href="env.pivot.url">{{ env.pivot.url }}</a>
+                    </div>
                     <div>{{ env.status.ip }}</div>
 
                     <div v-for="(item, index) in env.status.headers">
