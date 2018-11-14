@@ -30,7 +30,7 @@ class SiteInfo
         $info = [];
         try {
             $client = new Client(['base_url' => $this->site]);
-            $request = new Request('GET', '/');
+            $request = new Request('GET', $this->site . '/');
             $response = $client->get($this->site);
 
             if ($response) {
