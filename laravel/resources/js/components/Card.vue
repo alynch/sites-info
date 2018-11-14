@@ -90,6 +90,7 @@
                         card.headers = card.cardData[0].status.headers;
                         event.target.close();
                     } else {
+                        console.log('No data');
                     }
                 }, false);
 
