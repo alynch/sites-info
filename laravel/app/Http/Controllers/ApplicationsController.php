@@ -138,8 +138,9 @@ class ApplicationsController extends Controller
         $application->update($validatedData);
 
 
+        $periods = collect(request('period'));
 
-        foreach ($request->input('period') as $id => $period) {
+        foreach ($periods as $id => $period) {
             $timeline = \App\Timeline::find($id);
             $r = $timeline->update($period);
         }
@@ -185,8 +186,6 @@ class ApplicationsController extends Controller
                     });
             }
         }
-
-        //dd($application->environments);
 
         $response = new StreamedResponse(function () use ($application) {
             ob_flush();
