@@ -6,6 +6,7 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Exception\ConnectException;
+use Exception;
 
 class SiteInfo
 {
@@ -28,13 +29,13 @@ class SiteInfo
     {
 
         $info = [];
+
         try {
             $client = new Client(['base_url' => $this->site]);
             $request = new Request('GET', $this->site . '/');
             $response = $client->get($this->site);
 
             if ($response) {
-
                 $info['running'] = true;
                 $host = $request->getUri()->getHost();
                 $info['ip'] = gethostbyname($host);
@@ -65,7 +66,11 @@ class SiteInfo
                 $info['ip'] = '';
                 $info['running'] = false;
             }
+        } catch (Exception $e) {
+            $info['ip'] = '';
+            $info['running'] = false;
         }
+
         return $info;
     }
 }
