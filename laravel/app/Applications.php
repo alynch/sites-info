@@ -13,6 +13,14 @@ class Applications extends Model
         return $this->belongsTo(ApplicationGroups::class);
     }
 
+    public function timeline()
+    {
+        return $this->hasMany(
+            Timeline::class,
+            'application_id'
+        );
+    }
+
 
     public function environments()
     {

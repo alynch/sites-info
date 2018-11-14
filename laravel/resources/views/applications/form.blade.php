@@ -1,5 +1,4 @@
-<div class="card">
-
+<div class="card mb-3">
     <div class="card-body">
 
         @include('errors')
@@ -30,13 +29,15 @@
 
             </div>
         </div>
+    </div>
+</div>
 
         @include('applications.environments')
+
+        @include('applications.timeline')
 
         <div>
             <input type="submit" class="btn btn-primary" value="Save">
         </div>
 
-    </div>
-</div>
 

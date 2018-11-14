@@ -132,9 +132,17 @@ class ApplicationsController extends Controller
     public function update(Request $request, Applications $application)
     {
 
+
         $validatedData = $request->validate($this->validationRules);
 
         $application->update($validatedData);
+
+
+
+        foreach ($request->input('period') as $id => $period) {
+            $timeline = \App\Timeline::find($id);
+            $r = $timeline->update($period);
+        }
 
         if (request('env')) {
             $env = collect(request('env'));
@@ -170,10 +178,11 @@ class ApplicationsController extends Controller
         $minutes = 10;
         foreach ($application->environments as $environment) {
             if ($environment->pivot->url) {
-                $environment->status = Cache::remember($environment->pivot->url, $minutes, function () use ($environment) {
-                    $s = new \App\SiteInfo($environment->pivot->url);
-                    return $s->checkSite();
-                });
+                $environment->status =
+                    Cache::remember($environment->pivot->url, $minutes, function () use ($environment) {
+                        $s = new \App\SiteInfo($environment->pivot->url);
+                        return $s->checkSite();
+                    });
             }
         }
 

@@ -12,3 +12,20 @@
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
+
+
+.range-box {
+    margin: auto 20px;
+    position: relative;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    height: 20px;
+    width: 100%;
+    width: 600px;
+}
+
+.range {
+    position: absolute;
+    background: #3490dc;
+    height: 100%;
+}
