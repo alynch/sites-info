@@ -15,9 +15,6 @@
             <div class="url">
                 <a :href="url">{{ url }}</a>
             </div>
-            <div>
-                {{ ip }}
-            </div>
         </div>
 
         <span v-if="cardData" class="float-right">
