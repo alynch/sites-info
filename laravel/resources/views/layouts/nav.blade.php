@@ -20,6 +20,9 @@
                         <li>
                             <a class="nav-link" href="/applications">Applications</a>
                         </li>
+                        <li>
+                            <a class="nav-link" href="/timeline">Timeline</a>
+                        </li>
                     </ul>
                     @endauth
 
