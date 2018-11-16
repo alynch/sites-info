@@ -27,7 +27,9 @@ class TimelineController extends Controller
      */
     public function index()
     {
-        $applications = Applications::with('timeline')->get();
+        //$applications = Applications::with('timeline')->has('timeline')->get();
+        $applications = Applications::with('timeline')
+            ->orderBy('name')->get();
 
         return view('timeline.index')
             ->with('applications', $applications);
