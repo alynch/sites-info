@@ -16,6 +16,9 @@
         <div class="card mb-3">
             <div class="card-header">
             {{ $group->name }}
+            <span class="badge badge-pill badge-secondary">
+            {{ $group->applications->count() }}
+            </span>
             </div>
 
         <ul class="list-group list-group-flush">
