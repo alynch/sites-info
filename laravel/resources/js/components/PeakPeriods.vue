@@ -1,8 +1,15 @@
 <template>
     <div>
-        <div class="range-box" style="display: none">
+        <div class="range-box" style="display: flex">
             <span v-for="month in months" class="calendar">{{ month }}</span>
         </div>
+
+        <div class="range-box">
+            <div v-for="period in timeline" class="range"
+                :style="'left:' + period.range.start + 'px; width:' + period.range.width + 'px;'">
+            </div>
+        </div>
+
 
         <div class="flex-row" v-for="period in timeline">
             <datepicker
@@ -42,7 +49,10 @@
 
         methods: {
             addPeriod() {
-                this.timeline.push('');
+                let p = {
+                    range: []
+                };
+                this.timeline.push(p);
             }
         }
     }
@@ -54,7 +64,11 @@
     padding: 5px;
 }
 
-.viewport {
+.range-box {
+    margin: 1em auto;
+}
+
+.calendar {
     width: 8.333%;
     border-left: 1px solid #ccc;
     text-align: center

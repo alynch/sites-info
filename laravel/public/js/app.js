@@ -48173,7 +48173,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n.flex-row[data-v-193aca58] {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    padding: 5px;\n}\n.viewport[data-v-193aca58] {\n    width: 8.333%;\n    border-left: 1px solid #ccc;\n    text-align: center\n}\n", ""]);
+exports.push([module.i, "\n.flex-row[data-v-193aca58] {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    padding: 5px;\n}\n.range-box[data-v-193aca58] {\n    margin: 1em auto;\n}\n.calendar[data-v-193aca58] {\n    width: 8.333%;\n    border-left: 1px solid #ccc;\n    text-align: center\n}\n", ""]);
 
 // exports
 
@@ -48184,6 +48184,13 @@ exports.push([module.i, "\n.flex-row[data-v-193aca58] {\n    display: -webkit-bo
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -48228,7 +48235,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     methods: {
         addPeriod: function addPeriod() {
-            this.timeline.push('');
+            var p = {
+                range: []
+            };
+            this.timeline.push(p);
         }
     }
 });
@@ -48246,11 +48256,27 @@ var render = function() {
     [
       _c(
         "div",
-        { staticClass: "range-box", staticStyle: { display: "none" } },
+        { staticClass: "range-box", staticStyle: { display: "flex" } },
         _vm._l(_vm.months, function(month) {
           return _c("span", { staticClass: "calendar" }, [
             _vm._v(_vm._s(month))
           ])
+        })
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "range-box" },
+        _vm._l(_vm.timeline, function(period) {
+          return _c("div", {
+            staticClass: "range",
+            style:
+              "left:" +
+              period.range.start +
+              "px; width:" +
+              period.range.width +
+              "px;"
+          })
         })
       ),
       _vm._v(" "),

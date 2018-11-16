@@ -107,6 +107,12 @@ class ApplicationsController extends Controller
         $environments = Environments::orderBy('sort_order')->get();
         $groups = ApplicationGroups::all();
 
+        // Get coordinates for graph
+        $application->load('timeline');
+        foreach ($application->timeline as $period) {
+            $period->range = $period->getRange();
+        }
+
         $app_env = $application->environments;
         $environments = $environments->map(function ($item) use ($app_env) {
             $url = $app_env->firstWhere('id', $item->id);
