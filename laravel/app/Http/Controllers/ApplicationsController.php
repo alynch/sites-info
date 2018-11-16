@@ -141,8 +141,12 @@ class ApplicationsController extends Controller
         $periods = collect(request('period'));
 
         foreach ($periods as $id => $period) {
-            $timeline = \App\Timeline::find($id);
-            $r = $timeline->update($period);
+            if ($id == -9) {
+                $application->timeline()->create($period);
+            } else {
+                $timeline = \App\Timeline::find($id);
+                $timeline->update($period);
+            }
         }
 
         if (request('env')) {

@@ -16,6 +16,8 @@ window.Vue = require('vue');
  */
 
 Vue.component('dashboard-component', require('./components/Dashboard.vue'));
+Vue.component('peak-periods', require('./components/PeakPeriods.vue'));
+Vue.component('datepicker', require('./components/Datepicker.vue'));
 
 const app = new Vue({
     el: '#app'

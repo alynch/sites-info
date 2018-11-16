@@ -17,9 +17,9 @@ class PeakPeriods extends Migration
             $table->increments('id');
             $table->unsignedInteger('application_id');
             
-            $table->string('start_month')->nullable();
+            $table->unsignedInteger('start_month')->nullable();
             $table->unsignedInteger('start_day')->nullable();
-            $table->string('end_month')->nullable();
+            $table->unsignedInteger('end_month')->nullable();
             $table->unsignedInteger('end_day')->nullable();
 
             $table->timestamp('created_at')->nullable();
