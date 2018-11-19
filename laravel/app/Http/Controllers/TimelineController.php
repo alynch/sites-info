@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Timeline;
 use App\Applications;
 use App\Environments;
 use App\ApplicationGroups;
@@ -33,5 +34,11 @@ class TimelineController extends Controller
 
         return view('timeline.index')
             ->with('applications', $applications);
+    }
+
+    public function destroy($id)
+    {
+        $timeline = Timeline::find($id);
+        $timeline->delete();
     }
 }

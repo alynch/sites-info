@@ -25,5 +25,6 @@ Route::resource('/application-groups', ApplicationGroupsController::class);
 Route::resource('/applications', ApplicationsController::class);
 
 Route::get('/timeline', 'TimelineController@index');
+Route::delete('/timeline/{id}', 'TimelineController@destroy');
 
 Route::get('/applications/{id}/status', 'ApplicationsController@status');

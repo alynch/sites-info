@@ -4,8 +4,8 @@
     </div>
 
     <div class="card-body">
-        <peak-periods
+        <timeline-picker
             :periods="{{ $application->timeline }}">
-        </peak-periods>
+        </timeline-picker>
     </div>
 </div>
