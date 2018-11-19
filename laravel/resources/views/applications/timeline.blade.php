@@ -3,9 +3,7 @@
         <h5>Peak periods</h5>
     </div>
 
-    <div class="card-body">
-        <timeline-picker
-            :periods="{{ $application->timeline }}">
-        </timeline-picker>
-    </div>
+    <timeline-picker
+        :periods="{{ $application->timeline }}">
+    </timeline-picker>
 </div>

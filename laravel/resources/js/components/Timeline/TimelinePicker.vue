@@ -1,7 +1,6 @@
 <template>
     <div class="dashboard">
-        <timeline-legend
-            :months="months"/>
+        <timeline-legend :months="months"/>
 
         <div class="range-box">
             <timeline :periods="timeline"></timeline>

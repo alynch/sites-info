@@ -29,9 +29,6 @@
 <style scoped>
 .timeline {
     position: relative;
-    height: 20px;
-    margin: 0 auto;
-    border-radius: 3px;
-    width: 600px;
+    height: 100%;
 }
 </style>
