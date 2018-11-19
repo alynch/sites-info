@@ -1,7 +1,6 @@
 <template>
     <div class="card">
         <div class="card-header">
-
             <span class="float-right">
                 <img v-if="status === 'Working'" class="spin" src="images/working.png" alt="Working"/>
                 <img v-else-if="status === 'OK'" src="images/ok.svg" width="25" alt="OK"/>                
@@ -17,13 +16,16 @@
             </div>
         </div>
 
-        <span v-if="cardData" class="float-right">
-        <button class="btn btn-link float-right" type="button" data-toggle="collapse" 
+        <div v-if="url" class="float-right">
+            <button class="btn btn-link float-right" type="button" data-toggle="collapse"
                 :data-target="'#env' + item.id" aria-expanded="false" 
                 aria-controls="collapseExample"> 
                 Details
           </button> 
-        </span>
+        </div>
+        <div v-else>
+            <div style="padding: 0.375rem 0.75rem">No data</div>
+        </div>
 
         <div class="collapse" :id="'env' + item.id">
             <ul class="list-group list-group-flush">
@@ -71,8 +73,10 @@
         created() {
             this.setupStream();
         },
+
         methods: {
             setupStream() {
+
                 let es = new EventSource('/applications/' + this.item.id + '/status');
 
                 let card = this;
@@ -80,13 +84,15 @@
                 es.addEventListener('message', function(event) {
                     card.cardData = JSON.parse(event.data);
 
-                    if (event.data) {
+                    if (card.cardData[0]) {
                         card.status = (card.cardData[0].status.running) ? 'OK' : 'Down';
                         card.ip = card.cardData[0].status.ip;
                         card.url = card.cardData[0].pivot.url;
                         card.headers = card.cardData[0].status.headers;
                         event.target.close();
                     } else {
+                        card.status = 'Down';
+                        card.url = '';
                         console.log('No data');
                     }
                 }, false);
