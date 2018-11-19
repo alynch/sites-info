@@ -40,6 +40,7 @@ class SiteInfo
                 $host = $request->getUri()->getHost();
                 $info['ip'] = gethostbyname($host);
 
+
                 foreach ($this->headers as $header) {
                     if ($value = $response->getHeader($header)) {
                         $info['headers'][$header] = $value;
@@ -71,6 +72,23 @@ class SiteInfo
             $info['running'] = false;
         }
 
+        try {
+            $cert = $this->verifyCert($this->site);
+            $info['headers']['SSL cert. expires on '] = gmdate("Y-m-d", $cert['validTo_time_t']);
+        } catch (Exception $e) {
+            //
+        }
         return $info;
+    }
+
+    private function verifyCert($url)
+    {
+        $orignal_parse = parse_url($url, PHP_URL_HOST);
+        $get = stream_context_create(array("ssl" => array("capture_peer_cert" => true)));
+        $read = stream_socket_client("ssl://".$orignal_parse.":443", $errno, $errstr, 30, STREAM_CLIENT_CONNECT, $get);
+        $cert = stream_context_get_params($read);
+        $certinfo = openssl_x509_parse($cert['options']['ssl']['peer_certificate']);
+
+        return $certinfo;
     }
 }
