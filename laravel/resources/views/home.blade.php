@@ -16,4 +16,11 @@
     <dashboard-component
         :items="{{ $sites }}">
     </dashboard-component>
+
+    <div>
+        <form method="POST" action="/applications/clear">
+            @csrf
+            <button type="submit" class="btn btn-secondary">Clear cache</a>
+        </form>
+    </div>
 @endsection

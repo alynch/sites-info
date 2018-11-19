@@ -27,4 +27,5 @@ Route::resource('/applications', ApplicationsController::class);
 Route::get('/timeline', 'TimelineController@index');
 Route::delete('/timeline/{id}', 'TimelineController@destroy');
 
-Route::get('/applications/{id}/status', 'ApplicationsController@status');
+Route::get('/applications/{id}/status', 'ApiController@status');
+Route::post('/applications/clear', 'ApiController@clear');
