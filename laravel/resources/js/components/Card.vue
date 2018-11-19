@@ -89,12 +89,13 @@
                         card.ip = card.cardData[0].status.ip;
                         card.url = card.cardData[0].pivot.url;
                         card.headers = card.cardData[0].status.headers;
-                        event.target.close();
                     } else {
                         card.status = 'Down';
                         card.url = '';
-                        console.log('No data');
+                        console.log('No data... ');
                     }
+                    es.close();
+
                 }, false);
 
                 es.addEventListener('error', function(event) {
