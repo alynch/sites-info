@@ -53,24 +53,15 @@
 <style scoped>
 .group {
     display: flex;
-    width: 100%;
     justify-content: space-around;
-}
-
-input[type=number] {
-    max-width: 4em;
-}
-
-label {
-    margin-right: 2em;
-}
-
-select {
-    margin: 0 10px;
-}
-
-button {
+    width: 100%;
+    padding: 5px;
     margin: 5px 0;
 }
 
+@media (max-width: 750px) {
+    .group {
+        display: block;
+    }
+}
 </style>

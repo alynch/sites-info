@@ -48318,7 +48318,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n.range-box[data-v-073500c1] {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    margin: 1em auto;\n}\n.calendar[data-v-073500c1] {\n    width: 8.333%;\n    border-left: 1px solid #ccc;\n    text-align: center;\n    line-height: 1.2em;\n}\n", ""]);
+exports.push([module.i, "\n.range-box[data-v-073500c1] {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    margin: 1em auto;\n}\n.calendar[data-v-073500c1] {\n    width: 8.333%;\n    border-left: 1px solid #ccc;\n    text-align: center;\n    line-height: 1.2em;\n    overflow: hidden;\n}\n", ""]);
 
 // exports
 
@@ -48553,13 +48553,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     computed: {
         start: function start() {
-            return (this.period.start_month - 1 + (this.period.start_day - 1) / 30) * 50;
-        },
-        end: function end() {
-            return (this.period.end_month - 1 + (this.period.end_day - 1) / 30) * 50;
+            return 100 * ((this.period.start_month - 1) * 30 + (this.period.start_day - 1)) / 360;
         },
         width: function width() {
-            return this.end - this.start;
+            var end = 100 * ((this.period.end_month - 1) * 30 + (this.period.end_day - 1)) / 360;
+            return end - this.start;
         }
     }
 });
@@ -48574,7 +48572,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", {
     staticClass: "range",
-    style: "left:" + _vm.start + "px; width:" + _vm.width + "px;"
+    style: "left:" + _vm.start + "%; width:" + _vm.width + "%;"
   })
 }
 var staticRenderFns = []
@@ -48732,7 +48730,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n.dashboard[data-v-8e92467c] {\n    margin: 20px auto;\n    width: 600px;\n}\n", ""]);
+exports.push([module.i, "\n.dashboard[data-v-8e92467c] {\n    margin: 20px auto;\n    padding: 0 30px;\n    width: 100%;\n}\n", ""]);
 
 // exports
 
@@ -48912,7 +48910,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n.group[data-v-34bc919a] {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    width: 100%;\n    -ms-flex-pack: distribute;\n        justify-content: space-around;\n}\ninput[type=number][data-v-34bc919a] {\n    max-width: 4em;\n}\nlabel[data-v-34bc919a] {\n    margin-right: 2em;\n}\nselect[data-v-34bc919a] {\n    margin: 0 10px;\n}\nbutton[data-v-34bc919a] {\n    margin: 5px 0;\n}\n\n", ""]);
+exports.push([module.i, "\n.group[data-v-34bc919a] {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-pack: distribute;\n        justify-content: space-around;\n    width: 100%;\n    padding: 5px;\n    margin: 5px 0;\n}\n@media (max-width: 750px) {\n.group[data-v-34bc919a] {\n        display: block;\n}\n}\n", ""]);
 
 // exports
 
@@ -49061,7 +49059,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n.widget[data-v-9e5d2562] {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    padding: 5px 10px;\n}\ninput[type=number][data-v-9e5d2562] {\n    max-width: 4em;\n}\nlabel[data-v-9e5d2562] {\n    margin-right: 2em;\n}\nselect[data-v-9e5d2562] {\n    margin: 0 10px;\n}\n.flex-item[data-v-9e5d2562] {\n    margin: 0 5px;\n}\n", ""]);
+exports.push([module.i, "\n.widget[data-v-9e5d2562] {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    padding: 5px 10px;\n}\ninput[type=number][data-v-9e5d2562] {\n    max-width: 4em;\n}\nlabel[data-v-9e5d2562] {\n    margin-right: 2em;\n}\nselect[data-v-9e5d2562] {\n    margin: 0 10px;\n}\n.flex-item[data-v-9e5d2562] {\n    margin: 0 5px;\n}\n@media (max-width: 750px) {\nlabel[data-v-9e5d2562] {\n    width: 5em;\n}\n}\n", ""]);
 
 // exports
 

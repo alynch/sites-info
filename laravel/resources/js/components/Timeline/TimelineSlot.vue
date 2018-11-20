@@ -1,6 +1,6 @@
 <template>
     <div class="range"
-        :style="'left:' + start + 'px; width:' + width + 'px;'">
+        :style="'left:' + start + '%; width:' + width + '%;'">
     </div>
 </template>
 
@@ -11,15 +11,14 @@
             period: Object
         },
 
+
        computed: {
             start: function() {
-                return ((this.period.start_month - 1) + ((this.period.start_day - 1) / 30)) *50 ;
-            },
-            end: function() {
-                return ((this.period.end_month - 1) + ((this.period.end_day - 1) / 30)) *50 ;
+                return 100 * ((this.period.start_month - 1) *30 + (this.period.start_day - 1)) / 360 ;
             },
             width: function() {
-                return this.end - this.start;
+                let end = 100 * ((this.period.end_month - 1) *30 + (this.period.end_day - 1)) / 360 ;
+                return end - this.start;
             }
         },
     }

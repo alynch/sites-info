@@ -76,6 +76,7 @@
 <style scoped>
 .dashboard {
     margin: 20px auto;
-    width: 600px;
+    padding: 0 30px;
+    width: 100%;
 }
 </style>

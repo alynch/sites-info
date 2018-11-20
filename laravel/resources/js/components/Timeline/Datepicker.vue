@@ -80,4 +80,10 @@ select {
 .flex-item {
     margin: 0 5px;
 }
+
+@media (max-width: 750px) {
+label {
+    width: 5em;
+    }
+}
 </style>

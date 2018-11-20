@@ -21,5 +21,6 @@
     border-left: 1px solid #ccc;
     text-align: center;
     line-height: 1.2em;
+    overflow: hidden;
 }
 </style>
