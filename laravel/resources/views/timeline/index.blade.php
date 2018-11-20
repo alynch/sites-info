@@ -13,7 +13,8 @@
 
 
     <div class="card-body">
-        <div class="range-box" style="margin-left: 15.6em; display: flex">
+        <div class="range-box">
+            <span style="width: 12em"></span>
             @foreach ($months as $key => $month)
                 <span style="width: 8.333%; border-left: 1px solid #ccc; text-align: center">{{$month }}</span>
             @endforeach
