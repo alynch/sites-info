@@ -2,7 +2,7 @@
 
 <style>
 .grid {
-    margin-top: 2em;
+    margin: 2em 0;
     display: grid;
     grid-template-columns: repeat(auto-fill, 20em);
     grid-gap: 1rem;
