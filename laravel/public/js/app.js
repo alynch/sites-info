@@ -48401,7 +48401,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n.timeline[data-v-29d8fc14] {\n    position: relative;\n    height: 100%;\n}\n", ""]);
+exports.push([module.i, "\n.timeline[data-v-29d8fc14] {\n    position: relative;\n    height: 100%;\n    width: 100%;\n}\n", ""]);
 
 // exports
 
