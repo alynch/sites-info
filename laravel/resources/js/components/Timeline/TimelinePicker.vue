@@ -36,6 +36,7 @@
 
         data: function() {
             return {
+                first_new_item: -1,
                 timeline: this.periods,
                 months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
             }
@@ -43,8 +44,13 @@
 
         methods: {
             addPeriod() {
+                this.first_new_item--;
                 let p = {
-                    range: []
+                    id:  this.first_new_item,
+                    start_day: 1,
+                    start_month: 1,
+                    end_day: 1,
+                    end_month: 1
                 };
                 this.timeline.push(p);
             },

@@ -138,16 +138,14 @@ class ApplicationsController extends Controller
     public function update(Request $request, Applications $application)
     {
 
-
         $validatedData = $request->validate($this->validationRules);
 
         $application->update($validatedData);
 
-
         $periods = collect(request('period'));
 
         foreach ($periods as $id => $period) {
-            if ($id == -9) {
+            if ($id < 0) {
                 $application->timeline()->create($period);
             } else {
                 $timeline = \App\Timeline::find($id);
