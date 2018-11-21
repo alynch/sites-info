@@ -4,6 +4,7 @@
     </div>
 
     <timeline-picker
+        :all_year="{{ $application->all_year }}"
         :periods="{{ $application->timeline }}">
     </timeline-picker>
 </div>

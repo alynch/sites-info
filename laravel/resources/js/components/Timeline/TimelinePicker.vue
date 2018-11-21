@@ -1,9 +1,17 @@
 <template>
     <div class="dashboard">
+
+        <div>
+            <input v-model="throughout" name="all_year"
+                value="1" type="checkbox" @change="!throughout">
+            Used throughout the year
+        </div>
+
         <timeline-legend :months="months"/>
 
+
         <div class="range-box">
-            <timeline :periods="timeline"></timeline>
+            <timeline :throughout="throughout" :periods="timeline"></timeline>
         </div>
 
         <div class="flex-row" v-for="period in timeline" :key="period.id">
@@ -32,10 +40,17 @@
             DateRangePicker,
         },
 
-        props: ['periods'],
+        props: {
+            all_year: {
+                type: Number,
+                default: 0
+            },
+            periods: Array
+        },
 
         data: function() {
             return {
+                throughout: this.all_year,
                 first_new_item: -1,
                 timeline: this.periods,
                 months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']

@@ -1,5 +1,7 @@
 <template>
 <div class="timeline">
+    <div v-if="throughout" class="throughout"></div>
+
     <div v-for="period in currperiods" :key="period.id">
         <timeline-slot
             :period="period">
@@ -16,7 +18,7 @@
             TimelineSlot
         },
 
-        props: ['periods'],
+        props: ['periods', 'throughout'],
 
         data: function() {
             return {
@@ -32,4 +34,13 @@
     height: 100%;
     width: 100%;
 }
+
+.throughout {
+    position: absolute;
+    width: 100%;
+    top: 7px;
+    height: 3px;
+    background: #a8cff0;
+}
+
 </style>

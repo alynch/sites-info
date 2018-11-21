@@ -140,6 +140,8 @@ class ApplicationsController extends Controller
 
         $validatedData = $request->validate($this->validationRules);
 
+        $validatedData['all_year'] = ($request->input('all_year')) ? 1 : 0;
+
         $application->update($validatedData);
 
         $periods = collect(request('period'));
