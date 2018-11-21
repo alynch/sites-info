@@ -8,7 +8,7 @@
         <div v-for="application in applications" style="display: flex">
             <span class="label"> {{ application.name }}</span>
             <div class="range-box">
-                <timeline :periods="application.timeline"></timeline>
+                <timeline :throughout="application.all_year" :periods="application.timeline"></timeline>
             </div>
         </div>
     </div>
@@ -38,5 +38,7 @@
 <style scoped>
 .label {
     width: 10em;
+    font-size: 0.95em;
+    padding-right: 5px;
 }
 </style>
