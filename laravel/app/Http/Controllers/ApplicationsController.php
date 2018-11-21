@@ -69,6 +69,8 @@ class ApplicationsController extends Controller
     {
         $validatedData = $request->validate($this->validationRules);
 
+        $validatedData['all_year'] = ($request->input('all_year')) ? 1 : 0;
+
         $application = Applications::create($validatedData);
 
         if (request('env')) {
