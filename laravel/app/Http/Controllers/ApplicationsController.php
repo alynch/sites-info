@@ -84,6 +84,16 @@ class ApplicationsController extends Controller
             $application->environments()->sync($env);
         }
 
+        $periods = collect(request('period'));
+        foreach ($periods as $id => $period) {
+            if ($id < 0) {
+                $application->timeline()->create($period);
+            } else {
+                $timeline = \App\Timeline::find($id);
+                $timeline->update($period);
+            }
+        }
+
         return redirect('/applications');
     }
 
