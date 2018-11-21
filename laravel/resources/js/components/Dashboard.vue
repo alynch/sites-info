@@ -4,8 +4,9 @@
 <div class="filter">
     <select v-model.number="searchField" @change="change(searchField)">
         <option value="0">All</option>
-        <option value="1">Academic</option>
-        <option value="2">Administrative</option>
+        <option v-for="group in groups" :value="group.id">
+            {{ group.name }}
+        </option>
     </select>
 </div>
 
@@ -35,7 +36,7 @@
             }
         },
 
-        props: ['items'],
+        props: ['groups', 'items'],
         mounted() {
         },
 

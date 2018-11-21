@@ -27,7 +27,10 @@ class HomeController extends Controller
         $sites = \App\Applications::with('environments')->orderBy('name')
             ->get();
 
+        $groups = \App\ApplicationGroups::orderBy('name')->get();
+
         return view('home')
+            ->with('groups', $groups)
             ->with('sites', $sites);
     }
 

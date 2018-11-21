@@ -14,6 +14,7 @@
 
 @section('content')
     <dashboard-component
+        :groups="{{ $groups }}"
         :items="{{ $sites }}">
     </dashboard-component>
 
