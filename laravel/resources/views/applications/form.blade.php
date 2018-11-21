@@ -36,6 +36,8 @@
 
         @include('applications.timeline')
 
+        @include('applications.units')
+
         <div>
             <input type="submit" class="btn btn-primary" value="Save">
         </div>
