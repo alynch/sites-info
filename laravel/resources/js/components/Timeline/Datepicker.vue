@@ -46,13 +46,21 @@
 
         methods: {
             update(e) {
-                let data = {
+                console.log(this.currDay);
+
+                if (this.currDay == 31 && this.currMonth < 12) {
+                    this.currMonth += 1;
+                    this.currDay = 1;
+                } else if (this.currDay == 1 && this.currMonth > 1) {
+                    this.currMonth -= 1;
+                    this.currDay = 31;
+                }
+                 let data = {
                     period: this.id,
                     suffix: this.suffix,
                     month: this.currMonth,
                     day: this.currDay,
                 }
-                console.log('starting update events');
                 this.$emit('update', data);
             }
         }
