@@ -30,8 +30,9 @@ class SiteInfo
 
         $info = [];
 
+        // FIXME: should not have to use verify false
         try {
-            $client = new Client(['base_url' => $this->site]);
+            $client = new Client(['base_url' => $this->site, 'verify' => false]);
             $request = new Request('GET', $this->site . '/');
             $response = $client->get($this->site);
 
