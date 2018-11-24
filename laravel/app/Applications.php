@@ -34,6 +34,16 @@ class Applications extends Model
         ->orderBy('sort_order', 'desc');
     }
 
+    public function units()
+    {
+        return $this->belongsToMany(
+            Unit::class,
+            'application_units',
+            'application_id',
+            'unit_id')
+            ->withTimestamps();
+    }
+
     public function production()
     {
         $prod = \App\Environments::where('code', 'prod')->first();

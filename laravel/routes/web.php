@@ -20,6 +20,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/dashboard', 'HomeController@dashboard');
 
+Route::resource('/units', UnitsController::class);
 Route::resource('/environments', EnvironmentsController::class);
 Route::resource('/application-groups', ApplicationGroupsController::class);
 Route::resource('/applications', ApplicationsController::class);
