@@ -12,6 +12,7 @@ class Unit extends Model
             Applications::class,
             'application_units',
             'unit_id',
-            'application_id');
+            'application_id'
+        );
     }
 }

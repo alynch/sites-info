@@ -40,8 +40,8 @@ class Applications extends Model
             Unit::class,
             'application_units',
             'application_id',
-            'unit_id')
-            ->withTimestamps();
+            'unit_id'
+        )->withTimestamps();
     }
 
     public function production()
