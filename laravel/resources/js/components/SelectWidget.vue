@@ -3,7 +3,7 @@
     <ul>
         <li class="item" v-for="item in selectedItems">
             <span class="name">{{ item.short_name }}</span>
-            <span class="delete" @click="unselectItem(item.id)"> x </span>
+            <span class="delete" @click="unselectItem(item.id)" title="Delete"> x </span>
         </li>
     </ul>
 
@@ -30,12 +30,8 @@
             }
         },
 
-        props: ['items'],
-
-        mounted() {
-        },
-
-        created() {
+        props: {
+            items: Array
         },
 
         computed: {
