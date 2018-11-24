@@ -1,8 +1,13 @@
-        <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
+<header>
+    <div class="container">
+        <a class="navbar-brand" href="{{ url('/') }}" style="padding: 15px 10px">
+            {{ config('app.name') }}
+        </a>
+    </div>
+</header>
+
+<nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -19,6 +24,9 @@
                         </li>
                         <li>
                             <a class="nav-link" href="/applications">Applications</a>
+                        </li>
+                        <li>
+                            <a class="nav-link" href="/units">Units</a>
                         </li>
                         <li>
                             <a class="nav-link" href="/timeline">Timeline</a>
