@@ -38,7 +38,7 @@ class TimelineController extends Controller
 
     public function destroy($id)
     {
-        $timeline = Timeline::find($id);
+        $timeline = Timeline::findOrFail($id);
         $timeline->delete();
     }
 }
