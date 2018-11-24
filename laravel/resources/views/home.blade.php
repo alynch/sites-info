@@ -21,7 +21,7 @@
     <div>
         <form method="POST" action="/applications/clear">
             @csrf
-            <button type="submit" class="btn btn-secondary">Clear cache</a>
+            <button type="submit" class="btn btn-secondary">Refresh cache</a>
         </form>
     </div>
 @endsection
