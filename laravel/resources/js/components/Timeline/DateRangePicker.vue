@@ -38,7 +38,9 @@
             deleteItem() {
                 if (confirm('Delete this period?')) {
                     this.$emit('delete', this.period);
-                    axios.delete('/timeline/' + this.period.id);
+                    if (this.period.id > 0) {
+                        axios.delete('/timeline/' + this.period.id);
+                    }
                 }
             },
 
