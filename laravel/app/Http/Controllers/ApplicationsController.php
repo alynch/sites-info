@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Unit;
 use App\Applications;
 use App\Environments;
 use App\ApplicationGroups;
@@ -124,6 +125,7 @@ class ApplicationsController extends Controller
         foreach ($application->timeline as $period) {
             $period->range = $period->getRange();
         }
+        $application->load('units');
 
         $app_env = $application->environments;
         $environments = $environments->map(function ($item) use ($app_env) {
@@ -134,7 +136,16 @@ class ApplicationsController extends Controller
             return $item;
         });
 
+        $units = Unit::all();
+        $app_units = $application->units;
+
+        $units = $units->map(function ($item) use ($app_units) {
+            $item->selected = ($app_units->contains($item)) ? true : false;
+            return $item;
+        });
+
         return view('applications.edit')
+            ->with('units', $units)
             ->with('groups', $groups)
             ->with('environments', $environments)
             ->with('application', $application);
@@ -149,6 +160,7 @@ class ApplicationsController extends Controller
      */
     public function update(Request $request, Applications $application)
     {
+
 
         $validatedData = $request->validate($this->validationRules);
 
@@ -176,6 +188,12 @@ class ApplicationsController extends Controller
             })->filter();
 
             $application->environments()->sync($env);
+        }
+
+        if (request('units')) {
+            $units = request('units');
+
+            $application->units()->sync($units);
         }
         return redirect('/applications');
     }

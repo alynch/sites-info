@@ -4,6 +4,10 @@
     </div>
 
     <div class="card-body">
-        List of units that use this application.
+
+        <select-widget
+            :items="{{ $units }}">
+        </select-widget>
+
     </div>
 </div>

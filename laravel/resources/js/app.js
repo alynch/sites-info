@@ -20,6 +20,8 @@ Vue.component('dashboard-component', require('./components/Dashboard.vue'));
 Vue.component('timeline-dashboard', require('./components/Timeline/TimelineDashboard.vue'));
 Vue.component('timeline-picker', require('./components/Timeline/TimelinePicker.vue'));
 
+Vue.component('select-widget', require('./components/SelectWidget.vue'));
+
 const app = new Vue({
     el: '#app'
 });
