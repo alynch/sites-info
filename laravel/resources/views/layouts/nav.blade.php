@@ -26,7 +26,7 @@
                             <a class="nav-link" href="/applications">Applications</a>
                         </li>
                         <li>
-                            <a class="nav-link" href="/units">Units</a>
+                            <a class="nav-link" href="/units">Academic units</a>
                         </li>
                         <li>
                             <a class="nav-link" href="/timeline">Timeline</a>
