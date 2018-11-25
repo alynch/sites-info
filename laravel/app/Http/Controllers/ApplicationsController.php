@@ -53,9 +53,11 @@ class ApplicationsController extends Controller
         $application = new Applications;
         $environments = Environments::orderBy('sort_order')->get();
         $groups = ApplicationGroups::all();
+        $units = Unit::all();
 
         return view('applications.create')
             ->with('groups', $groups)
+            ->with('units', $units)
             ->with('environments', $environments)
             ->with('application', $application);
     }
