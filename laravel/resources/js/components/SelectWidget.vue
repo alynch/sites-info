@@ -14,6 +14,8 @@
         </option>
     </select>
 
+    <button type="button" class="btn btn-sm btn-outline-secondary" @click="removeAll">Remove all</button>
+
     <div v-for="item in selectedItems">
         <input type="hidden" name="units[]" :value="item.id"/>
     </div>
@@ -59,6 +61,13 @@
                 let item = this.validItems.find(item => item.id == id);
                 item.selected = false;
                 console.log(id);
+            },
+
+            removeAll: function() {
+                return this.validItems.map(item => {
+                    item.selected = false;
+                    return item;
+                });
             }
         }
     }
