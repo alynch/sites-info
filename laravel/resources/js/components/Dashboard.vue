@@ -60,14 +60,13 @@
     }
 </script>
 
-<style>
+<style scoped>
 .grid {
     margin-top: 1em;
     display: grid;
     grid-template-columns: repeat(auto-fill, 20em);
     grid-gap: 1rem;
     justify-content: space-around;
-
 }
 
 .filter {

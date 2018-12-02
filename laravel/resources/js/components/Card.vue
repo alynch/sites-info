@@ -19,7 +19,7 @@
         <div v-if="url" class="float-right">
             <button class="btn btn-link float-right" type="button" data-toggle="collapse"
                 :data-target="'#env' + item.id" aria-expanded="false" 
-                aria-controls="collapseExample"> 
+                :aria-controls="'#env' + item.id">
                 Details
           </button> 
         </div>
