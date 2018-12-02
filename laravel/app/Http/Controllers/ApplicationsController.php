@@ -192,11 +192,9 @@ class ApplicationsController extends Controller
             $application->environments()->sync($env);
         }
 
-        if (request('units')) {
-            $units = request('units');
+        $units = request('units', []);
+        $application->units()->sync($units);
 
-            $application->units()->sync($units);
-        }
         return redirect('/applications');
     }
 
