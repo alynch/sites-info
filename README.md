@@ -12,3 +12,18 @@ The dashboard displays the list of sites and relevant information:
 - We use Server-sent Events (SSE) for the server to return information about the potentially slow responses
 
 
+We use this application as a playground to investigate new technologies.
+
+- SVG for timeline
+
+- SSE for application status
+
+- CSS grid and flexbox
+
+- Laravel cache
+
+- Scheduling for status info
+
+- Vue.js
+
+- localStorage
