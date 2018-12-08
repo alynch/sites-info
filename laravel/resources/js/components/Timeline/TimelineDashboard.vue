@@ -6,7 +6,7 @@
 
             <span class="label"></span>
             <span class="label"></span>
-            <svg height="30px" width="100%" viewBox="0 0 100% 100%">
+            <svg height="100%" width="100%">
                 <template v-for="(line, index) in lines">
                     <g stroke="green" @click="selectLine(index)">
                     <text :x="line.x+'%'" y="10">&nbsp;{{ line.label }}</text>
@@ -28,8 +28,8 @@
 
             <div v-for="(line, index) in sortedLines" :key="line.x">
                 <input type="text" v-model="line.label" v-bind:class="{active: index==lineSelected}" @click="selectLine(index)"/>
-
-                <button @click="deleteLine(line)">Delete</button>
+                <span v-text="getDate(line.x)"></span>
+                <button class="destroy" title="Remove line" @click="deleteLine(line)">X</button>
             </div>
             <button @click="addLine" class="btn btn-sm">Add line</button>
         </div>
@@ -61,7 +61,9 @@
                 ],
                 lineSelected: null,
                 timeline: this.periods,
-                months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+                months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                dayTic: 100 / 360,
+                monthTic: 10 / 12
             }
         },
 
@@ -73,7 +75,8 @@
                 });
                 this.lineSelected = this.lines.indexOf(curr);
                 return this.lines;
-            }
+            },
+
         },
 
         methods: {
@@ -88,7 +91,6 @@
             },
 
             selectLine(line) {
-                console.log(line);
                 this.lineSelected = line;
             },
 
@@ -100,18 +102,28 @@
                 let line = this.lines[this.lineSelected];
 
                 if (e.key === "ArrowLeft") {
-                    line.x -= 1;
+                    line.x -= this.dayTic;
                 } else if (e.key === "ArrowRight") {
-                    line.x += 1;
+                    line.x += this.dayTic;
                 }
 
                 // Wrap-around
                 if (line.x < 0) {
                     line.x = 100;
-                }
-                if (line.x > 100) {
+                } else if (line.x >= 100) {
                     line.x = 0;
                 }
+
+                this.getDate(line.x);
+            },
+
+            getDate(x) {
+
+                let date = Math.round(x * 3.6);
+                let month = Math.floor(date / 30);
+                let day = date % 30 + 1;
+
+                return day + ' ' + this.months[month];
             }
         }
     }
@@ -138,6 +150,11 @@ svg {
 .label {
     font-size: 0.95em;
     padding-right: 5px;
+}
+
+.destroy {
+    border: none;
+    color: #cc9a9a;
 }
 
 .active {
