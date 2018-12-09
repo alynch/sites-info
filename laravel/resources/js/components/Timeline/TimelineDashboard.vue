@@ -67,7 +67,7 @@
                 timeline: this.periods,
                 months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
                 dayTic: 100 / 360,
-                monthTic: 10 / 12
+                monthTic: 100 / 12
             }
         },
 
@@ -103,12 +103,14 @@
                     return;
                 }
 
+                let tic = (e.shiftKey) ? this.monthTic : this.dayTic;
+
                 let line = this.lines[this.lineSelected];
 
                 if (e.key === "ArrowLeft") {
-                    line.x -= this.dayTic;
+                    line.x -= tic;
                 } else if (e.key === "ArrowRight") {
-                    line.x += this.dayTic;
+                    line.x += tic;
                 }
 
                 // Wrap-around
