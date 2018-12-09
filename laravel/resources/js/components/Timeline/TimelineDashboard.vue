@@ -9,8 +9,8 @@
             <svg height="100%" width="100%">
                 <template v-for="(line, index) in lines">
                     <g stroke="green" @click="selectLine(index)">
-                    <text :x="line.x+'%'" y="10">&nbsp;{{ line.label }}</text>
-                    <line :x1="line.x+'%'" y1="0" :x2="line.x+'%'" y2="100%" stroke-width="2" stroke-dasharray="1%"></line>
+                        <text :x="line.x+'%'" y="10">&nbsp;{{ line.label }}</text>
+                        <line :x1="line.x+'%'" y1="0" :x2="line.x+'%'" y2="100%" stroke-width="2" stroke-dasharray="1%"></line>
                     </g>
                 </template>
             </svg>
@@ -23,16 +23,19 @@
             </template>
         </div>
 
-        <div>
-            <h2>Important dates</h2>
+        <aside>
+            <h4>Important dates</h4>
 
-            <div v-for="(line, index) in sortedLines" :key="line.x">
+            <transition-group name="flip-list" tag="div">
+            <div v-for="(line, index) in sortedLines" :key="line.id">
                 <input type="text" v-model="line.label" v-bind:class="{active: index==lineSelected}" @click="selectLine(index)"/>
                 <span v-text="getDate(line.x)"></span>
                 <button class="destroy" title="Remove line" @click="deleteLine(line)">X</button>
             </div>
+            </transition-group>
+
             <button @click="addLine" class="btn btn-sm">Add line</button>
-        </div>
+        </aside>
     </div>
 </template>
 
@@ -54,10 +57,11 @@
 
         data: function() {
             return {
+                first_new_item: -1,
                 lines: [
-                    {'label': 'start', 'x': 8.33},
-                    {'label': 'middle', 'x': 45},
-                    {'label': 'end', 'x': 83.33}
+                    {'id':1, 'label': 'Start winter session', 'x': 8.33},
+                    {'id':2, 'label': 'middle', 'x': 45},
+                    {'id':3, 'label': 'end', 'x': 83.33}
                 ],
                 lineSelected: null,
                 timeline: this.periods,
@@ -81,7 +85,7 @@
 
         methods: {
             addLine() {
-                let line = {'label': 'new', 'x': 0};
+                let line = {'id': this.first_new_item--, 'label': 'new', 'x': 0};
                 this.lines.push(line);
                 this.lineSelected = this.lines.length - 1;
             },
@@ -152,6 +156,10 @@ svg {
     padding-right: 5px;
 }
 
+aside {
+    margin: 2em 0;
+}
+
 .destroy {
     border: none;
     color: #cc9a9a;
@@ -160,4 +168,9 @@ svg {
 .active {
     color: green;
 }
+
+.flip-list-move {
+  transition: transform 1s;
+}
+
 </style>
