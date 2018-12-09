@@ -114,10 +114,10 @@
                 }
 
                 // Wrap-around
-                if (line.x < 0) {
-                    line.x = 100;
+                if (line.x <= 0) {
+                    line.x += 100;
                 } else if (line.x >= 100) {
-                    line.x = 0;
+                    line.x -= 100;
                 }
 
                 this.getDate(line.x);
