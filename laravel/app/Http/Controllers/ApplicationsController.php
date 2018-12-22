@@ -55,6 +55,11 @@ class ApplicationsController extends Controller
         $groups = ApplicationGroups::all();
         $units = Unit::all();
 
+        $units = $units->map(function ($item) {
+            $item->selected = false;
+            return $item;
+        });
+
         return view('applications.create')
             ->with('groups', $groups)
             ->with('units', $units)
@@ -96,6 +101,10 @@ class ApplicationsController extends Controller
                 $timeline->update($period);
             }
         }
+
+        $units = request('units', []);
+        $application->units()->sync($units);
+
 
         return redirect('/applications');
     }
