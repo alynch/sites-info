@@ -22,15 +22,14 @@ class ApplicationEnvironments extends Migration
 
             $table->primary(['application_id', 'environment_id']);
 
-           $table->foreign('application_id')->references('id')->on('applications')
+            $table->foreign('application_id')->references('id')->on('applications')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
             $table->foreign('environment_id')->references('id')->on('environments')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
-            
         });
-     }
+    }
 
     /**
      * Reverse the migrations.

@@ -28,7 +28,6 @@ class PeakPeriods extends Migration
             $table->foreign('application_id')->references('id')->on('applications')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
-            
         });
     }
 
