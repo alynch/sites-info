@@ -112,12 +112,15 @@ class ApplicationsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Applications  $applications
+     * @param  \App\Applications  $application
      * @return \Illuminate\Http\Response
      */
-    public function show(Applications $applications)
+    public function show(Applications $application)
     {
-        //
+        $application->load('environments', 'units');
+
+        return view('applications.show')
+            ->with('application', $application);
     }
 
     /**
