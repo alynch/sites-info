@@ -170,6 +170,7 @@ class InitializeApp extends Command
     private function createUnits()
     {
         $dept = \App\UnitType::where('name', 'Department')->first();
+        $college = \App\UnitType::where('name', 'College')->first();
 
         $soc = \App\UnitArea::where('name', 'Social Sciences')->first();
         $sci = \App\UnitArea::where('name', 'Sciences')->first();
@@ -189,6 +190,11 @@ class InitializeApp extends Command
             ['code' => 'EEB', 'name' => 'Ecology and Evolutionary Biology']
         ];
 
+        $colleges = [
+            ['code' => 'STM', 'name' => 'St. Michael\'s College'],
+            ['code' => 'VIV', 'name' => 'Victoria College'],
+        ];
+
 
         DB::table('units')->delete();
 
@@ -204,6 +210,14 @@ class InitializeApp extends Command
             $unit['short_name'] = $unit['name'];
             $unit['area_id'] = $sci->id;
             $unit['type_id'] = $dept->id;
+            $unit['created_at'] = now();
+            DB::table('units')->insert($unit);
+        }
+
+        foreach ($colleges as $unit) {
+            $unit['short_name'] = $unit['name'];
+            $unit['area_id'] = null;
+            $unit['type_id'] = $college->id;
             $unit['created_at'] = now();
             DB::table('units')->insert($unit);
         }
@@ -267,7 +281,8 @@ class InitializeApp extends Command
                 'periods' => [
                     [ 'start_month' => 11, 'start_day'=> 1, 'end_month' => 12, 'end_day' => 31 ],
                     [ 'start_month' => 1, 'start_day'=> 1, 'end_month' => 3, 'end_day' => 30 ]
-                ]
+                ],
+                'units' => 'All'
             ],
             [
                 'name' => 'Course evaluations opt-out',
@@ -377,8 +392,14 @@ class InitializeApp extends Command
             }
 
             if (isset($application['units'])) {
-                foreach ($application['units'] as $key) {
-                    $app->units()->attach($units[$key]);
+                if ($application['units'] == 'All') {
+                    foreach ($units as $unit) {
+                        $app->units()->attach($unit);
+                    }
+                } else {
+                    foreach ($application['units'] as $key) {
+                        $app->units()->attach($units[$key]);
+                    }
                 }
             }
 
