@@ -2,9 +2,16 @@
 
 namespace App\Console\Commands;
 
-use DB;
 use Hash;
 use Illuminate\Console\Command;
+
+use App\User;
+use App\Unit;
+use App\UnitArea;
+use App\UnitType;
+use App\Environments;
+use App\Applications;
+use App\ApplicationGroups;
 
 class InitializeApp extends Command
 {
@@ -61,10 +68,9 @@ class InitializeApp extends Command
             ]
         ];
 
-        DB::table('application_groups')->delete();
+        ApplicationGroups::query()->delete();
         foreach ($groups as $group) {
-            $group['created_at'] = now();
-            DB::table('application_groups')->insert($group);
+            ApplicationGroups::create($group);
         }
     }
 
@@ -93,10 +99,9 @@ class InitializeApp extends Command
             ]
         ];
 
-        DB::table('environments')->delete();
+        Environments::query()->delete();
         foreach ($environments as $environment) {
-            $environment['created_at'] = now();
-            DB::table('environments')->insert($environment);
+            Environments::create($environment);
         }
     }
 
@@ -117,11 +122,9 @@ class InitializeApp extends Command
             ]
         ];
 
-
-        DB::table('unit_areas')->delete();
+        UnitArea::query()->delete();
         foreach ($areas as $area) {
-            $area['created_at'] = now();
-            DB::table('unit_areas')->insert($area);
+            UnitArea::create($area);
         }
     }
 
@@ -160,21 +163,20 @@ class InitializeApp extends Command
             ]
         ];
 
-        DB::table('unit_types')->delete();
+        UnitType::query()->delete();
         foreach ($types as $type) {
-            $type['created_at'] = now();
-            DB::table('unit_types')->insert($type);
+            UnitType::create($type);
         }
     }
 
     private function createUnits()
     {
-        $dept = \App\UnitType::where('name', 'Department')->first();
-        $college = \App\UnitType::where('name', 'College')->first();
+        $dept = UnitType::where('name', 'Department')->first();
+        $college = UnitType::where('name', 'College')->first();
 
-        $soc = \App\UnitArea::where('name', 'Social Sciences')->first();
-        $sci = \App\UnitArea::where('name', 'Sciences')->first();
-        $hum = \App\UnitArea::where('name', 'Humanities')->first();
+        $soc = UnitArea::where('name', 'Social Sciences')->first();
+        $sci = UnitArea::where('name', 'Sciences')->first();
+        $hum = UnitArea::where('name', 'Humanities')->first();
 
         $social_science_depts = [
             ['code' => 'ANT', 'name' => 'Anthropology' ],
@@ -196,30 +198,26 @@ class InitializeApp extends Command
         ];
 
 
-        DB::table('units')->delete();
-
+        Unit::query()->delete();
         foreach ($social_science_depts as $unit) {
             $unit['short_name'] = $unit['name'];
             $unit['area_id'] = $soc->id;
             $unit['type_id'] = $dept->id;
-            $unit['created_at'] = now();
-            DB::table('units')->insert($unit);
+            Unit::create($unit);
         }
 
         foreach ($science_depts as $unit) {
             $unit['short_name'] = $unit['name'];
             $unit['area_id'] = $sci->id;
             $unit['type_id'] = $dept->id;
-            $unit['created_at'] = now();
-            DB::table('units')->insert($unit);
+            Unit::create($unit);
         }
 
         foreach ($colleges as $unit) {
             $unit['short_name'] = $unit['name'];
             $unit['area_id'] = null;
             $unit['type_id'] = $college->id;
-            $unit['created_at'] = now();
-            DB::table('units')->insert($unit);
+            Unit::create($unit);
         }
     }
 
@@ -362,21 +360,20 @@ class InitializeApp extends Command
             ]
         ];
 
-        $environments = \App\Environments::all()->pluck('id', 'code');
-        $units = \App\Unit::all()->pluck('id', 'code');
+        $environments = Environments::all()->pluck('id', 'code');
+        $units = Unit::all()->pluck('id', 'code');
 
-        $acad_group = \App\ApplicationGroups::where('name', 'Academic')->first();
-        $admin_group = \App\ApplicationGroups::where('name', 'Administrative')->first();
+        $acad_group = ApplicationGroups::where('name', 'Academic')->first();
+        $admin_group = ApplicationGroups::where('name', 'Administrative')->first();
 
-        DB::table('applications')->delete();
+        Applications::query()->delete();
 
-
-        $academic_applications = collect($academic_applications)->map(function($item) use ($acad_group) {
+        $academic_applications = collect($academic_applications)->map(function ($item) use ($acad_group) {
             $item['group_id'] = $acad_group->id;
             return $item;
         });
 
-        $admin_applications = collect($admin_applications)->map(function($item) use ($admin_group) {
+        $admin_applications = collect($admin_applications)->map(function ($item) use ($admin_group) {
             $item['group_id'] = $admin_group->id;
             return $item;
         });
@@ -385,7 +382,7 @@ class InitializeApp extends Command
         $applications = $academic_applications->merge($admin_applications);
 
         foreach ($applications as $application) {
-            $app = \App\Applications::create($application);
+            $app = Applications::create($application);
 
             foreach ($application['environments'] as $key => $value) {
                 $app->environments()->attach($environments[$key], ['url' => $value]);
@@ -420,7 +417,7 @@ class InitializeApp extends Command
                 'password' => Hash::make('dashBoard')
             ];
 
-        DB::table('users')->delete();
-        DB::table('users')->insert($user);
+        User::query()->delete();
+        User::create($user);
     }
 }
