@@ -18,6 +18,34 @@ class EnvironmentsTest extends TestCase
         $this->post('/environments', $data)->assertRedirect('login');
     }
 
+    /** @test */
+    public function a_logged_in_user_can_view_all_environments()
+    {
+
+        $this->withoutExceptionHandling();
+
+        $this->actingAs(factory('App\User')->create());
+
+        $data = factory('App\Environments')->create();
+
+        $this->get('/environments')->assertSee($data->name);
+    }
+
+
+    /** @test */
+    public function a_user_view_an_environment()
+    {
+        $this->withoutExceptionHandling();
+
+        $data = factory('App\Environments')->create();
+
+        $this->actingAs(factory('App\User')->create());
+
+        $this->get('/environments/'. $data->id . '/edit')
+            ->assertSee($data->name)
+            ->assertSee($data->code);
+    }
+
 
     /** @test */
     public function a_logged_in_user_can_add_an_environment()
@@ -34,6 +62,39 @@ class EnvironmentsTest extends TestCase
         $this->assertDatabaseHas('environments', $data);
 
         $this->get('/environments')->assertSee($data['name']);
+    }
+
+    /** @test */
+    public function a_logged_in_user_can_edit_an_environment()
+    {
+
+        $this->withoutExceptionHandling();
+
+        $this->actingAs(factory('App\User')->create());
+
+        $data = factory('App\Environments')->create();
+
+        $new_name = 'New name';
+        $data->name = $new_name;
+
+        $this->put('/environments/' . $data->id, $data->toArray());
+
+        $this->assertDatabaseHas('environments', ['id' => $data->id, 'name' => $new_name]);
+    }
+
+    /** @test */
+    public function a_logged_in_user_can_delete_an_environment()
+    {
+
+        $this->withoutExceptionHandling();
+
+        $this->actingAs(factory('App\User')->create());
+
+        $data = factory('App\Environments')->create();
+
+        $this->delete('/environments/' . $data->id, $data->toArray());
+
+        $this->assertDatabaseMissing('environments', ['id' => $data->id]);
     }
 
 
