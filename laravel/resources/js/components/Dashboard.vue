@@ -62,7 +62,7 @@
 
 <style scoped>
 .grid {
-    margin-top: 1em;
+    margin: 1em 0;
     display: grid;
     grid-template-columns: repeat(auto-fill, 20em);
     grid-gap: 1rem;
