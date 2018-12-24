@@ -33,7 +33,7 @@ class AddUnits extends Migration
             $table->string('code')->unique();
             $table->string('name');
             $table->string('short_name');
-            $table->unsignedInteger('area_id');
+            $table->unsignedInteger('area_id')->nullable();
             $table->unsignedInteger('type_id');
             $table->timestamps();
 
