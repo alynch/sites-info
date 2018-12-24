@@ -15,4 +15,12 @@ class Unit extends Model
             'application_id'
         );
     }
+
+    public function type()
+    {
+        return $this->belongsTo(
+            UnitType::class,
+            'type_id'
+        );
+    }
 }

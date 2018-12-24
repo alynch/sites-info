@@ -150,11 +150,13 @@ class ApplicationsController extends Controller
             return $item;
         });
 
-        $units = Unit::all();
+        $units = Unit::with('type')->get();
+
         $app_units = $application->units;
 
         $units = $units->map(function ($item) use ($app_units) {
             $item->selected = ($app_units->contains($item)) ? true : false;
+            $item->type = $item->type->name;
             return $item;
         });
 
