@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Unit extends Model
 {
+    protected $fillable = ['name', 'short_name', 'code', 'type_id', 'area_id'];
+
     public function applications()
     {
         return $this->belongsToMany(
