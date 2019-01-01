@@ -28,7 +28,7 @@ class EnvironmentsTest extends TestCase
 
         $data = factory('App\Environments')->create();
 
-        $this->get('/environments')->assertSee($data->name);
+        $this->get('/environments')->assertSee(e($data->name));
     }
 
 
@@ -42,7 +42,7 @@ class EnvironmentsTest extends TestCase
         $this->actingAs(factory('App\User')->create());
 
         $this->get('/environments/'. $data->id . '/edit')
-            ->assertSee($data->name)
+            ->assertSee(e($data->name))
             ->assertSee($data->code);
     }
 
@@ -61,7 +61,7 @@ class EnvironmentsTest extends TestCase
 
         $this->assertDatabaseHas('environments', $data);
 
-        $this->get('/environments')->assertSee($data['name']);
+        $this->get('/environments')->assertSee(e($data['name']));
     }
 
     /** @test */

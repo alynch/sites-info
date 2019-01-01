@@ -28,7 +28,7 @@ class ApplicationGroupsTest extends TestCase
 
         $data = factory('App\ApplicationGroups')->create();
 
-        $this->get('/application-groups')->assertSee($data->name);
+        $this->get('/application-groups')->assertSee(e($data->name));
     }
 
 
@@ -42,7 +42,7 @@ class ApplicationGroupsTest extends TestCase
         $this->actingAs(factory('App\User')->create());
 
         $this->get('/application-groups/'. $data->id . '/edit')
-            ->assertSee($data->name)
+            ->assertSee(e($data->name))
             ->assertSee($data->code);
     }
 
@@ -61,7 +61,7 @@ class ApplicationGroupsTest extends TestCase
 
         $this->assertDatabaseHas('application_groups', $data);
 
-        $this->get('/application-groups')->assertSee($data['name']);
+        $this->get('/application-groups')->assertSee(e($data['name']));
     }
 
     /** @test */

@@ -28,7 +28,7 @@ class ApplicationsTest extends TestCase
 
         $data = factory('App\Applications')->create();
 
-        $this->get('/applications')->assertSee($data->name);
+        $this->get('/applications')->assertSee(e($data->name));
     }
 
 
@@ -42,7 +42,7 @@ class ApplicationsTest extends TestCase
         $this->actingAs(factory('App\User')->create());
 
         $this->get('/applications/'. $data->id . '/edit')
-            ->assertSee($data->name)
+            ->assertSee(e($data->name))
             ->assertSee($data->code);
     }
 
@@ -61,7 +61,7 @@ class ApplicationsTest extends TestCase
 
         $this->assertDatabaseHas('applications', $data);
 
-        $this->get('/applications')->assertSee($data['name']);
+        $this->get('/applications')->assertSee(e($data['name']));
     }
 
     /** @test */
