@@ -5,6 +5,17 @@
 <div class="card">
     <div class="card-header d-flex justify-content-between">
         <h2>Academic units</h2>
+
+
+        <ul class="nav nav-pills">
+        @foreach ($unit_types as $type)
+            <li class="nav-item">
+            <a class="nav-link" href="{{ url('/units?filter=' . $type->id )}}">
+            {{ $type->code }}s
+            </a>
+            </li>
+        @endforeach
+        </ul>
     </div>
 
     <ul class="list-group list-group-flush">

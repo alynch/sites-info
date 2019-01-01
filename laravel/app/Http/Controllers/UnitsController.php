@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Unit;
+use App\UnitType;
 use Illuminate\Http\Request;
 
 class UnitsController extends Controller
@@ -24,9 +25,12 @@ class UnitsController extends Controller
      */
     public function index()
     {
-        $units = Unit::orderBy('name')->get();
+        $units = Unit::with('applications')->orderBy('name')->get();
+
+        $unit_types = UnitType::all();
 
         return view('units.index')
+            ->with('unit_types', $unit_types)
             ->with('units', $units);
     }
 
