@@ -193,8 +193,13 @@ class InitializeApp extends Command
         ];
 
         $colleges = [
+            ['code' => 'INNIS', 'name' => 'Innis College'],
             ['code' => 'STM', 'name' => 'St. Michael\'s College'],
-            ['code' => 'VIV', 'name' => 'Victoria College'],
+            ['code' => 'NEW', 'name' => 'New College'],
+            ['code' => 'TRIN', 'name' => 'Trinity College'],
+            ['code' => 'UC', 'name' => 'University College'],
+            ['code' => 'VIC', 'name' => 'Victoria College'],
+            ['code' => 'WDW', 'name' => 'Woodsworth College']
         ];
 
 
@@ -312,7 +317,8 @@ class InitializeApp extends Command
                     'dev' => 'http://newpetitions-dev.iit.artsci.utoronto.ca/',
                     'pat' => 'https://petitions-pat.artsci.utoronto.ca/',
                     'prod' => 'https://petitions.artsci.utoronto.ca/',
-                ]
+                ],
+                'units' => [ 'INNIS', 'NEW', 'STM', 'TRIN', 'UC', 'VIC', 'WDW' ]
             ],
             [
                 'name' => 'College Admissions',
@@ -322,7 +328,8 @@ class InitializeApp extends Command
                 'periods' => [
                     [ 'start_month' => 11, 'start_day'=> 15, 'end_month' => 12, 'end_day' => 31 ],
                     [ 'start_month' => 1, 'start_day'=> 1, 'end_month' => 3, 'end_day' => 30 ]
-                ]
+                ],
+                'units' => [ 'INNIS', 'NEW', 'STM', 'TRIN', 'UC', 'VIC', 'WDW' ]
             ],
             [
                 'name' => 'TAships',
@@ -338,7 +345,8 @@ class InitializeApp extends Command
                 'environments' => [
                     'dev' => 'https://dev.timetable-internal.iit.artsci.utoronto.ca/',
                     'prod' => 'https://timetable-internal.iit.artsci.utoronto.ca/'
-                ]
+                ],
+                'units' => 'All'
             ],
             [
                 'name' => 'TV Remote Control',
