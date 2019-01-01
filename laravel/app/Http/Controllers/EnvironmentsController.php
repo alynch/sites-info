@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Environments;
 use Illuminate\Http\Request;
 
+use App\Http\Requests\EnvironmentsForm;
+
 class EnvironmentsController extends Controller
 {
     /**
@@ -48,16 +50,10 @@ class EnvironmentsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(EnvironmentsForm $request)
     {
-        $validatedData = $request->validate([
-            'name' => 'required',
-            'code' => 'required',
-            'description' => 'nullable',
-            'sort_order' => 'required',
-        ]);
-
-        Environments::create(request()->all());
+        $validatedData = $request->validated();
+        Environments::create($validatedData);
 
         return redirect('/environments');
     }
@@ -92,13 +88,9 @@ class EnvironmentsController extends Controller
      * @param  \App\Environments  $environment
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Environments $environment)
+    public function update(EnvironmentsForm $request, Environments $environment)
     {
-        $validatedData = $request->validate([
-            'name' => 'required',
-            'code' => 'required',
-            'sort_order' => 'required',
-        ]);
+        $validatedData = $request->validated();
 
         $environment->update($validatedData);
 
