@@ -2,6 +2,7 @@
 
 @section('content')
 
+{{--
 <div class="card">
     <div class="card-header d-flex justify-content-between">
         <h2>Academic units</h2>
@@ -32,4 +33,10 @@
         @endforeach
     </ul>
 </div>
+--}}
+
+    <filterable-list
+        :filters="{{ $unit_types }}"
+        :items="{{ $units }}">
+    </filterable-list>
 @endsection

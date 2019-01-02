@@ -21,6 +21,7 @@ Vue.component('timeline-dashboard', require('./components/Timeline/TimelineDashb
 Vue.component('timeline-picker', require('./components/Timeline/TimelinePicker.vue'));
 
 Vue.component('select-widget', require('./components/SelectWidget.vue'));
+Vue.component('filterable-list', require('./components/FilterableList.vue'));
 
 const app = new Vue({
     el: '#app'
