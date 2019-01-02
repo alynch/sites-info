@@ -3,10 +3,11 @@
 @section('content')
 
 <div class="card mb-3">
-    <div class="card-header">
+    <div class="card-header d-flex justify-content-between">
         <h5>
             {{ $application->name }}
         </h5>
+        <a class="btn btn-primary" href="{{url('applications/' . $application->id . '/edit') }}">Edit</a>
     </div>
 
     <div class="card-body">
