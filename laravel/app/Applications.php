@@ -41,7 +41,8 @@ class Applications extends Model
             'application_units',
             'application_id',
             'unit_id'
-        )->withTimestamps();
+        )->withTimestamps()
+        ->orderBy('name');
     }
 
     public function production()
