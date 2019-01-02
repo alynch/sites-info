@@ -1,5 +1,5 @@
 <template>
-    <div class="range" v-bind:style="slotStyle"></div>
+    <div :title="getPeriod" class="range" v-bind:style="slotStyle"></div>
 </template>
 
 <script>
@@ -14,6 +14,11 @@
         },
 
        computed: {
+            getPeriod: function() {
+                return 'From ' + this.period.start_day + '-' + this.period.start_month +
+                    ' to ' + this.period.end_day + '-' + this.period.end_month;
+            },
+
             start: function() {
                 return 100 * ((this.period.start_month - 1) *30 + (this.period.start_day - 1)) / 360 ;
             },

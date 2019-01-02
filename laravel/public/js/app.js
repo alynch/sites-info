@@ -48380,7 +48380,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.txt[data-v-0997f5e0] {\n    fill: green;\n}\n.grid[data-v-0997f5e0] {\n    position: relative;\n    display: grid;\n    grid-template-columns: 10em 1fr;\n}\n.range-box[data-v-0997f5e0] {\n}\nsvg[data-v-0997f5e0] {\n    position: absolute;\n    z-index: 1;\n    width: calc(100% - 10em);\n    margin-left: 10em;\n    height: 100%;\n}\n.label[data-v-0997f5e0] {\n    font-size: 0.95em;\n    padding-right: 5px;\n}\naside[data-v-0997f5e0] {\n    margin: 2em 0;\n}\n.destroy[data-v-0997f5e0] {\n    border: none;\n    color: #cc9a9a;\n}\n.active[data-v-0997f5e0] {\n    color: green;\n}\n.flip-list-move[data-v-0997f5e0] {\n  -webkit-transition: -webkit-transform 1s;\n  transition: -webkit-transform 1s;\n  transition: transform 1s;\n  transition: transform 1s, -webkit-transform 1s;\n}\n.date[data-v-0997f5e0] {\n    width: 6em;\n    display: inline-block;\n}\ninput[data-v-0997f5e0] {\n    margin: 5px;\n    border: 1px solid #e9ecef;\n    border-radius: 2px;\n}\n", ""]);
+exports.push([module.i, "\n.txt[data-v-0997f5e0] {\n    fill: green;\n}\n.grid[data-v-0997f5e0] {\n    position: relative;\n    display: grid;\n    padding: 0 0 2em 0;\n    grid-template-columns: 10em 1fr;\n}\n.range-box[data-v-0997f5e0] {\n}\nsvg[data-v-0997f5e0] {\n    position: absolute;\n    z-index: 1;\n    width: calc(100% - 10em);\n    margin-left: 10em;\n    height: 100%;\n}\n.label[data-v-0997f5e0] {\n    font-size: 0.95em;\n    padding-right: 5px;\n}\naside[data-v-0997f5e0] {\n    margin: 2em 0;\n}\n.destroy[data-v-0997f5e0] {\n    border: none;\n    color: #cc9a9a;\n}\n.active[data-v-0997f5e0] {\n    color: green;\n}\n.flip-list-move[data-v-0997f5e0] {\n  -webkit-transition: -webkit-transform 1s;\n  transition: -webkit-transform 1s;\n  transition: transform 1s;\n  transition: transform 1s, -webkit-transform 1s;\n}\n.date[data-v-0997f5e0] {\n    width: 6em;\n    display: inline-block;\n}\ninput[data-v-0997f5e0] {\n    margin: 5px;\n    border: 1px solid #e9ecef;\n    border-radius: 2px;\n}\n", ""]);
 
 // exports
 
@@ -48460,7 +48460,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             lineSelected: null,
             timeline: this.periods,
             months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-            amonths: [{ 'name': 'Jan', 'days': 31 }, { 'name': 'Feb', 'days': 28 }, { 'name': 'Mar', 'days': 31 }, { 'name': 'Apr', 'days': 30 }, { 'name': 'May', 'days': 31 }, { 'name': 'Jun', 'days': 30 }, { 'name': 'Jul', 'days': 31 }, { 'name': 'Aug', 'days': 31 }, { 'name': 'Sep', 'days': 30 }, { 'name': 'Oct', 'days': 31 }, { 'name': 'Nov', 'days': 30 }, { 'name': 'Dec', 'days': 31 }],
             dayTic: 100 / 360,
             monthTic: 100 / 12
         };
@@ -48932,7 +48931,7 @@ var render = function() {
                     _c("line", {
                       attrs: {
                         x1: line.x + "%",
-                        y1: "0",
+                        y1: "5%",
                         x2: line.x + "%",
                         y2: "97.5%",
                         "stroke-width": "2",
