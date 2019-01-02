@@ -9,7 +9,9 @@
         <ul>
         @foreach ($unit->applications as $application)
             <li>
+                <a href="{{ url('/applications/' . $application->id) }}">
                 {{ $application->name }}
+                </a>
             </li>
         @endforeach
         </ul>

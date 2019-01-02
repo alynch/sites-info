@@ -16,7 +16,8 @@
         </div>
 
         <p>    
-        Application type: {{ $application->group->name }}
+        <strong>Application type:</strong>
+             {{ $application->group->name }}
         </p>
 
 
@@ -24,8 +25,10 @@
         <ul>
         @foreach ($application->environments as $environment)
             <li>
-                {{ $environment->name }}
-            {{ $environment->pivot->url }}
+                {{ $environment->name }}:
+                <a href="{{ $environment->pivot->url }}">
+                {{ $environment->pivot->url }}
+                </a>
             </li>
         @endforeach
         </ul>
