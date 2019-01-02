@@ -325,6 +325,9 @@ Department of Statistical Sciences
         $academic_applications = [
             [
                 'name' => 'Corpora in the Classroom',
+                'description' => 'This is a web-based archive of linguistic data from a variety of languages, speakers, and projects.
+                    Linguistics students are encouraged to use this data for empirical research as part of their studies.
+                ',
                 'environments' => [
                     'dev' => 'http://webdev.chass.utoronto.ca/corpora',
                     'prod' => 'https://corpora.chass.utoronto.ca'
@@ -340,6 +343,7 @@ Department of Statistical Sciences
             ],
             [
                 'name' => 'Cross-Language Articulatory Database',
+                'description' => 'The Cross-Language Articulatory Database (CLAD) is an on-line research and teaching tool containing tagged video samples of electropalatography (EPG) data from a variety of languages. The EPG method tracks the contact between the tongue and the roof of the mouth over time, providing spatial and temporal information about consonant and vowel articulations.',
                 'environments' => [
                     'prod' => 'http://clad.chass.utoronto.ca'
                 ],
@@ -347,6 +351,7 @@ Department of Statistical Sciences
             ],
             [
                 'name' => 'Romance Phonetic Database',
+                'description' => 'The Romance Phonetics Database (RPD) is an on-line research and teaching tool containing tagged sound samples (both individual words and passages) illustrative of various segmental and prosodic aspects of Romance phonetics and phonology.',
                 'environments' => [
                     'prod' => 'http://rpd.chass.utoronto.ca'
                 ],
@@ -361,6 +366,7 @@ Department of Statistical Sciences
             ],
             [
                 'name' => 'Directory of Languages and Linguistics at U of T',
+                'description' => 'This is the revised and updated fourth edition of the Directory of Languages and Linguistics at the University of Toronto. The Directory is for purposes of information only, and is intended for the use of students, researchers, and anyone interested in the study of language at U of T.',
                 'environments' => [
                     'prod' => 'https://projects.chass.utoronto.ca/dll/'
                 ],
