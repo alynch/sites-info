@@ -173,6 +173,9 @@ class InitializeApp extends Command
     {
         $dept = UnitType::where('name', 'Department')->first();
         $college = UnitType::where('name', 'College')->first();
+        $edu_a = UnitType::where('code', 'EDU:A')->first();
+        $edu_b = UnitType::where('code', 'EDU:B')->first();
+        $edu_c = UnitType::where('code', 'EDU:C')->first();
 
         $soc = UnitArea::where('name', 'Social Sciences')->first();
         $sci = UnitArea::where('name', 'Sciences')->first();
@@ -189,8 +192,78 @@ class InitializeApp extends Command
         $science_depts = [
             ['code' => 'CHM', 'name' => 'Chemistry'],
             ['code' => 'CSB', 'name' => 'Cell and Systems Biology'],
-            ['code' => 'EEB', 'name' => 'Ecology and Evolutionary Biology']
+            ['code' => 'CSC', 'name' => 'Computer Science'],
+            ['code' => 'EEB', 'name' => 'Ecology and Evolutionary Biology'],
+            ['code' => 'PHY', 'name' => 'Physics'],
+            ['code' => 'AST', 'name' => 'Astronomy and Astrophysics']
         ];
+
+/*
+Department of the History of Art
+Department of Classics
+Department of East Asian Studies
+Department of Economics
+Department of English
+Department of Geography and Planning
+Department of Earth Sciences
+Department of Germanic Languages and Literatures
+Department of Italian Studies
+Department of Mathematics
+Department of Near and Middle Eastern Civilizations
+Department of Philosophy
+Department of Psychology
+Department for the Study of Religion
+Department of Slavic Languages and Literatures
+Department of Sociology
+Department of Spanish and Portuguese
+Department of Statistical Sciences
+*/
+
+        $edu_as = [
+            ['code' => 'IRE', 'name' => 'Centre for Industrial Relations and Human Resources'],
+            ['code' => 'CCL', 'name' => 'Centre for Comparative Literature'],
+            ['code' => 'CIN', 'name' => 'Cinema Studies Institute'],
+            ['code' => 'CRI', 'name' => 'Centre for Criminology and Sociolegal Studies'],
+            ['code' => 'MUN', 'name' => 'Munk School of Global Affairs and Public Policy'],
+            ['code' => 'HPS', 'name' => 'Institute for the History and Philosophy of Science and Technology'],
+            ['code' => 'MST', 'name' => 'Centre for Medieval Studies'],
+            ['code' => 'WGS', 'name' => 'Women and Gender Studies Institute'],
+            ['code' => 'CTA', 'name' => 'Canadian Institute for Theoretical Astrophysics'],
+            ['code' => 'DRA', 'name' => 'Centre for Drama, Theatre and Performance Studies']
+        ];
+
+        $edu_bs = [
+            ['code' => 'DRT', 'name' => 'Centre for Diaspora and Transnational Studies'],
+            ['code' => 'EUR', 'name' => 'Centre for European, Russian and Eurasian Studies'],
+            ['code' => 'CJS', 'name' => 'Anne Tanenbaum Centre for Jewish Studies'],
+            ['code' => 'SDS', 'name' => 'Mark S. Bonham Centre for Sexual Diversity Studies'],
+            ['code' => 'INS', 'name' => 'Centre for Indigenous Studies'],
+            ['code' => 'ENV', 'name' => 'School of the Environment'],
+        ];
+        //Dunlap Institute for Astronomy and Astrophysics
+
+
+        $edu_cs = [
+            ['code' => 'AI', 'name' => 'Asian Institute'],
+            ['code' => 'IOS', 'name' => 'Institute for Optical Sciences'],
+            ['code' => 'ARH', 'name' => 'Archaeology Centre'],
+            ['code' => 'CBTC', 'name' => 'Centre for Biological Timing and Cognition'],
+            ['code' => 'ETH', 'name' => 'Centre for Ethics'],
+            ['code' => 'CGCS', 'name' => 'Centre for Global Change Science'],
+            ['code' => 'JHI', 'name' => 'Jackman Humanities Institute'],
+            ['code' => 'CSK', 'name' => 'Centre for the Study of Korea'],
+            ['code' => 'CQIQC', 'name' => 'Centre for Quantum Information and Quantum Control'],
+            ['code' => 'RDC', 'name' => 'Statistics Canada Research Data Centre'],
+            ['code' => 'CSUS', 'name' => 'Centre for the Study of the United States'],
+            ['code' => 'CAGEF', 'name' => 'Centre for the Analysis of Genome Evolution and Function'],
+            ['code' => 'CEFMF', 'name' => 'Centre d\'étude de la France et du monde francophone'],
+            ['code' => 'IIS', 'name' => 'Institute of Islamic Studies'],
+            ['code' => 'IMC', 'name' => 'Impact Centre'],
+            ['code' => 'SOFC', 'name' => 'School of Cities'],
+        ];
+        //The Robert H. N. Ho Family Foundation Centre for Buddhist Studies at the University of Toronto
+
+
 
         $colleges = [
             ['code' => 'INNIS', 'name' => 'Innis College'],
@@ -222,6 +295,27 @@ class InitializeApp extends Command
             $unit['short_name'] = $unit['name'];
             $unit['area_id'] = null;
             $unit['type_id'] = $college->id;
+            Unit::create($unit);
+        }
+
+        foreach ($edu_as as $unit) {
+            $unit['short_name'] = $unit['name'];
+            $unit['area_id'] = null;
+            $unit['type_id'] = $edu_a->id;
+            Unit::create($unit);
+        }
+
+        foreach ($edu_bs as $unit) {
+            $unit['short_name'] = $unit['name'];
+            $unit['area_id'] = null;
+            $unit['type_id'] = $edu_b->id;
+            Unit::create($unit);
+        }
+
+        foreach ($edu_cs as $unit) {
+            $unit['short_name'] = $unit['name'];
+            $unit['area_id'] = null;
+            $unit['type_id'] = $edu_c->id;
             Unit::create($unit);
         }
     }
