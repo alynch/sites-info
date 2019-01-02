@@ -325,8 +325,7 @@ Department of Statistical Sciences
         $academic_applications = [
             [
                 'name' => 'Corpora in the Classroom',
-                'description' => 'This is a web-based archive of linguistic data from a variety of languages, speakers, and projects.
-                    Linguistics students are encouraged to use this data for empirical research as part of their studies.
+                'description' => 'This is a web-based archive of linguistic data from a variety of languages, speakers, and projects.  Linguistics students are encouraged to use this data for empirical research as part of their studies.
                 ',
                 'environments' => [
                     'dev' => 'http://webdev.chass.utoronto.ca/corpora',
