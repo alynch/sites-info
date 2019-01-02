@@ -113,7 +113,8 @@ class EnvironmentsTest extends TestCase
 
         $data = factory('App\Environments')->raw();
 
-        $this->post('/environments', $data);
+        $this->post('/environments', $data)
+            ->assertRedirect('/environments');
 
         $this->assertDatabaseHas('environments', $data);
 
