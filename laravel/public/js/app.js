@@ -50228,7 +50228,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.nav-link[data-v-e3ba188a] {\n    margin: 0 5px;\n    padding: 3px 6px;\n}\n.selected[data-v-e3ba188a] {\n    background: #3490dc;\n    color: #fff;\n}\n.selected[data-v-e3ba188a]:hover {\n  color: #fff;\n  background-color: #227dc7;\n  border-color: #2176bd;\n}\n\n", ""]);
+exports.push([module.i, "\n.nav-link[data-v-e3ba188a] {\n    margin: 0 5px;\n    padding: 3px 6px;\n}\n.selected[data-v-e3ba188a] {\n    background: #3490dc;\n    color: #fff;\n}\n.selected[data-v-e3ba188a]:hover {\n  color: #fff;\n  background-color: #227dc7;\n  border-color: #2176bd;\n}\n.text-right[data-v-e3ba188a] {\n    padding-right: 1em;\npadding: 0.5em 2.25em;\n}\n", ""]);
 
 // exports
 
@@ -50239,6 +50239,10 @@ exports.push([module.i, "\n.nav-link[data-v-e3ba188a] {\n    margin: 0 5px;\n   
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
 //
 //
 //
@@ -50279,8 +50283,35 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
 
     props: {
-        filters: Array,
-        items: Array
+        filters: {
+            type: Array,
+            required: true
+        },
+
+        items: {
+            type: Array,
+            required: true
+        },
+
+        filter_id: {
+            type: String,
+            default: 'type_id'
+        },
+
+        filter_name: {
+            type: String,
+            default: 'name'
+        },
+
+        pluralize_filters: {
+            type: Boolean,
+            default: false
+        },
+
+        item_name: {
+            type: String,
+            default: 'name'
+        }
     },
 
     computed: {
@@ -50292,7 +50323,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }
 
             return this.validItems.filter(function (item) {
-                return _this.currentFilters.includes(item.type_id);
+                return _this.currentFilters.includes(item[_this.filter_id]);
             });
         }
     },
@@ -50314,6 +50345,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         }
     },
 
+    filters: {
+        pluralize: function pluralize(number, word) {
+            var w = number === 1 ? word : word + 's';
+            return number + ' ' + w;
+        }
+    },
+
     mounted: function mounted() {
         this.currentFilters = this.filters.map(function (item) {
             return item.id;
@@ -50331,7 +50369,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "card" }, [
     _c("div", { staticClass: "card-header d-flex justify-content-between" }, [
-      _c("h2", [_vm._v("Academic units")]),
+      _c("h2", [_vm._t("default")], 2),
       _vm._v(" "),
       _c(
         "ul",
@@ -50353,14 +50391,21 @@ var render = function() {
               },
               [
                 _vm._v(
-                  "\n                    " +
-                    _vm._s(filter.code) +
-                    "s\n                "
-                )
+                  "\n                    " + _vm._s(filter[_vm.filter_name])
+                ),
+                _vm.pluralize_filters ? _c("span", [_vm._v("s")]) : _vm._e()
               ]
             )
           ])
         })
+      )
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "text-right" }, [
+      _vm._v(
+        "\n        " +
+          _vm._s(_vm._f("pluralize")(_vm.filteredItems.length, "unit")) +
+          "\n    "
       )
     ]),
     _vm._v(" "),
@@ -50370,7 +50415,7 @@ var render = function() {
       _vm._l(_vm.filteredItems, function(item) {
         return _c("li", { key: item.id, staticClass: "list-group-item" }, [
           _c("a", { attrs: { href: "/units/" + item.id } }, [
-            _c("span", [_vm._v(_vm._s(item.short_name))])
+            _c("span", [_vm._v(_vm._s(item[_vm.item_name]))])
           ]),
           _vm._v(" "),
           _c("span", { staticClass: "badge badge-pill badge-secondary" }, [
