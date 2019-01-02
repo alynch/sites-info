@@ -8,9 +8,9 @@
             <span class="label"></span>
             <svg height="100%" width="100%">
                 <template v-for="(line, index) in lines">
-                    <g stroke="green" @click="selectLine(index)">
-                        <text :x="line.x+'%'" y="10">&nbsp;{{ line.label }}</text>
-                        <line :x1="line.x+'%'" y1="0" :x2="line.x+'%'" y2="100%" stroke-width="2" stroke-dasharray="1%"></line>
+                    <g @click="selectLine(index)">
+                        <text class="txt" text-anchor="middle" :x="line.x+'%'" y="100%">&nbsp;{{ line.label }}</text>
+                        <line :x1="line.x +'%'" y1="5%" :x2="line.x+'%'" y2="97.5%" stroke-width="2" stroke="green" stroke-dasharray="1%"></line>
                     </g>
                 </template>
             </svg>
@@ -30,6 +30,7 @@
             <div v-for="(line, index) in sortedLines" :key="line.id">
                 <input type="text" v-model="line.label" v-bind:class="{active: index==lineSelected}" @click="selectLine(index)"/>
                 <span class="date" v-text="getDate(line.x)"></span>
+                <span> {{ line.description }}</span>
                 <button class="destroy" title="Remove line" @click="deleteLine(line)">X</button>
             </div>
             </transition-group>
@@ -59,9 +60,10 @@
             return {
                 first_new_item: -1,
                 lines: [
-                    {'id':1, 'label': 'Start winter session', 'x': 8.33},
-                    {'id':2, 'label': 'middle', 'x': 45},
-                    {'id':3, 'label': 'end', 'x': 83.33}
+                    {'id':1, 'label': 'Winter S/Y', 'description': 'Winter S courses begin, Y courses resume', 'x': 2.0},
+                    {'id':2, 'label': 'Summer F/Y', 'description': 'Summer F & Y courses begin', 'x': 37.5},
+                    {'id':3, 'label': 'Summer S/Y', 'description': 'Summer S courses begin, Y courses resume', 'x': 52.5},
+                    {'id':4, 'label': 'Fall F/Y', 'description': 'Fall F & Y courses begin', 'x': 68.33}
                 ],
                 lineSelected: null,
                 timeline: this.periods,
@@ -85,7 +87,8 @@
 
         methods: {
             addLine() {
-                let line = {'id': this.first_new_item--, 'label': 'new', 'x': 0};
+                let index = this.first_new_item--;
+                let line = {'id': index, 'label': 'new', 'x': 0};
                 this.lines.push(line);
                 this.lineSelected = this.lines.length - 1;
             },
@@ -136,9 +139,15 @@
 </script>
 
 <style scoped>
+
+.txt {
+    fill: green;
+}
+
 .grid {
     position: relative;
     display: grid;
+    padding: 0 0 2em 0;
     grid-template-columns: 10em 1fr;
 }
 
