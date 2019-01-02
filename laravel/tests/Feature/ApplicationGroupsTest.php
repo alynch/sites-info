@@ -11,11 +11,65 @@ class ApplicationGroupsTest extends TestCase
     use RefreshDatabase;
 
     /** @test */
+    public function a_guest_user_cant_view_the_groups()
+    {
+        $this->get('/application-groups')->assertRedirect('login');
+    }
+
+    /** @test */
+    public function a_guest_user_cant_view_a_group()
+    {
+        $data = factory('App\ApplicationGroups')->create();
+
+        $this->get('/application-groups/'. $data->id . '/edit')->assertRedirect('login');
+    }
+
+    /** @test */
+    public function a_guest_user_cant_view_the_edit_page()
+    {
+        $data = factory('App\ApplicationGroups')->create();
+
+        $this->get('/application-groups/'. $data->id . '/edit')->assertRedirect('login');
+    }
+
+    /** @test */
+    public function a_guest_user_cant_view_the_create_page()
+    {
+        $this->get('/application-groups/create')->assertRedirect('login');
+    }
+
+    /** @test */
     public function a_guest_user_cant_add_a_group()
     {
         $data = factory('App\ApplicationGroups')->raw();
 
         $this->post('/application-groups', $data)->assertRedirect('login');
+    }
+
+    /** @test */
+    public function a_guest_user_cant_edit_a_group()
+    {
+        $data = factory('App\ApplicationGroups')->create();
+
+        $new_name = 'New name';
+        $old_name = $data->name;
+        $data->name = $new_name;
+
+        $this->put('/application-groups/' . $data->id, $data->toArray())->assertRedirect('login');
+        $this->assertDatabaseHas('application_groups', ['id' => $data->id, 'name' => $old_name]);
+    }
+
+
+    /** @test */
+    public function a_guest_user_cant_delete_a_group()
+    {
+
+        $data = factory('App\ApplicationGroups')->create();
+
+        $this->delete('/application-groups/' . $data->id, $data->toArray())
+            ->assertRedirect('login');
+
+        $this->assertDatabaseHas('application_groups', ['id' => $data->id]);
     }
 
     /** @test */
@@ -33,7 +87,7 @@ class ApplicationGroupsTest extends TestCase
 
 
     /** @test */
-    public function a_user_view_a_group()
+    public function a_logged_in_user_can_view_a_group()
     {
         $this->withoutExceptionHandling();
 

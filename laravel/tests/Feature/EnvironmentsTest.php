@@ -11,11 +11,64 @@ class EnvironmentsTest extends TestCase
     use RefreshDatabase;
 
     /** @test */
+    public function a_guest_user_cant_view_the_environments()
+    {
+        $this->get('/environments')->assertRedirect('login');
+    }
+
+    /** @test */
+    public function a_guest_user_cant_view_an_environment()
+    {
+        $data = factory('App\Environments')->create();
+
+        $this->get('/environments/'. $data->id)->assertRedirect('login');
+    }
+
+    /** @test */
+    public function a_guest_user_cant_view_the_edit_page()
+    {
+        $data = factory('App\Environments')->create();
+
+        $this->get('/environments/'. $data->id . '/edit')->assertRedirect('login');
+    }
+
+    /** @test */
+    public function a_guest_user_cant_view_the_create_page()
+    {
+        $this->get('/environments/create')->assertRedirect('login');
+    }
+
+    /** @test */
     public function a_guest_user_cant_add_an_environment()
     {
         $data = factory('App\Environments')->raw();
 
         $this->post('/environments', $data)->assertRedirect('login');
+    }
+
+    /** @test */
+    public function a_guest_user_cant_edit_an_environment()
+    {
+        $data = factory('App\Environments')->create();
+
+        $new_name = 'New name';
+        $old_name = $data->name;
+        $data->name = $new_name;
+
+        $this->put('/environments/' . $data->id, $data->toArray())->assertRedirect('login');
+        $this->assertDatabaseHas('environments', ['id' => $data->id, 'name' => $old_name]);
+    }
+
+    /** @test */
+    public function a_guest_user_cant_delete_an_environment()
+    {
+
+        $data = factory('App\Environments')->create();
+
+        $this->delete('/environments/' . $data->id, $data->toArray())
+            ->assertRedirect('login');
+
+        $this->assertDatabaseHas('environments', ['id' => $data->id]);
     }
 
     /** @test */
@@ -28,7 +81,10 @@ class EnvironmentsTest extends TestCase
 
         $data = factory('App\Environments')->create();
 
-        $this->get('/environments')->assertSee(e($data->name));
+        $this->get('/environments')
+            ->assertViewIs('environments.index')
+            ->assertViewHas('environments')
+            ->assertSee(e($data->name));
     }
 
 

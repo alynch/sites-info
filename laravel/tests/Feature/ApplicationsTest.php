@@ -11,12 +11,67 @@ class ApplicationsTest extends TestCase
     use RefreshDatabase;
 
     /** @test */
+    public function a_guest_user_cant_view_the_applications()
+    {
+        $this->get('/applications')->assertRedirect('login');
+    }
+
+    /** @test */
+    public function a_guest_user_cant_view_an_application()
+    {
+        $data = factory('App\Applications')->create();
+
+        $this->get('/applications/'. $data->id)->assertRedirect('login');
+        $this->get('/applications/'. $data->id . '/edit')->assertRedirect('login');
+    }
+
+    /** @test */
+    public function a_guest_user_cant_view_the_edit_page()
+    {
+        $data = factory('App\Applications')->create();
+
+        $this->get('/applications/'. $data->id . '/edit')->assertRedirect('login');
+    }
+
+    /** @test */
+    public function a_guest_user_cant_view_the_create_page()
+    {
+        $this->get('/applications/create')->assertRedirect('login');
+    }
+
+    /** @test */
     public function a_guest_user_cant_add_an_application()
     {
         $data = factory('App\Applications')->raw();
 
         $this->post('/applications', $data)->assertRedirect('login');
     }
+
+    /** @test */
+    public function a_guest_user_cant_edit_an_application()
+    {
+        $data = factory('App\Applications')->create();
+
+        $new_name = 'New name';
+        $old_name = $data->name;
+        $data->name = $new_name;
+
+        $this->put('/applications/' . $data->id, $data->toArray())->assertRedirect('login');
+        $this->assertDatabaseHas('applications', ['id' => $data->id, 'name' => $old_name]);
+    }
+
+    /** @test */
+    public function a_guest_user_cant_delete_an_application()
+    {
+
+        $data = factory('App\Applications')->create();
+
+        $this->delete('/applications/' . $data->id, $data->toArray())
+            ->assertRedirect('login');
+
+        $this->assertDatabaseHas('applications', ['id' => $data->id]);
+    }
+
 
     /** @test */
     public function a_logged_in_user_can_view_all_applications()
