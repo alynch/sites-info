@@ -29,3 +29,12 @@
     background: #3490dc;
     height: 100%;
 }
+
+.columnar {
+    columns: 3;
+}
+
+.columnar li {
+    break-inside: avoid;
+    page-break-inside: avoid;
+}

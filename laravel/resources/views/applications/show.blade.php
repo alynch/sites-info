@@ -50,7 +50,7 @@
         </ul>
 
         <strong>Units that use this application:</strong>
-        <ul style="columns: 3">
+        <ul class="columnar">
         @foreach ($application->units as $unit)
             <li>
                 {{ $unit->name }}
@@ -59,5 +59,4 @@
         </ul>
     </div>
 </div>
-
 @endsection
