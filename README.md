@@ -27,3 +27,7 @@ We use this application as a playground to investigate new technologies.
 - Vue.js
 
 - localStorage
+
+- Feature and Unit tests
+
+- Get info about applications from Gitlab
