@@ -18,6 +18,7 @@ class CreateApplicationsTable extends Migration
             $table->string('name');
             $table->text('description')->nullable();
             $table->unsignedInteger('group_id');
+            $table->unsignedInteger('gitlab_id')->nullable();
             $table->timestamps();
 
             $table->foreign('group_id')->references('id')->on('application_groups')

@@ -29,6 +29,12 @@
 
             </div>
         </div>
+
+        <div class="form-group">
+            <label for="gitlab_id">Gitlab ID:</label>
+            <input type="text" id="gitlab_id" name="gitlab_id" class="form-control"
+                value="{{ $application->gitlab_id }}"/>
+        </div>
     </div>
 </div>
 

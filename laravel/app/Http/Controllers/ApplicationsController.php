@@ -26,6 +26,7 @@ class ApplicationsController extends Controller
             'name' => 'required',
             'group_id' => 'required',
             'description' => 'nullable',
+            'gitlab_id' => 'nullable',
             'env.*' => 'nullable|url'
         ];
     }

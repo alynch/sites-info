@@ -340,6 +340,7 @@ class InitializeApp extends Command
             ],
             [
                 'name' => 'Ontario Dialects',
+                'gitlab_id' => 60,
                 'environments' => [
                     'prod' => 'https://ontariodialects.chass.utoronto.ca'
                 ],
@@ -363,6 +364,7 @@ class InitializeApp extends Command
             ],
             [
                 'name' => 'French Placement Test',
+                'gitlab_id' => 122,
                 'environments' => [
                     'prod' => 'https://uttf.chass.utoronto.ca'
                 ],
@@ -381,6 +383,7 @@ class InitializeApp extends Command
         $admin_applications = [
             [
                 'name' => 'Academic Search Requests',
+                'gitlab_id' => 62,
                 'environments' => [
                     'dev' => 'https://webdev.chass.utoronto.ca/academicsearches/',
                     'prod' => 'https://asr.chass.utoronto.ca/',
@@ -399,6 +402,7 @@ class InitializeApp extends Command
             ],
             [
                 'name' => 'Drama apply',
+                'gitlab_id' => 58,
                 'environments' => [
                     'dev' => 'http://dev-drama-apply.chass.utoronto.ca/',
                     'prod' => 'https://drama-apply.chass.utoronto.ca/',
@@ -426,6 +430,7 @@ class InitializeApp extends Command
             ],
             [
                 'name' => 'College Admissions',
+                'gitlab_id' => 123,
                 'environments' => [
                     'prod' => 'https://college-admissions.artsci.utoronto.ca/'
                 ],
@@ -437,6 +442,7 @@ class InitializeApp extends Command
             ],
             [
                 'name' => 'TAships',
+                'gitlab_id' => 116,
                 'environments' => [
                     'dev' => 'https://dev.taships.iit.artsci.utoronto.ca/',
                     'pat' => 'https://pat.taships.iit.artsci.utoronto.ca/',

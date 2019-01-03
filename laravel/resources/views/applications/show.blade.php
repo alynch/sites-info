@@ -57,6 +57,21 @@
             </li>
         @endforeach
         </ul>
+
+        <strong>Releases:</strong>
+
+        @if ($application->releases->count())
+        <table class="table">
+        @foreach ($application->releases as $release)
+            <tr>
+                <td>{{ $release->name }}</td>
+                <td>{{ $release->date }}</td>
+            <tr>
+        @endforeach
+        </table>
+        @else
+            <p> N/A </p>
+        @endif
     </div>
 </div>
 @endsection
