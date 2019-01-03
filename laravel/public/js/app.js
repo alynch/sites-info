@@ -50341,6 +50341,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             } else {
                 this.currentFilters.push(id);
             }
+
+            if (localStorage) {
+                localStorage.setItem('unit_filters', JSON.stringify(this.currentFilters));
+            }
         }
     },
 
@@ -50352,9 +50356,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
 
     mounted: function mounted() {
-        this.currentFilters = this.filters.map(function (item) {
-            return item.id;
-        });
+
+        if (localStorage) {
+            this.currentFilters = JSON.parse(localStorage.getItem('unit_filters'));
+        }
+
+        // If no filters in localStorage, default to all filters on
+        if (!this.currentFilters) {
+            this.currentFilters = this.filters.map(function (item) {
+                return item.id;
+            });
+        }
     }
 });
 

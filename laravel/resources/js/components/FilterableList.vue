@@ -95,6 +95,10 @@
                 } else {
                     this.currentFilters.push(id);
                 }
+
+                if (localStorage) {
+                    localStorage.setItem('unit_filters', JSON.stringify(this.currentFilters));
+                }
             }
         },
 
@@ -106,9 +110,17 @@
         },
 
         mounted: function() {
-            this.currentFilters = this.filters.map(item => {
-                return item.id;
-            });
+
+            if (localStorage) {
+                this.currentFilters = JSON.parse(localStorage.getItem('unit_filters'));
+            }
+
+            // If no filters in localStorage, default to all filters on
+            if (!this.currentFilters) {
+                this.currentFilters = this.filters.map(item => {
+                    return item.id;
+                });
+            }
         }
     }
 </script>
