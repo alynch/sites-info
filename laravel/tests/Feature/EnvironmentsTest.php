@@ -156,6 +156,24 @@ class EnvironmentsTest extends TestCase
 
 
     /** @test */
+    public function a_logged_in_user_cannot_delete_an_environment_used_in_applications()
+    {
+
+        $this->actingAs(factory('App\User')->create());
+
+        $application = factory('App\Applications')->create();
+
+        $environment = factory('App\Environments')->create();
+
+        $application->environments()->sync($environment->id);
+
+        $this->delete('/environments/' . $environment->id)
+            ->assertSessionHas('warning');
+
+        $this->assertDatabaseHas('environments', ['id' => $environment->id]);
+    }
+
+    /** @test */
     public function an_environment_requires_a_name()
     {
 

@@ -54,7 +54,13 @@
     <div id="app">
         @include('layouts.nav')
 
+
         <div class="container main">
+
+            @if(Session::has('warning'))
+                <p class="alert alert-warning">{{ Session::get('warning') }}</p>
+            @endif
+
             @yield('content')
         </div>
     </div>

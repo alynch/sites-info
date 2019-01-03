@@ -105,7 +105,11 @@ class EnvironmentsController extends Controller
      */
     public function destroy(Environments $environment)
     {
-        $environment->delete();
+        if (!$environment->applications->count()) {
+            $environment->delete();
+        } else {
+            session()->flash('warning', "Can't delete environment being used by applications");
+        }
 
         return redirect('/environments');
     }
