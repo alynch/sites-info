@@ -181,12 +181,29 @@ class InitializeApp extends Command
         $sci = UnitArea::where('name', 'Sciences')->first();
         $hum = UnitArea::where('name', 'Humanities')->first();
 
-        $social_science_depts = [
-            ['code' => 'ANT', 'name' => 'Anthropology' ],
-            ['code' => 'HIS', 'name' => 'History' ],
+        $humanities_depts = [
+            ['code' => 'PHL', 'name' => 'Philosophy' ],
             ['code' => 'LIN', 'name' => 'Linguistics' ],
             ['code' => 'FRE', 'name' => 'French' ],
+            ['code' => 'ART', 'name' => 'Art' ],
+            ['code' => 'CLA', 'name' => 'Classics' ],
+            ['code' => 'EAS', 'name' => 'East Asian Studies' ],
+            ['code' => 'ENG', 'name' => 'English' ],
+            ['code' => 'GER', 'name' => 'German' ],
+            ['code' => 'HIS', 'name' => 'History' ],
+            ['code' => 'ITA', 'name' => 'Italian' ],
+            ['code' => 'SPA', 'name' => 'Spanish and Portuguese' ],
+            ['code' => 'SLA', 'name' => 'Slavic Languages and Literatures' ],
+            ['code' => 'NMC', 'name' => 'Near and Middle Eastern Civilizations' ],
+            ['code' => 'RLG', 'name' => 'Religion' ],
+        ];
+
+        $social_science_depts = [
+            ['code' => 'ANT', 'name' => 'Anthropology' ],
             ['code' => 'POL', 'name' => 'Political Science' ],
+            ['code' => 'ECO', 'name' => 'Economics' ],
+            ['code' => 'GGR', 'name' => 'Geography' ],
+            ['code' => 'SOC', 'name' => 'Sociology' ],
         ];
 
         $science_depts = [
@@ -195,29 +212,12 @@ class InitializeApp extends Command
             ['code' => 'CSC', 'name' => 'Computer Science'],
             ['code' => 'EEB', 'name' => 'Ecology and Evolutionary Biology'],
             ['code' => 'PHY', 'name' => 'Physics'],
-            ['code' => 'AST', 'name' => 'Astronomy and Astrophysics']
+            ['code' => 'AST', 'name' => 'Astronomy and Astrophysics'],
+            ['code' => 'ESS', 'name' => 'Earth Sciences'],
+            ['code' => 'MAT', 'name' => 'Mathematics'],
+            ['code' => 'STA', 'name' => 'Statistical Sciences'],
+            ['code' => 'PSY', 'name' => 'Psychology']
         ];
-
-/*
-Department of the History of Art
-Department of Classics
-Department of East Asian Studies
-Department of Economics
-Department of English
-Department of Geography and Planning
-Department of Earth Sciences
-Department of Germanic Languages and Literatures
-Department of Italian Studies
-Department of Mathematics
-Department of Near and Middle Eastern Civilizations
-Department of Philosophy
-Department of Psychology
-Department for the Study of Religion
-Department of Slavic Languages and Literatures
-Department of Sociology
-Department of Spanish and Portuguese
-Department of Statistical Sciences
-*/
 
         $edu_as = [
             ['code' => 'IRE', 'name' => 'Centre for Industrial Relations and Human Resources'],
@@ -239,9 +239,8 @@ Department of Statistical Sciences
             ['code' => 'SDS', 'name' => 'Mark S. Bonham Centre for Sexual Diversity Studies'],
             ['code' => 'INS', 'name' => 'Centre for Indigenous Studies'],
             ['code' => 'ENV', 'name' => 'School of the Environment'],
+            ['code' => 'DAA', 'name' => 'Dunlap Institute for Astronomy and Astrophysics'],
         ];
-        //Dunlap Institute for Astronomy and Astrophysics
-
 
         $edu_cs = [
             ['code' => 'AI', 'name' => 'Asian Institute'],
@@ -260,9 +259,8 @@ Department of Statistical Sciences
             ['code' => 'IIS', 'name' => 'Institute of Islamic Studies'],
             ['code' => 'IMC', 'name' => 'Impact Centre'],
             ['code' => 'SOFC', 'name' => 'School of Cities'],
+            ['code' => 'CBS', 'name' => 'The Robert H. N. Ho Family Foundation Centre for Buddhist Studies'],
         ];
-        //The Robert H. N. Ho Family Foundation Centre for Buddhist Studies at the University of Toronto
-
 
 
         $colleges = [
@@ -277,6 +275,13 @@ Department of Statistical Sciences
 
 
         Unit::query()->delete();
+        foreach ($humanities_depts as $unit) {
+            $unit['short_name'] = $unit['name'];
+            $unit['area_id'] = $hum->id;
+            $unit['type_id'] = $dept->id;
+            Unit::create($unit);
+        }
+
         foreach ($social_science_depts as $unit) {
             $unit['short_name'] = $unit['name'];
             $unit['area_id'] = $soc->id;
