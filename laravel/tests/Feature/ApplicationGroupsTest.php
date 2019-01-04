@@ -151,6 +151,22 @@ class ApplicationGroupsTest extends TestCase
         $this->assertDatabaseMissing('application_groups', ['id' => $data->id]);
     }
 
+    /** @test */
+    public function a_logged_in_user_cannot_delete_a_group_with_applications()
+    {
+
+        $this->actingAs(factory('App\User')->create());
+
+        $application = factory('App\Applications')->create();
+
+        $group = $application->group;
+
+        $this->delete('/application-groups/' . $group->id)
+            ->assertSessionHas('warning');
+
+        $this->assertDatabaseHas('application_groups', ['id' => $group->id]);
+    }
+
 
     /** @test */
     public function a_group_requires_a_name()

@@ -107,8 +107,11 @@ class ApplicationGroupsController extends Controller
      */
     public function destroy(ApplicationGroups $application_group)
     {
-        $application_group->delete();
-
+        if (!$application_group->applications->count()) {
+            $application_group->delete();
+        } else {
+            session()->flash('warning', "Can't delete application group because it has applications");
+        }
         return redirect('/application-groups');
     }
 }
