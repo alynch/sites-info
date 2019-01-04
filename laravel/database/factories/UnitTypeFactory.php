@@ -9,4 +9,3 @@ $factory->define(App\UnitType::class, function (Faker $faker) {
         'sort_order' => $faker->unique()->randomDigit
     ];
 });
-
