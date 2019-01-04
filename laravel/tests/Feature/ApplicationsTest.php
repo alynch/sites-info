@@ -3,12 +3,15 @@
 namespace Tests\Feature;
 
 use Tests\TestCase;
+use Tests\ValidatesFields;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+
 
 class ApplicationsTest extends TestCase
 {
     use RefreshDatabase;
+    use ValidatesFields;
 
     /** @test */
     public function a_guest_user_cant_view_the_applications()
@@ -153,26 +156,18 @@ class ApplicationsTest extends TestCase
     }
 
 
+    /* Validations */
+
     /** @test */
     public function an_application_requires_a_name()
     {
-
-        $this->actingAs(factory('App\User')->create());
-
-        $data = factory('App\Applications')->raw(['name' => '']);
-
-        $this->post('/applications', $data)->assertSessionHasErrors('name');
+        $this->validate('App\Applications', '/applications', 'name');
     }
 
 
     /** @test */
     public function an_application_requires_a_group()
     {
-
-        $this->actingAs(factory('App\User')->create());
-
-        $data = factory('App\Applications')->raw(['group_id' => '']);
-
-        $this->post('/applications', $data)->assertSessionHasErrors('group_id');
+        $this->validate('App\Applications', '/applications', 'group_id');
     }
 }

@@ -3,12 +3,14 @@
 namespace Tests\Feature;
 
 use Tests\TestCase;
+use Tests\ValidatesFields;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class EnvironmentsTest extends TestCase
 {
     use RefreshDatabase;
+    use ValidatesFields;
 
     /** @test */
     public function a_guest_user_cant_view_the_environments()
@@ -173,38 +175,24 @@ class EnvironmentsTest extends TestCase
         $this->assertDatabaseHas('environments', ['id' => $environment->id]);
     }
 
+
+    /* Validations */
+
     /** @test */
     public function an_environment_requires_a_name()
     {
-
-        $this->actingAs(factory('App\User')->create());
-
-        $data = factory('App\Environments')->raw(['name' => '']);
-
-        $this->post('/environments', $data)->assertSessionHasErrors('name');
+        $this->validate('App\Environments', '/environments', 'name');
     }
-
 
     /** @test */
     public function an_environment_requires_a_code()
     {
-
-        $this->actingAs(factory('App\User')->create());
-
-        $data = factory('App\Environments')->raw(['code' => '']);
-
-        $this->post('/environments', $data)->assertSessionHasErrors('code');
+        $this->validate('App\Environments', '/environments', 'code');
     }
-
 
     /** @test */
     public function an_environment_requires_a_sort_order()
     {
-
-        $this->actingAs(factory('App\User')->create());
-
-        $data = factory('App\Environments')->raw(['sort_order' => '']);
-
-        $this->post('/environments', $data)->assertSessionHasErrors('sort_order');
+        $this->validate('App\Environments', '/environments', 'sort_order');
     }
 }

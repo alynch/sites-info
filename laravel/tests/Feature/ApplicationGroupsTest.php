@@ -3,12 +3,14 @@
 namespace Tests\Feature;
 
 use Tests\TestCase;
+use Tests\ValidatesFields;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class ApplicationGroupsTest extends TestCase
 {
     use RefreshDatabase;
+    use ValidatesFields;
 
     /** @test */
     public function a_guest_user_cant_view_the_groups()
@@ -167,15 +169,11 @@ class ApplicationGroupsTest extends TestCase
         $this->assertDatabaseHas('application_groups', ['id' => $group->id]);
     }
 
+    /* Validations */
 
     /** @test */
     public function a_group_requires_a_name()
     {
-
-        $this->actingAs(factory('App\User')->create());
-
-        $data = factory('App\ApplicationGroups')->raw(['name' => '']);
-
-        $this->post('/application-groups', $data)->assertSessionHasErrors('name');
+        $this->validate('App\ApplicationGroups', '/application-groups', 'name');
     }
 }
