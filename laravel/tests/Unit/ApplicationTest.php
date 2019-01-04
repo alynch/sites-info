@@ -21,4 +21,17 @@ class ApplicationTest extends TestCase
 
         $this->assertEquals(1, $application->environments->count());
     }
-}
+
+
+    /** @test */
+    public function an_application_can_have_a_production_environment()
+    {
+        $application = factory('App\Applications')->create();
+
+        $environment = factory('App\Environments')->create(['code' => 'prod']);
+
+        $application->environments()->sync($environment->id);
+
+        $this->assertEquals($environment->id, $application->production()->id);
+    }
+ }
