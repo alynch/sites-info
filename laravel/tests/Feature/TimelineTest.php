@@ -17,12 +17,38 @@ class TimelineTest extends TestCase
     }
 
     /** @test */
-    public function a_logged_in_user_can_view_the_timeline()
+    public function a_guest_user_cannot_delete_a_timeline()
     {
 
+        $timeline = factory('App\Timeline')->create();
+
+        $this->delete('/timeline/' . $timeline->id)
+            ->assertStatus(302);
+
+        $this->assertDatabaseHas('application_periods', ['id' => $timeline->id]);
+    }
+
+
+    /** @test */
+    public function a_logged_in_user_can_view_the_timeline()
+    {
         $this->actingAs(factory('App\User')->create());
 
         $this->get('/timeline')
             ->assertViewIs('timeline.index');
+    }
+
+    /** @test */
+    public function a_logged_in_user_can_delete_a_timeline()
+    {
+
+        $this->actingAs(factory('App\User')->create());
+
+        $timeline = factory('App\Timeline')->create();
+
+        $this->delete('/timeline/' . $timeline->id)
+            ->assertOk();
+
+        $this->assertDatabaseMissing('application_periods', ['id' => $timeline->id]);
     }
 }
