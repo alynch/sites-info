@@ -4,12 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Exception\ConnectException;
-use Exception; 
-
+use Exception;
 
 class Applications extends Model
 {
@@ -62,16 +60,17 @@ class Applications extends Model
     public function getReleasesAttribute()
     {
 
-        //$url = "https://gitlab.iit.artsci.utoronto.ca/api/v4/projects/$id/repository/files/laravel%2Freadme.md?ref=master";
+        //$url = "https://gitlab.iit.artsci.utoronto.ca/api/v4/projects/
+        //$id/repository/files/laravel%2Freadme.md?ref=master";
 
         $url = 'https://gitlab.iit.artsci.utoronto.ca/api/v4/projects/' . $this->gitlab_id . '/repository/tags';
 
-         $client = new Client(
+        $client = new Client(
             [
                 'verify' => false,
                 'headers'        => ['PRIVATE-TOKEN' => env('GITLAB_TOKEN')]
             ]
-          );
+        );
 
         try {
             $response = $client->request('GET', $url);
