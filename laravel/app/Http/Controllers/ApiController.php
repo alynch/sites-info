@@ -6,6 +6,8 @@ use App\Applications;
 use App\Environments;
 use App\ApplicationGroups;
 
+use GuzzleHttp\Client;
+
 use Cache;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\StreamedResponse;
@@ -32,7 +34,7 @@ class ApiController extends Controller
             if ($environment->pivot->url) {
                 $environment->status =
                     Cache::remember($environment->pivot->url, $minutes, function () use ($environment) {
-                        $s = new \App\SiteInfo($environment->pivot->url);
+                        $s = new \App\SiteInfo($environment->pivot->url, Client::class);
                         return $s->checkSite();
                     });
             }
