@@ -52,9 +52,10 @@ class ApplicationGroupsController extends Controller
     {
         $validatedData = $request->validate([
             'name' => 'required',
+            'description' => 'nullable',
         ]);
 
-        ApplicationGroups::create(request()->all());
+        ApplicationGroups::create($validatedData);
 
         return redirect('/application-groups');
     }
@@ -92,9 +93,10 @@ class ApplicationGroupsController extends Controller
     {
         $validatedData = $request->validate([
             'name' => 'required',
+            'description' => 'nullable',
         ]);
 
-        $application_group->update(request()->all());
+        $application_group->update($validatedData);
 
         return redirect('/application-groups');
     }
