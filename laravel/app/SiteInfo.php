@@ -37,6 +37,14 @@ class SiteInfo
 
     public function checkSite()
     {
+        $info = $this->verifySite();
+        $info['headers'][] = ['name'=> 'SSL cert. expires on', 'value' => $this->verifyCert()];
+
+        return $info;
+    }
+
+    public function verifySite()
+    {
         $info = [];
 
         try {
@@ -64,18 +72,16 @@ class SiteInfo
             $info = $this->noResponse();
         }
 
-        $info['headers']['SSL cert. expires on '] = $this->verifyCert($this->site);
-
         return $info;
     }
 
 
-    private function verifyCert($url)
+    public function verifyCert()
     {
         try {
-            $orignal = parse_url($url, PHP_URL_HOST);
+            $original = parse_url($this->site, PHP_URL_HOST);
             $get = stream_context_create(array("ssl" => array("capture_peer_cert" => true)));
-            $read = stream_socket_client("ssl://".$orignal.":443", $errno, $errstr, 30, STREAM_CLIENT_CONNECT, $get);
+            $read = stream_socket_client("ssl://".$original.":443", $errno, $errstr, 30, STREAM_CLIENT_CONNECT, $get);
             $cert = stream_context_get_params($read);
             $certinfo = openssl_x509_parse($cert['options']['ssl']['peer_certificate']);
         } catch (Exception $e) {
@@ -97,7 +103,7 @@ class SiteInfo
         $headers = [];
         foreach ($this->headers as $header) {
             if ($value = $response->getHeader($header)) {
-                $headers[$header] = $value;
+                $headers[] = ['name' => $header, 'value' => implode($value)];
             }
         }
         return $headers;
