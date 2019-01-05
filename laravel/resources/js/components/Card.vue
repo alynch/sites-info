@@ -17,18 +17,18 @@
         </div>
 
         <div v-if="url" class="float-right">
-            <button class="btn btn-link float-right" type="button" data-toggle="collapse"
-                :data-target="'#env' + item.id" aria-expanded="false" 
-                :aria-controls="'#env' + item.id">
-                Details
+            <button class="btn btn-link float-right" type="button" @click="isOpen = !isOpen">
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="1em" viewBox="0 1 12 16" stroke="#ccc">
+                    <rect v-if="isOpen" height="2" width="12" y="6" x="1" class="minus"/>
+                    <path v-else d="M12 9H7v5H5V9H0V7h5V2h2v5h5z" class="plus"/>
+                </svg>
           </button> 
         </div>
         <div v-else>
             <div style="padding: 0.375rem 0.75rem">No data</div>
         </div>
 
-        <div class="collapse" :id="'env' + item.id">
-            <ul class="list-group list-group-flush">
+            <ul class="list-group list-group-flush" v-if="isOpen">
                 <li class="list-group-item" v-for="env in cardData">
                     <strong>{{ env.name }}:</strong>
                     <span class="float-right">
@@ -42,12 +42,11 @@
 
                     <div>{{ env.status.ip }}</div>
 
-                    <div v-for="(item, index) in env.status.headers">
-                        {{ index }}: {{ item }}
+                    <div v-for="header in env.status.headers">
+                        {{ header.name }}: {{ header.value }}
                     </div>
                 </li>
             </ul
-        </div>
     </div>
 </div>
 </template>
@@ -61,7 +60,8 @@
                 status: 'Working',
                 ip: null,
                 url: null,
-                headers: null
+                headers: null,
+                isOpen: false
             }
         },
 
@@ -127,5 +127,16 @@
     transform: rotate(359deg);
   }
 }
+
+.plus {
+    fill: #ccc;
+    stroke-width: 1;
+}
+
+.minus {
+    fill: #ccc;
+    stroke-width: 1;
+}
+
 </style>
 status
