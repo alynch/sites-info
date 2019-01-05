@@ -28,6 +28,7 @@
             <div style="padding: 0.375rem 0.75rem">No data</div>
         </div>
 
+            <transition name="slide">
             <ul class="list-group list-group-flush" v-if="isOpen">
                 <li class="list-group-item" v-for="env in cardData">
                     <strong>{{ env.name }}:</strong>
@@ -46,7 +47,8 @@
                         {{ header.name }}: {{ header.value }}
                     </div>
                 </li>
-            </ul
+            </ul>
+            </transition>
     </div>
 </div>
 </template>
@@ -126,6 +128,34 @@
   100% {
     transform: rotate(359deg);
   }
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+}
+
+.slide-enter-active {
+   transition-duration: 0.3s;
+   transition-timing-function: ease-in;
+}
+
+.slide-leave-active {
+   transition-duration: 0.3s;
+   transition-timing-function: ease-out;
+}
+
+.slide-enter-to, .slide-leave {
+   max-height: 100px;
+   overflow: hidden;
+}
+
+.slide-enter, .slide-leave-to {
+   overflow: hidden;
+   max-height: 0;
 }
 
 .plus {

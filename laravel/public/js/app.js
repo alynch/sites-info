@@ -47984,7 +47984,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.url[data-v-b9bc2c0a] {\n    white-space: nowrap;\n    overflow: hidden;\n}\n.spin[data-v-b9bc2c0a] {\n  -webkit-animation: spin-data-v-b9bc2c0a 2s infinite linear;\n          animation: spin-data-v-b9bc2c0a 2s infinite linear;\n}\n@-webkit-keyframes spin-data-v-b9bc2c0a {\n0% {\n    -webkit-transform: rotate(0deg);\n            transform: rotate(0deg);\n}\n100% {\n    -webkit-transform: rotate(359deg);\n            transform: rotate(359deg);\n}\n}\n@keyframes spin-data-v-b9bc2c0a {\n0% {\n    -webkit-transform: rotate(0deg);\n            transform: rotate(0deg);\n}\n100% {\n    -webkit-transform: rotate(359deg);\n            transform: rotate(359deg);\n}\n}\n.plus[data-v-b9bc2c0a] {\n    fill: #ccc;\n    stroke-width: 1;\n}\n.minus[data-v-b9bc2c0a] {\n    fill: #ccc;\n    stroke-width: 1;\n}\n\n", ""]);
+exports.push([module.i, "\n.url[data-v-b9bc2c0a] {\n    white-space: nowrap;\n    overflow: hidden;\n}\n.spin[data-v-b9bc2c0a] {\n  -webkit-animation: spin-data-v-b9bc2c0a 2s infinite linear;\n          animation: spin-data-v-b9bc2c0a 2s infinite linear;\n}\n@-webkit-keyframes spin-data-v-b9bc2c0a {\n0% {\n    -webkit-transform: rotate(0deg);\n            transform: rotate(0deg);\n}\n100% {\n    -webkit-transform: rotate(359deg);\n            transform: rotate(359deg);\n}\n}\n@keyframes spin-data-v-b9bc2c0a {\n0% {\n    -webkit-transform: rotate(0deg);\n            transform: rotate(0deg);\n}\n100% {\n    -webkit-transform: rotate(359deg);\n            transform: rotate(359deg);\n}\n}\n.fade-enter-active[data-v-b9bc2c0a], .fade-leave-active[data-v-b9bc2c0a] {\n  -webkit-transition: opacity .5s;\n  transition: opacity .5s;\n}\n.fade-enter[data-v-b9bc2c0a], .fade-leave-to[data-v-b9bc2c0a] {\n  opacity: 0;\n}\n.slide-enter-active[data-v-b9bc2c0a] {\n   -webkit-transition-duration: 0.3s;\n           transition-duration: 0.3s;\n   -webkit-transition-timing-function: ease-in;\n           transition-timing-function: ease-in;\n}\n.slide-leave-active[data-v-b9bc2c0a] {\n   -webkit-transition-duration: 0.3s;\n           transition-duration: 0.3s;\n   -webkit-transition-timing-function: ease-out;\n           transition-timing-function: ease-out;\n}\n.slide-enter-to[data-v-b9bc2c0a], .slide-leave[data-v-b9bc2c0a] {\n   max-height: 100px;\n   overflow: hidden;\n}\n.slide-enter[data-v-b9bc2c0a], .slide-leave-to[data-v-b9bc2c0a] {\n   overflow: hidden;\n   max-height: 0;\n}\n.plus[data-v-b9bc2c0a] {\n    fill: #ccc;\n    stroke-width: 1;\n}\n.minus[data-v-b9bc2c0a] {\n    fill: #ccc;\n    stroke-width: 1;\n}\n\n", ""]);
 
 // exports
 
@@ -47995,6 +47995,8 @@ exports.push([module.i, "\n.url[data-v-b9bc2c0a] {\n    white-space: nowrap;\n  
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
 //
 //
 //
@@ -48111,121 +48113,130 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "card" }, [
-    _c("div", { staticClass: "card-header" }, [
-      _c("span", { staticClass: "float-right" }, [
-        _vm.status === "Working"
-          ? _c("img", {
-              staticClass: "spin",
-              attrs: { src: "images/working.png", alt: "Working" }
-            })
-          : _vm.status === "OK"
+  return _c(
+    "div",
+    { staticClass: "card" },
+    [
+      _c("div", { staticClass: "card-header" }, [
+        _c("span", { staticClass: "float-right" }, [
+          _vm.status === "Working"
             ? _c("img", {
-                attrs: { src: "images/ok.svg", width: "25", alt: "OK" }
+                staticClass: "spin",
+                attrs: { src: "images/working.png", alt: "Working" }
               })
-            : _c("img", {
-                attrs: { src: "images/down.svg", width: "25", alt: "Down" }
-              })
-      ]),
-      _vm._v(" "),
-      _c("h5", { staticClass: "card-title" }, [
-        _vm._v("\n               " + _vm._s(_vm.item.name) + " \n            ")
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "url" }, [
-        _c("a", { attrs: { href: _vm.url } }, [_vm._v(_vm._s(_vm.url))])
-      ])
-    ]),
-    _vm._v(" "),
-    _vm.url
-      ? _c("div", { staticClass: "float-right" }, [
-          _c(
-            "button",
-            {
-              staticClass: "btn btn-link float-right",
-              attrs: { type: "button" },
-              on: {
-                click: function($event) {
-                  _vm.isOpen = !_vm.isOpen
-                }
-              }
-            },
-            [
-              _c(
-                "svg",
-                {
-                  attrs: {
-                    xmlns: "http://www.w3.org/2000/svg",
-                    width: "12",
-                    height: "1em",
-                    viewBox: "0 1 12 16",
-                    stroke: "#ccc"
-                  }
-                },
-                [
-                  _vm.isOpen
-                    ? _c("rect", {
-                        staticClass: "minus",
-                        attrs: { height: "2", width: "12", y: "6", x: "1" }
-                      })
-                    : _c("path", {
-                        staticClass: "plus",
-                        attrs: { d: "M12 9H7v5H5V9H0V7h5V2h2v5h5z" }
-                      })
-                ]
-              )
-            ]
-          )
-        ])
-      : _c("div", [
-          _c("div", { staticStyle: { padding: "0.375rem 0.75rem" } }, [
-            _vm._v("No data")
-          ])
-        ]),
-    _vm._v(" "),
-    _vm.isOpen
-      ? _c(
-          "ul",
-          { staticClass: "list-group list-group-flush" },
-          _vm._l(_vm.cardData, function(env) {
-            return _c(
-              "li",
-              { staticClass: "list-group-item" },
-              [
-                _c("strong", [_vm._v(_vm._s(env.name) + ":")]),
-                _vm._v(" "),
-                _c("span", { staticClass: "float-right" }, [
-                  env.status.running
-                    ? _c("span", [_vm._v("OK")])
-                    : _c("span", [_vm._v("Down")])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "url" }, [
-                  _c("a", { attrs: { href: env.pivot.url } }, [
-                    _vm._v(_vm._s(env.pivot.url))
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", [_vm._v(_vm._s(env.status.ip))]),
-                _vm._v(" "),
-                _vm._l(env.status.headers, function(header) {
-                  return _c("div", [
-                    _vm._v(
-                      "\n                        " +
-                        _vm._s(header.name) +
-                        ": " +
-                        _vm._s(header.value) +
-                        "\n                    "
-                    )
-                  ])
+            : _vm.status === "OK"
+              ? _c("img", {
+                  attrs: { src: "images/ok.svg", width: "25", alt: "OK" }
                 })
-              ],
-              2
+              : _c("img", {
+                  attrs: { src: "images/down.svg", width: "25", alt: "Down" }
+                })
+        ]),
+        _vm._v(" "),
+        _c("h5", { staticClass: "card-title" }, [
+          _vm._v(
+            "\n               " + _vm._s(_vm.item.name) + " \n            "
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "url" }, [
+          _c("a", { attrs: { href: _vm.url } }, [_vm._v(_vm._s(_vm.url))])
+        ])
+      ]),
+      _vm._v(" "),
+      _vm.url
+        ? _c("div", { staticClass: "float-right" }, [
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-link float-right",
+                attrs: { type: "button" },
+                on: {
+                  click: function($event) {
+                    _vm.isOpen = !_vm.isOpen
+                  }
+                }
+              },
+              [
+                _c(
+                  "svg",
+                  {
+                    attrs: {
+                      xmlns: "http://www.w3.org/2000/svg",
+                      width: "12",
+                      height: "1em",
+                      viewBox: "0 1 12 16",
+                      stroke: "#ccc"
+                    }
+                  },
+                  [
+                    _vm.isOpen
+                      ? _c("rect", {
+                          staticClass: "minus",
+                          attrs: { height: "2", width: "12", y: "6", x: "1" }
+                        })
+                      : _c("path", {
+                          staticClass: "plus",
+                          attrs: { d: "M12 9H7v5H5V9H0V7h5V2h2v5h5z" }
+                        })
+                  ]
+                )
+              ]
             )
-          })
-        )
-      : _vm._e()
-  ])
+          ])
+        : _c("div", [
+            _c("div", { staticStyle: { padding: "0.375rem 0.75rem" } }, [
+              _vm._v("No data")
+            ])
+          ]),
+      _vm._v(" "),
+      _c("transition", { attrs: { name: "slide" } }, [
+        _vm.isOpen
+          ? _c(
+              "ul",
+              { staticClass: "list-group list-group-flush" },
+              _vm._l(_vm.cardData, function(env) {
+                return _c(
+                  "li",
+                  { staticClass: "list-group-item" },
+                  [
+                    _c("strong", [_vm._v(_vm._s(env.name) + ":")]),
+                    _vm._v(" "),
+                    _c("span", { staticClass: "float-right" }, [
+                      env.status.running
+                        ? _c("span", [_vm._v("OK")])
+                        : _c("span", [_vm._v("Down")])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "url" }, [
+                      _c("a", { attrs: { href: env.pivot.url } }, [
+                        _vm._v(_vm._s(env.pivot.url))
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", [_vm._v(_vm._s(env.status.ip))]),
+                    _vm._v(" "),
+                    _vm._l(env.status.headers, function(header) {
+                      return _c("div", [
+                        _vm._v(
+                          "\n                        " +
+                            _vm._s(header.name) +
+                            ": " +
+                            _vm._s(header.value) +
+                            "\n                    "
+                        )
+                      ])
+                    })
+                  ],
+                  2
+                )
+              })
+            )
+          : _vm._e()
+      ])
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
