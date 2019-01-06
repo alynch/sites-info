@@ -17,12 +17,13 @@
         </div>
 
         <div v-if="url" class="float-right">
-            <button class="btn btn-link float-right" type="button" @click="isOpen = !isOpen">
-                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="1em" viewBox="0 1 12 16" stroke="#ccc">
-                    <rect v-if="isOpen" height="2" width="12" y="6" x="1" class="minus"/>
-                    <path v-else d="M12 9H7v5H5V9H0V7h5V2h2v5h5z" class="plus"/>
-                </svg>
-          </button> 
+           <button class="btn btn-link float-right" type="button"
+                :title="isOpen ? 'Hide details' : 'Show details'" @click="isOpen = !isOpen">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" class="icons">
+                    <path v-if="isOpen" d="M0 6H12"/>
+                    <path v-else d="M0 6H12 M6 0V12"/>
+                 </svg>
+           </button> 
         </div>
         <div v-else>
             <div style="padding: 0.375rem 0.75rem">No data</div>
@@ -158,15 +159,8 @@
    max-height: 0;
 }
 
-.plus {
-    fill: #ccc;
-    stroke-width: 1;
+.icons {
+    stroke: #ccc;
+    stroke-width: 3;
 }
-
-.minus {
-    fill: #ccc;
-    stroke-width: 1;
-}
-
 </style>
-status
