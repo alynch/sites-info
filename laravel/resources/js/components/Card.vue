@@ -3,8 +3,27 @@
         <div class="card-header">
             <span class="float-right">
                 <img v-if="status === 'Working'" class="spin" src="images/working.png" alt="Working"/>
-                <img v-else-if="status === 'OK'" src="images/ok.svg" width="25" alt="OK"/>                
-                <img v-else src="images/down.svg" width="25" alt="Down"/>
+                <svg v-else-if="status === 'OK'" viewBox="0 0 426.667 426.667" width="32" height="32">
+                    <path style="fill:#6AC259;" d="M213.333,0C95.518,0,0,95.514,0,213.333s95.518,213.333,213.333,213.333
+	                c117.828,0,213.333-95.514,213.333-213.333S331.157,0,213.333,0z M174.199,322.918l-93.935-93.931l31.309-31.309l62.626,62.622
+	                l140.894-140.898l31.309,31.309L174.199,322.918z"/>
+                 </svg>
+                <svg v-else viewBox="0 0 426.667 426.667"  width="32" height="32">
+                    <path style="fill:#F05228;" d="M213.333,0C95.514,0,0,95.514,0,213.333s95.514,213.333,213.333,213.333
+	                s213.333-95.514,213.333-213.333S331.153,0,213.333,0z M330.995,276.689l-54.302,54.306l-63.36-63.356l-63.36,63.36l-54.302-54.31
+	                l63.356-63.356l-63.356-63.36l54.302-54.302l63.36,63.356l63.36-63.356l54.302,54.302l-63.356,63.36L330.995,276.689z"/>
+                 </svg>
+            
+                <svg viewBox="0 0 32 32" width="32" height="32">
+                    <g v-if="status === 'OK'">
+                    <circle style="fill:#6AC259;" cx="16" cy="16" r="16"/>
+                        <path style="fill:none; stroke:#fff; stroke-width:3.5" d="M7 16 L13 22 L 25 10"/>
+                    </g>
+                    <g v-else>
+                    <circle style="fill:#F05228;" cx="16" cy="16" r="16"/>
+                    <path style="stroke:#fff; stroke-width:5" d="M9 9 L 23 23 M 9 23 L 23 9"/>
+                    </g>
+                 </svg>
             </span>
 
             <h5 class="card-title">
@@ -20,8 +39,8 @@
            <button class="btn btn-link float-right" type="button"
                 :title="isOpen ? 'Hide details' : 'Show details'" @click="isOpen = !isOpen">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" class="icons">
-                    <path v-if="isOpen" d="M0 6H12"/>
-                    <path v-else d="M0 6H12 M6 0V12"/>
+                    <path v-if="isOpen" d="M2 5 L 8 11 L 14 5"/>
+                    <path v-else d="M 5 2 L 11 8 L 5 14"/>
                  </svg>
            </button> 
         </div>
@@ -114,6 +133,15 @@
 
 <style scoped>
 
+.card {
+    transition: box-shadow 150ms;
+}
+
+.card:hover {
+    box-shadow: 0px 0px 0px 3px #ccc;
+}
+
+
 .url {
     white-space: nowrap;
     overflow: hidden;
@@ -140,12 +168,12 @@
 }
 
 .slide-enter-active {
-   transition-duration: 0.3s;
+   transition-duration: 0.2s;
    transition-timing-function: ease-in;
 }
 
 .slide-leave-active {
-   transition-duration: 0.3s;
+   transition-duration: 0.2s;
    transition-timing-function: ease-out;
 }
 
@@ -160,6 +188,7 @@
 }
 
 .icons {
+    fill: none;
     stroke: #ccc;
     stroke-width: 3;
 }
