@@ -2,26 +2,24 @@
     <div class="card">
         <div class="card-header">
             <span class="float-right">
-                <img v-if="status === 'Working'" class="spin" src="images/working.png" alt="Working"/>
-                <svg v-else-if="status === 'OK'" viewBox="0 0 426.667 426.667" width="32" height="32">
-                    <path style="fill:#6AC259;" d="M213.333,0C95.518,0,0,95.514,0,213.333s95.518,213.333,213.333,213.333
-	                c117.828,0,213.333-95.514,213.333-213.333S331.157,0,213.333,0z M174.199,322.918l-93.935-93.931l31.309-31.309l62.626,62.622
-	                l140.894-140.898l31.309,31.309L174.199,322.918z"/>
-                 </svg>
-                <svg v-else viewBox="0 0 426.667 426.667"  width="32" height="32">
-                    <path style="fill:#F05228;" d="M213.333,0C95.514,0,0,95.514,0,213.333s95.514,213.333,213.333,213.333
-	                s213.333-95.514,213.333-213.333S331.153,0,213.333,0z M330.995,276.689l-54.302,54.306l-63.36-63.356l-63.36,63.36l-54.302-54.31
-	                l63.356-63.356l-63.356-63.36l54.302-54.302l63.36,63.356l63.36-63.356l54.302,54.302l-63.356,63.36L330.995,276.689z"/>
-                 </svg>
-            
-                <svg viewBox="0 0 32 32" width="32" height="32">
-                    <g v-if="status === 'OK'">
-                    <circle style="fill:#6AC259;" cx="16" cy="16" r="16"/>
+                <svg viewBox="0 0 32 32" width="28" height="28">
+                    <g v-if="status === 'Working'" style="fill:#333;" class="spin">
+                        <circle cx="4" cy="16" r="1"/>
+                        <circle cx="8" cy="8" r="1.25"/>
+                        <circle cx="16" cy="4" r="1.5"/>
+                        <circle cx="24" cy="8" r="1.75"/>
+                        <circle cx="28" cy="16" r="2"/>
+                        <circle cx="24" cy="24" r="2.5"/>
+                        <circle cx="16" cy="28" r="3"/>
+                        <circle cx="8" cy="24" r="3.5"/>
+                    </g>
+                    <g v-else-if="status === 'OK'">
+                        <circle style="fill:#6AC259;" cx="16" cy="16" r="16"/>
                         <path style="fill:none; stroke:#fff; stroke-width:3.5" d="M7 16 L13 22 L 25 10"/>
                     </g>
                     <g v-else>
-                    <circle style="fill:#F05228;" cx="16" cy="16" r="16"/>
-                    <path style="stroke:#fff; stroke-width:5" d="M9 9 L 23 23 M 9 23 L 23 9"/>
+                        <circle style="fill:#F05228;" cx="16" cy="16" r="16"/>
+                        <path style="stroke:#fff; stroke-width:5" d="M9 9 L 23 23 M 9 23 L 23 9"/>
                     </g>
                  </svg>
             </span>
@@ -149,7 +147,9 @@
 
 .spin {
   animation: spin 2s infinite linear;
+    transform-origin: center;
 }
+
 @keyframes spin {
   0% {
     transform: rotate(0deg);
