@@ -27,7 +27,6 @@
 
        data: function() {
             return {
-                validItems: this.items,
                 selected: 0
             }
         },
@@ -37,6 +36,12 @@
         },
 
         computed: {
+            validItems: function() {
+                return this.items.sort(function(a, b) {
+                    return a.name.localeCompare(b.name)
+                })
+            },
+
             selectedItems: function() {
                 return this.validItems.filter(item => {
                     return item.selected;

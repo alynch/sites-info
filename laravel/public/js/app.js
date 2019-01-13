@@ -48460,7 +48460,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.url[data-v-b9bc2c0a] {\n    white-space: nowrap;\n    overflow: hidden;\n}\n.spin[data-v-b9bc2c0a] {\n  -webkit-animation: spin-data-v-b9bc2c0a 2s infinite linear;\n          animation: spin-data-v-b9bc2c0a 2s infinite linear;\n}\n@-webkit-keyframes spin-data-v-b9bc2c0a {\n0% {\n    -webkit-transform: rotate(0deg);\n            transform: rotate(0deg);\n}\n100% {\n    -webkit-transform: rotate(359deg);\n            transform: rotate(359deg);\n}\n}\n@keyframes spin-data-v-b9bc2c0a {\n0% {\n    -webkit-transform: rotate(0deg);\n            transform: rotate(0deg);\n}\n100% {\n    -webkit-transform: rotate(359deg);\n            transform: rotate(359deg);\n}\n}\n.fade-enter-active[data-v-b9bc2c0a], .fade-leave-active[data-v-b9bc2c0a] {\n  -webkit-transition: opacity .5s;\n  transition: opacity .5s;\n}\n.fade-enter[data-v-b9bc2c0a], .fade-leave-to[data-v-b9bc2c0a] {\n  opacity: 0;\n}\n.slide-enter-active[data-v-b9bc2c0a] {\n   -webkit-transition-duration: 0.3s;\n           transition-duration: 0.3s;\n   -webkit-transition-timing-function: ease-in;\n           transition-timing-function: ease-in;\n}\n.slide-leave-active[data-v-b9bc2c0a] {\n   -webkit-transition-duration: 0.3s;\n           transition-duration: 0.3s;\n   -webkit-transition-timing-function: ease-out;\n           transition-timing-function: ease-out;\n}\n.slide-enter-to[data-v-b9bc2c0a], .slide-leave[data-v-b9bc2c0a] {\n   max-height: 100px;\n   overflow: hidden;\n}\n.slide-enter[data-v-b9bc2c0a], .slide-leave-to[data-v-b9bc2c0a] {\n   overflow: hidden;\n   max-height: 0;\n}\n.icons[data-v-b9bc2c0a] {\n    stroke: #ccc;\n    stroke-width: 3;\n}\n", ""]);
+exports.push([module.i, "\n.card[data-v-b9bc2c0a] {\n    -webkit-transition: -webkit-box-shadow 150ms;\n    transition: -webkit-box-shadow 150ms;\n    transition: box-shadow 150ms;\n    transition: box-shadow 150ms, -webkit-box-shadow 150ms;\n}\n.card[data-v-b9bc2c0a]:hover {\n    -webkit-box-shadow: 0px 0px 0px 3px #ccc;\n            box-shadow: 0px 0px 0px 3px #ccc;\n}\n.card-title[data-v-b9bc2c0a] {\n    font-size: 1rem;\n    font-weight: 400;\n}\n.url[data-v-b9bc2c0a] {\n    white-space: nowrap;\n    overflow: hidden;\n}\n.spin[data-v-b9bc2c0a] {\n  -webkit-animation: spin-data-v-b9bc2c0a 2s infinite linear;\n          animation: spin-data-v-b9bc2c0a 2s infinite linear;\n    -webkit-transform-origin: center;\n            transform-origin: center;\n}\n@-webkit-keyframes spin-data-v-b9bc2c0a {\n0% {\n    -webkit-transform: rotate(0deg);\n            transform: rotate(0deg);\n}\n100% {\n    -webkit-transform: rotate(359deg);\n            transform: rotate(359deg);\n}\n}\n@keyframes spin-data-v-b9bc2c0a {\n0% {\n    -webkit-transform: rotate(0deg);\n            transform: rotate(0deg);\n}\n100% {\n    -webkit-transform: rotate(359deg);\n            transform: rotate(359deg);\n}\n}\n.fade-enter-active[data-v-b9bc2c0a], .fade-leave-active[data-v-b9bc2c0a] {\n  -webkit-transition: opacity .5s;\n  transition: opacity .5s;\n}\n.fade-enter[data-v-b9bc2c0a], .fade-leave-to[data-v-b9bc2c0a] {\n  opacity: 0;\n}\n.slide-enter-active[data-v-b9bc2c0a] {\n   -webkit-transition-duration: 0.2s;\n           transition-duration: 0.2s;\n   -webkit-transition-timing-function: ease-in;\n           transition-timing-function: ease-in;\n}\n.slide-leave-active[data-v-b9bc2c0a] {\n   -webkit-transition-duration: 0.2s;\n           transition-duration: 0.2s;\n   -webkit-transition-timing-function: ease-out;\n           transition-timing-function: ease-out;\n}\n.slide-enter-to[data-v-b9bc2c0a], .slide-leave[data-v-b9bc2c0a] {\n   max-height: 100px;\n   overflow: hidden;\n}\n.slide-enter[data-v-b9bc2c0a], .slide-leave-to[data-v-b9bc2c0a] {\n   overflow: hidden;\n   max-height: 0;\n}\n.status[data-v-b9bc2c0a] {\n    margin-left: 2px;\n}\n.icons[data-v-b9bc2c0a] {\n    fill: none;\n    stroke: #ccc;\n    stroke-width: 3;\n}\n", ""]);
 
 // exports
 
@@ -48471,6 +48471,23 @@ exports.push([module.i, "\n.url[data-v-b9bc2c0a] {\n    white-space: nowrap;\n  
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -48596,18 +48613,64 @@ var render = function() {
     [
       _c("div", { staticClass: "card-header" }, [
         _c("span", { staticClass: "float-right" }, [
-          _vm.status === "Working"
-            ? _c("img", {
-                staticClass: "spin",
-                attrs: { src: "images/working.png", alt: "Working" }
-              })
-            : _vm.status === "OK"
-            ? _c("img", {
-                attrs: { src: "images/ok.svg", width: "25", alt: "OK" }
-              })
-            : _c("img", {
-                attrs: { src: "images/down.svg", width: "25", alt: "Down" }
-              })
+          _c(
+            "svg",
+            {
+              staticClass: "status",
+              attrs: { viewBox: "0 0 32 32", width: "28", height: "28" }
+            },
+            [
+              _vm.status === "Working"
+                ? _c(
+                    "g",
+                    { staticClass: "spin", staticStyle: { fill: "#333" } },
+                    [
+                      _c("circle", { attrs: { cx: "4", cy: "16", r: "1" } }),
+                      _vm._v(" "),
+                      _c("circle", { attrs: { cx: "8", cy: "8", r: "1.25" } }),
+                      _vm._v(" "),
+                      _c("circle", { attrs: { cx: "16", cy: "4", r: "1.5" } }),
+                      _vm._v(" "),
+                      _c("circle", { attrs: { cx: "24", cy: "8", r: "1.75" } }),
+                      _vm._v(" "),
+                      _c("circle", { attrs: { cx: "28", cy: "16", r: "2" } }),
+                      _vm._v(" "),
+                      _c("circle", { attrs: { cx: "24", cy: "24", r: "2.5" } }),
+                      _vm._v(" "),
+                      _c("circle", { attrs: { cx: "16", cy: "28", r: "3" } }),
+                      _vm._v(" "),
+                      _c("circle", { attrs: { cx: "8", cy: "24", r: "3.5" } })
+                    ]
+                  )
+                : _vm.status === "OK"
+                ? _c("g", [
+                    _c("circle", {
+                      staticStyle: { fill: "#6AC259" },
+                      attrs: { cx: "16", cy: "16", r: "16" }
+                    }),
+                    _vm._v(" "),
+                    _c("path", {
+                      staticStyle: {
+                        fill: "none",
+                        stroke: "#fff",
+                        "stroke-width": "3.5"
+                      },
+                      attrs: { d: "M7 16 L13 22 L 25 10" }
+                    })
+                  ])
+                : _c("g", [
+                    _c("circle", {
+                      staticStyle: { fill: "#F05228" },
+                      attrs: { cx: "16", cy: "16", r: "16" }
+                    }),
+                    _vm._v(" "),
+                    _c("path", {
+                      staticStyle: { stroke: "#fff", "stroke-width": "5" },
+                      attrs: { d: "M9 9 L 23 23 M 9 23 L 23 9" }
+                    })
+                  ])
+            ]
+          )
         ]),
         _vm._v(" "),
         _c("h5", { staticClass: "card-title" }, [
@@ -48622,7 +48685,7 @@ var render = function() {
       ]),
       _vm._v(" "),
       _vm.url
-        ? _c("div", { staticClass: "float-right" }, [
+        ? _c("div", [
             _c(
               "button",
               {
@@ -48651,8 +48714,8 @@ var render = function() {
                   },
                   [
                     _vm.isOpen
-                      ? _c("path", { attrs: { d: "M0 6H12" } })
-                      : _c("path", { attrs: { d: "M0 6H12 M6 0V12" } })
+                      ? _c("path", { attrs: { d: "M2 5 L 8 11 L 14 5" } })
+                      : _c("path", { attrs: { d: "M 5 2 L 11 8 L 5 14" } })
                   ]
                 )
               ]
@@ -48953,8 +49016,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 
-    created: function created() {
-        window.addEventListener('keypress', this.moveLine);
+    mounted: function mounted() {
+        window.addEventListener('keydown', this.moveLine, false);
     },
     components: {
         TimelineLegend: __WEBPACK_IMPORTED_MODULE_0__TimelineLegend___default.a,
@@ -50491,7 +50554,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     data: function data() {
         return {
-            validItems: this.items,
             selected: 0
         };
     },
@@ -50501,6 +50563,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
 
     computed: {
+        validItems: function validItems() {
+            return this.items.sort(function (a, b) {
+                return a.name.localeCompare(b.name);
+            });
+        },
+
         selectedItems: function selectedItems() {
             return this.validItems.filter(function (item) {
                 return item.selected;
