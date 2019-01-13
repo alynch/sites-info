@@ -20,6 +20,8 @@ We use this application as a playground to investigate new technologies.
 
 - CSS grid and flexbox
 
+- CSS transformations
+
 - Laravel cache
 
 - Scheduling for status info
