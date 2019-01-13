@@ -2,7 +2,7 @@
     <div class="card">
         <div class="card-header">
             <span class="float-right">
-                <svg viewBox="0 0 32 32" width="28" height="28">
+                <svg class="status" viewBox="0 0 32 32" width="28" height="28">
                     <g v-if="status === 'Working'" style="fill:#333;" class="spin">
                         <circle cx="4" cy="16" r="1"/>
                         <circle cx="8" cy="8" r="1.25"/>
@@ -33,7 +33,7 @@
             </div>
         </div>
 
-        <div v-if="url" class="float-right">
+        <div v-if="url">
            <button class="btn btn-link float-right" type="button"
                 :title="isOpen ? 'Hide details' : 'Show details'" @click="isOpen = !isOpen">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" class="icons">
@@ -139,6 +139,10 @@
     box-shadow: 0px 0px 0px 3px #ccc;
 }
 
+.card-title {
+    font-size: 1rem;
+    font-weight: 400;
+}
 
 .url {
     white-space: nowrap;
@@ -185,6 +189,10 @@
 .slide-enter, .slide-leave-to {
    overflow: hidden;
    max-height: 0;
+}
+
+.status {
+    margin-left: 2px;
 }
 
 .icons {
