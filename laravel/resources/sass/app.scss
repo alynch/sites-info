@@ -23,12 +23,11 @@ body {
 }
 
 footer {
-    background-color: #f9f9f9;
     border-top: 0.05rem solid #e5e5e5;
     font-size: 0.9em;
     padding: 1.5rem 0;
     background: rgba(0, 0, 0, 0.8);
-    color: #999;
+    color: #c4c4c4;
     font-size: 12px;
     margin-top: auto;
 }
@@ -43,6 +42,9 @@ h1, h2, h3, h4, h5, h6 {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
 
+a {
+    color: #17578C;
+}
 
 .range-box {
     margin: 5px auto;
