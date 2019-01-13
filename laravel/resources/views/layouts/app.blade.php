@@ -9,6 +9,8 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
+    <meta name="Description" content="Site to track IIT applications">
+
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 
