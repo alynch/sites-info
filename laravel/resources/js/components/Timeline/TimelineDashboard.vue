@@ -46,8 +46,8 @@
 
     export default {
 
-        created: function () {
-            window.addEventListener('keypress', this.moveLine)
+        mounted: function () {
+            window.addEventListener('keydown', this.moveLine, false);
         },
         components: {
             TimelineLegend,
