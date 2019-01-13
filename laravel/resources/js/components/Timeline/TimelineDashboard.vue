@@ -28,8 +28,10 @@
 
             <transition-group name="flip-list" tag="div">
             <div v-for="(line, index) in sortedLines" :key="line.id">
-                <input type="text" v-model="line.label" v-bind:class="{active: index==lineSelected}" @click="selectLine(index)"/>
-                <span class="date" v-text="getDate(line.x)"></span>
+                <label>
+                    <input type="text" v-model="line.label" v-bind:class="{active: index==lineSelected}" @click="selectLine(index)"/>
+                    <span class="date" v-text="getDate(line.x)"></span>
+                </label>
                 <span> {{ line.description }}</span>
                 <button class="destroy" title="Remove line" @click="deleteLine(line)">X</button>
             </div>
@@ -173,7 +175,7 @@ aside {
 
 .destroy {
     border: none;
-    color: #cc9a9a;
+    color: #824040;
 }
 
 .active {
