@@ -11,6 +11,7 @@ use GuzzleHttp\Client;
 use Cache;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\StreamedResponse;
+use Symfony\Component\Process\Process;
 
 class ApiController extends Controller
 {
@@ -21,7 +22,7 @@ class ApiController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth')->except('info');
     }
 
     public function status($id)
@@ -55,5 +56,27 @@ class ApiController extends Controller
         Cache::flush();
 
         return back();
+    }
+
+    public function info()
+    {
+
+        $mysql = 'mysql -V';
+        $process = new Process($mysql);
+        $process->run();
+
+        $data['mysql']  = $process->getOutput();
+
+        $data['php_version'] =  phpversion();
+        $data['apache_version'] = apache_get_version();
+
+        /*
+        $data['sapi'] = php_sapi_name();
+        $data['user'] = php_uname();
+        */
+
+        $data['laravel'] = app()->version();
+
+        return $data;
     }
 }

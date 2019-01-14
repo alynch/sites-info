@@ -7,6 +7,9 @@ use GuzzleHttp\Client;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 
+use Mockery as m;
+use Mockery\Adapter\Phpunit\MockeryTestCase;
+
 class SiteInfoTest extends TestCase
 {
 
@@ -41,8 +44,32 @@ class SiteInfoTest extends TestCase
     {
         $this->withoutExceptionHandling();
         $url = "https://corpora.chass.utoronto.ca";
-        $site = new \App\SiteInfo($url, $this->mock);
+        $site = new \App\SiteInfo($url, \GuzzleHttp\Client::class);
 
-        $this->assertInstanceOf(\App\SiteInfo::class, $site);
+        $response = [
+            "running" => true,
+            "ip" => "128.100.160.77",
+            "headers" =>  [
+                0 =>  [
+                    "name" => "Server",
+                    "value" => "Apache"
+                ],
+                1 =>  [
+                    "name" => "X-Powered-By",
+                    "value" => "PHP/5.5.25"
+                ],
+                2 =>  [
+                    "name" => "SSL cert. expires on",
+                    "value" => "2019-11-27"
+                ]
+            ],
+            "details" => ""
+        ];
+
+
+        $this->assertEquals($response, $site->checkSite());
+
+
+        //$this->assertInstanceOf(\App\SiteInfo::class, $site);
     }
 }

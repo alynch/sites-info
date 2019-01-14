@@ -30,3 +30,6 @@ Route::delete('/timeline/{id}', 'TimelineController@destroy');
 
 Route::get('/applications/{id}/status', 'ApiController@status');
 Route::post('/applications/clear', 'ApiController@clear');
+
+
+Route::get('/info', 'ApiController@info');

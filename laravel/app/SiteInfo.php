@@ -41,6 +41,7 @@ class SiteInfo
     {
         $info = $this->verifySite();
         $info['headers'][] = ['name'=> 'SSL cert. expires on', 'value' => $this->verifyCert()];
+        $info['details'] = $this->getDetails();
 
         return $info;
     }
@@ -102,16 +103,16 @@ class SiteInfo
         return $headers;
     }
 
-    private function getDetails($client)
+    private function getDetails()
     {
-        $details = '';
         try {
-            $response = $client->get($this->site . '/version');
+            $response = $this->client->get($this->site . '/info');
+
             if ($response->getStatusCode() == '200') {
                 $details = json_decode($response->getBody(), true);
             }
-        } catch (ClientException $e) {
-            //
+        } catch (Exception $e) {
+            $details = '';
         }
         return $details;
     }

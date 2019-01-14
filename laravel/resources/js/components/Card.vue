@@ -64,6 +64,22 @@
                     <div v-for="header in env.status.headers">
                         {{ header.name }}: {{ header.value }}
                     </div>
+
+                    <hr/>
+
+                    <div v-if="env.status.details">
+                        <em>Web server:</em>
+                             {{ env.status.details.apache_version }}
+                        <br/>
+                        <em>Database server:</em>
+                             {{ env.status.details.mysql }}
+                        <br/>
+                        <em>PHP version:</em>
+                             {{ env.status.details.php_version }}
+                        <br/>
+                        <em>Laravel version:</em>
+                             {{ env.status.details.laravel }}
+                    </div>
                 </li>
             </ul>
             </transition>
@@ -104,11 +120,13 @@
                 es.addEventListener('message', function(event) {
                     card.cardData = JSON.parse(event.data);
 
+
                     if (card.cardData[0]) {
                         card.status = (card.cardData[0].status.running) ? 'OK' : 'Down';
                         card.ip = card.cardData[0].status.ip;
                         card.url = card.cardData[0].pivot.url;
                         card.headers = card.cardData[0].status.headers;
+                        card.details = card.cardData[0].details;
                     } else {
                         card.status = 'Down';
                         card.url = '';

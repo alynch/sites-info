@@ -48544,6 +48544,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 
@@ -48581,6 +48597,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     card.ip = card.cardData[0].status.ip;
                     card.url = card.cardData[0].pivot.url;
                     card.headers = card.cardData[0].status.headers;
+                    card.details = card.cardData[0].details;
                 } else {
                     card.status = 'Down';
                     card.url = '';
@@ -48763,7 +48780,44 @@ var render = function() {
                             "\n                    "
                         )
                       ])
-                    })
+                    }),
+                    _vm._v(" "),
+                    _c("hr"),
+                    _vm._v(" "),
+                    env.status.details
+                      ? _c("div", [
+                          _c("em", [_vm._v("Web server:")]),
+                          _vm._v(
+                            "\n                             " +
+                              _vm._s(env.status.details.apache_version) +
+                              "\n                        "
+                          ),
+                          _c("br"),
+                          _vm._v(" "),
+                          _c("em", [_vm._v("Database server:")]),
+                          _vm._v(
+                            "\n                             " +
+                              _vm._s(env.status.details.mysql) +
+                              "\n                        "
+                          ),
+                          _c("br"),
+                          _vm._v(" "),
+                          _c("em", [_vm._v("PHP version:")]),
+                          _vm._v(
+                            "\n                             " +
+                              _vm._s(env.status.details.php_version) +
+                              "\n                        "
+                          ),
+                          _c("br"),
+                          _vm._v(" "),
+                          _c("em", [_vm._v("Laravel version:")]),
+                          _vm._v(
+                            "\n                             " +
+                              _vm._s(env.status.details.laravel) +
+                              "\n                    "
+                          )
+                        ])
+                      : _vm._e()
                   ],
                   2
                 )
@@ -48953,7 +49007,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.txt[data-v-0997f5e0] {\n    fill: green;\n}\n.grid[data-v-0997f5e0] {\n    position: relative;\n    display: grid;\n    padding: 0 0 2em 0;\n    grid-template-columns: 10em 1fr;\n}\n.range-box[data-v-0997f5e0] {\n}\nsvg[data-v-0997f5e0] {\n    position: absolute;\n    z-index: 1;\n    width: calc(100% - 10em);\n    margin-left: 10em;\n    height: 100%;\n}\n.label[data-v-0997f5e0] {\n    font-size: 0.95em;\n    padding-right: 5px;\n}\naside[data-v-0997f5e0] {\n    margin: 2em 0;\n}\n.destroy[data-v-0997f5e0] {\n    border: none;\n    color: #cc9a9a;\n}\n.active[data-v-0997f5e0] {\n    color: green;\n}\n.flip-list-move[data-v-0997f5e0] {\n  -webkit-transition: -webkit-transform 1s;\n  transition: -webkit-transform 1s;\n  transition: transform 1s;\n  transition: transform 1s, -webkit-transform 1s;\n}\n.date[data-v-0997f5e0] {\n    width: 6em;\n    display: inline-block;\n}\ninput[data-v-0997f5e0] {\n    margin: 5px;\n    border: 1px solid #e9ecef;\n    border-radius: 2px;\n}\n", ""]);
+exports.push([module.i, "\n.txt[data-v-0997f5e0] {\n    fill: green;\n}\n.grid[data-v-0997f5e0] {\n    position: relative;\n    display: grid;\n    padding: 0 0 2em 0;\n    grid-template-columns: 10em 1fr;\n}\n.range-box[data-v-0997f5e0] {\n}\nsvg[data-v-0997f5e0] {\n    position: absolute;\n    z-index: 1;\n    width: calc(100% - 10em);\n    margin-left: 10em;\n    height: 100%;\n}\n.label[data-v-0997f5e0] {\n    font-size: 0.95em;\n    padding-right: 5px;\n}\naside[data-v-0997f5e0] {\n    margin: 2em 0;\n}\n.destroy[data-v-0997f5e0] {\n    border: none;\n    color: #824040;\n}\n.active[data-v-0997f5e0] {\n    color: green;\n}\n.flip-list-move[data-v-0997f5e0] {\n  -webkit-transition: -webkit-transform 1s;\n  transition: -webkit-transform 1s;\n  transition: transform 1s;\n  transition: transform 1s, -webkit-transform 1s;\n}\n.date[data-v-0997f5e0] {\n    width: 6em;\n    display: inline-block;\n}\ninput[data-v-0997f5e0] {\n    margin: 5px;\n    border: 1px solid #e9ecef;\n    border-radius: 2px;\n}\n", ""]);
 
 // exports
 
@@ -48968,6 +49022,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__TimelineLegend___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__TimelineLegend__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Timeline__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Timeline___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__Timeline__);
+//
+//
 //
 //
 //
@@ -49556,35 +49612,37 @@ var render = function() {
           { attrs: { name: "flip-list", tag: "div" } },
           _vm._l(_vm.sortedLines, function(line, index) {
             return _c("div", { key: line.id }, [
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: line.label,
-                    expression: "line.label"
-                  }
-                ],
-                class: { active: index == _vm.lineSelected },
-                attrs: { type: "text" },
-                domProps: { value: line.label },
-                on: {
-                  click: function($event) {
-                    _vm.selectLine(index)
-                  },
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
+              _c("label", [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: line.label,
+                      expression: "line.label"
                     }
-                    _vm.$set(line, "label", $event.target.value)
+                  ],
+                  class: { active: index == _vm.lineSelected },
+                  attrs: { type: "text" },
+                  domProps: { value: line.label },
+                  on: {
+                    click: function($event) {
+                      _vm.selectLine(index)
+                    },
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(line, "label", $event.target.value)
+                    }
                   }
-                }
-              }),
-              _vm._v(" "),
-              _c("span", {
-                staticClass: "date",
-                domProps: { textContent: _vm._s(_vm.getDate(line.x)) }
-              }),
+                }),
+                _vm._v(" "),
+                _c("span", {
+                  staticClass: "date",
+                  domProps: { textContent: _vm._s(_vm.getDate(line.x)) }
+                })
+              ]),
               _vm._v(" "),
               _c("span", [_vm._v(" " + _vm._s(line.description))]),
               _vm._v(" "),
