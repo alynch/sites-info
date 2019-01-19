@@ -72,13 +72,13 @@
                              {{ env.status.details.apache_version }}
                         <br/>
                         <em>Database server:</em>
-                             {{ env.status.details.mysql }}
+                             {{ env.status.details.mysql_version }}
                         <br/>
                         <em>PHP version:</em>
                              {{ env.status.details.php_version }}
                         <br/>
                         <em>Laravel version:</em>
-                             {{ env.status.details.laravel }}
+                             {{ env.status.details.laravel_version }}
                     </div>
                 </li>
             </ul>
@@ -154,7 +154,7 @@
 }
 
 .card:hover {
-    box-shadow: 0px 0px 0px 3px #ccc;
+    box-shadow: 0px 0px 0px 2px #ccc;
 }
 
 .card-title {

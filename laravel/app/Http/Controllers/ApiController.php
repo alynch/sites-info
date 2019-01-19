@@ -65,7 +65,7 @@ class ApiController extends Controller
         $process = new Process($mysql);
         $process->run();
 
-        $data['mysql']  = $process->getOutput();
+        $data['mysql_version']  = $process->getOutput();
 
         $data['php_version'] =  phpversion();
         $data['apache_version'] = apache_get_version();
@@ -75,7 +75,7 @@ class ApiController extends Controller
         $data['user'] = php_uname();
         */
 
-        $data['laravel'] = app()->version();
+        $data['laravel_version'] = app()->version();
 
         return $data;
     }
