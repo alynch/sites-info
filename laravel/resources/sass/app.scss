@@ -15,6 +15,17 @@ body {
     flex-direction: column;
     font-family: $font-family-sans-serif;
 }
+header {
+    background: $dark_gray;
+}
+
+header a {
+    color: #ccc;
+}
+
+header a:hover {
+    color: #ddd;
+}
 
 .main {
     padding: 1.25rem;
@@ -26,8 +37,8 @@ footer {
     border-top: 0.05rem solid #e5e5e5;
     font-size: 0.9em;
     padding: 1.5rem 0;
-    background: rgba(0, 0, 0, 0.8);
-    color: #c4c4c4;
+    background: $light_gray;
+    color: #646464;
     font-size: 12px;
     margin-top: auto;
 }
@@ -43,7 +54,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 a {
-    color: #17578C;
+    color: $blue;
 }
 
 .range-box {

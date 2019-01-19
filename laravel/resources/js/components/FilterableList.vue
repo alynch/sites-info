@@ -134,14 +134,14 @@
 }
 
 .selected {
-    background: #3490dc;
+    background: #6d7993;
     color: #fff;
 }
 
 
 .selected:hover {
   color: #fff;
-  background-color: #227dc7;
+  opacity: 0.8;
   border-color: #2176bd;
 }
 

@@ -10,7 +10,7 @@
                 <template v-for="(line, index) in lines">
                     <g @click="selectLine(index)">
                         <text class="txt" text-anchor="middle" :x="line.x+'%'" y="100%">&nbsp;{{ line.label }}</text>
-                        <line :x1="line.x +'%'" y1="5%" :x2="line.x+'%'" y2="97.5%" stroke-width="2" stroke="green" stroke-dasharray="1%"></line>
+                        <line :x1="line.x +'%'" y1="5%" :x2="line.x+'%'" y2="97.5%" stroke-width="2" stroke="#9099a2" stroke-dasharray="1%"></line>
                     </g>
                 </template>
             </svg>
@@ -143,7 +143,7 @@
 <style scoped>
 
 .txt {
-    fill: green;
+    fill: #9099a2;
 }
 
 .grid {
@@ -179,7 +179,7 @@ aside {
 }
 
 .active {
-    color: green;
+    background: #9099a2;
 }
 
 .flip-list-move {

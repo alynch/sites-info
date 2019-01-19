@@ -9,7 +9,7 @@
             period: Object,
             background: {
                 type: String,
-                default: '#3490dc'
+                default: '#96858f'
             }
         },
 

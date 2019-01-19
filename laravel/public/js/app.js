@@ -48460,7 +48460,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.card[data-v-b9bc2c0a] {\n    -webkit-transition: -webkit-box-shadow 150ms;\n    transition: -webkit-box-shadow 150ms;\n    transition: box-shadow 150ms;\n    transition: box-shadow 150ms, -webkit-box-shadow 150ms;\n}\n.card[data-v-b9bc2c0a]:hover {\n    -webkit-box-shadow: 0px 0px 0px 3px #ccc;\n            box-shadow: 0px 0px 0px 3px #ccc;\n}\n.card-title[data-v-b9bc2c0a] {\n    font-size: 1rem;\n    font-weight: 400;\n}\n.url[data-v-b9bc2c0a] {\n    white-space: nowrap;\n    overflow: hidden;\n}\n.spin[data-v-b9bc2c0a] {\n  -webkit-animation: spin-data-v-b9bc2c0a 2s infinite linear;\n          animation: spin-data-v-b9bc2c0a 2s infinite linear;\n    -webkit-transform-origin: center;\n            transform-origin: center;\n}\n@-webkit-keyframes spin-data-v-b9bc2c0a {\n0% {\n    -webkit-transform: rotate(0deg);\n            transform: rotate(0deg);\n}\n100% {\n    -webkit-transform: rotate(359deg);\n            transform: rotate(359deg);\n}\n}\n@keyframes spin-data-v-b9bc2c0a {\n0% {\n    -webkit-transform: rotate(0deg);\n            transform: rotate(0deg);\n}\n100% {\n    -webkit-transform: rotate(359deg);\n            transform: rotate(359deg);\n}\n}\n.fade-enter-active[data-v-b9bc2c0a], .fade-leave-active[data-v-b9bc2c0a] {\n  -webkit-transition: opacity .5s;\n  transition: opacity .5s;\n}\n.fade-enter[data-v-b9bc2c0a], .fade-leave-to[data-v-b9bc2c0a] {\n  opacity: 0;\n}\n.slide-enter-active[data-v-b9bc2c0a] {\n   -webkit-transition-duration: 0.2s;\n           transition-duration: 0.2s;\n   -webkit-transition-timing-function: ease-in;\n           transition-timing-function: ease-in;\n}\n.slide-leave-active[data-v-b9bc2c0a] {\n   -webkit-transition-duration: 0.2s;\n           transition-duration: 0.2s;\n   -webkit-transition-timing-function: ease-out;\n           transition-timing-function: ease-out;\n}\n.slide-enter-to[data-v-b9bc2c0a], .slide-leave[data-v-b9bc2c0a] {\n   max-height: 100px;\n   overflow: hidden;\n}\n.slide-enter[data-v-b9bc2c0a], .slide-leave-to[data-v-b9bc2c0a] {\n   overflow: hidden;\n   max-height: 0;\n}\n.status[data-v-b9bc2c0a] {\n    margin-left: 2px;\n}\n.icons[data-v-b9bc2c0a] {\n    fill: none;\n    stroke: #ccc;\n    stroke-width: 3;\n}\n", ""]);
+exports.push([module.i, "\n.card[data-v-b9bc2c0a] {\n    -webkit-transition: -webkit-box-shadow 150ms;\n    transition: -webkit-box-shadow 150ms;\n    transition: box-shadow 150ms;\n    transition: box-shadow 150ms, -webkit-box-shadow 150ms;\n}\n.card[data-v-b9bc2c0a]:hover {\n    -webkit-box-shadow: 0px 0px 0px 2px #ccc;\n            box-shadow: 0px 0px 0px 2px #ccc;\n}\n.card-title[data-v-b9bc2c0a] {\n    font-size: 1rem;\n    font-weight: 400;\n}\n.url[data-v-b9bc2c0a] {\n    white-space: nowrap;\n    overflow: hidden;\n}\n.spin[data-v-b9bc2c0a] {\n  -webkit-animation: spin-data-v-b9bc2c0a 2s infinite linear;\n          animation: spin-data-v-b9bc2c0a 2s infinite linear;\n    -webkit-transform-origin: center;\n            transform-origin: center;\n}\n@-webkit-keyframes spin-data-v-b9bc2c0a {\n0% {\n    -webkit-transform: rotate(0deg);\n            transform: rotate(0deg);\n}\n100% {\n    -webkit-transform: rotate(359deg);\n            transform: rotate(359deg);\n}\n}\n@keyframes spin-data-v-b9bc2c0a {\n0% {\n    -webkit-transform: rotate(0deg);\n            transform: rotate(0deg);\n}\n100% {\n    -webkit-transform: rotate(359deg);\n            transform: rotate(359deg);\n}\n}\n.fade-enter-active[data-v-b9bc2c0a], .fade-leave-active[data-v-b9bc2c0a] {\n  -webkit-transition: opacity .5s;\n  transition: opacity .5s;\n}\n.fade-enter[data-v-b9bc2c0a], .fade-leave-to[data-v-b9bc2c0a] {\n  opacity: 0;\n}\n.slide-enter-active[data-v-b9bc2c0a] {\n   -webkit-transition-duration: 0.2s;\n           transition-duration: 0.2s;\n   -webkit-transition-timing-function: ease-in;\n           transition-timing-function: ease-in;\n}\n.slide-leave-active[data-v-b9bc2c0a] {\n   -webkit-transition-duration: 0.2s;\n           transition-duration: 0.2s;\n   -webkit-transition-timing-function: ease-out;\n           transition-timing-function: ease-out;\n}\n.slide-enter-to[data-v-b9bc2c0a], .slide-leave[data-v-b9bc2c0a] {\n   max-height: 100px;\n   overflow: hidden;\n}\n.slide-enter[data-v-b9bc2c0a], .slide-leave-to[data-v-b9bc2c0a] {\n   overflow: hidden;\n   max-height: 0;\n}\n.status[data-v-b9bc2c0a] {\n    margin-left: 2px;\n}\n.icons[data-v-b9bc2c0a] {\n    fill: none;\n    stroke: #ccc;\n    stroke-width: 3;\n}\n", ""]);
 
 // exports
 
@@ -48797,7 +48797,7 @@ var render = function() {
                           _c("em", [_vm._v("Database server:")]),
                           _vm._v(
                             "\n                             " +
-                              _vm._s(env.status.details.mysql) +
+                              _vm._s(env.status.details.mysql_version) +
                               "\n                        "
                           ),
                           _c("br"),
@@ -48813,7 +48813,7 @@ var render = function() {
                           _c("em", [_vm._v("Laravel version:")]),
                           _vm._v(
                             "\n                             " +
-                              _vm._s(env.status.details.laravel) +
+                              _vm._s(env.status.details.laravel_version) +
                               "\n                    "
                           )
                         ])
@@ -49007,7 +49007,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.txt[data-v-0997f5e0] {\n    fill: green;\n}\n.grid[data-v-0997f5e0] {\n    position: relative;\n    display: grid;\n    padding: 0 0 2em 0;\n    grid-template-columns: 10em 1fr;\n}\n.range-box[data-v-0997f5e0] {\n}\nsvg[data-v-0997f5e0] {\n    position: absolute;\n    z-index: 1;\n    width: calc(100% - 10em);\n    margin-left: 10em;\n    height: 100%;\n}\n.label[data-v-0997f5e0] {\n    font-size: 0.95em;\n    padding-right: 5px;\n}\naside[data-v-0997f5e0] {\n    margin: 2em 0;\n}\n.destroy[data-v-0997f5e0] {\n    border: none;\n    color: #824040;\n}\n.active[data-v-0997f5e0] {\n    color: green;\n}\n.flip-list-move[data-v-0997f5e0] {\n  -webkit-transition: -webkit-transform 1s;\n  transition: -webkit-transform 1s;\n  transition: transform 1s;\n  transition: transform 1s, -webkit-transform 1s;\n}\n.date[data-v-0997f5e0] {\n    width: 6em;\n    display: inline-block;\n}\ninput[data-v-0997f5e0] {\n    margin: 5px;\n    border: 1px solid #e9ecef;\n    border-radius: 2px;\n}\n", ""]);
+exports.push([module.i, "\n.txt[data-v-0997f5e0] {\n    fill: #9099a2;\n}\n.grid[data-v-0997f5e0] {\n    position: relative;\n    display: grid;\n    padding: 0 0 2em 0;\n    grid-template-columns: 10em 1fr;\n}\n.range-box[data-v-0997f5e0] {\n}\nsvg[data-v-0997f5e0] {\n    position: absolute;\n    z-index: 1;\n    width: calc(100% - 10em);\n    margin-left: 10em;\n    height: 100%;\n}\n.label[data-v-0997f5e0] {\n    font-size: 0.95em;\n    padding-right: 5px;\n}\naside[data-v-0997f5e0] {\n    margin: 2em 0;\n}\n.destroy[data-v-0997f5e0] {\n    border: none;\n    color: #824040;\n}\n.active[data-v-0997f5e0] {\n    background: #9099a2;\n}\n.flip-list-move[data-v-0997f5e0] {\n  -webkit-transition: -webkit-transform 1s;\n  transition: -webkit-transform 1s;\n  transition: transform 1s;\n  transition: transform 1s, -webkit-transform 1s;\n}\n.date[data-v-0997f5e0] {\n    width: 6em;\n    display: inline-block;\n}\ninput[data-v-0997f5e0] {\n    margin: 5px;\n    border: 1px solid #e9ecef;\n    border-radius: 2px;\n}\n", ""]);
 
 // exports
 
@@ -49272,7 +49272,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.timeline[data-v-29d8fc14] {\n    position: relative;\n    height: 100%;\n    width: 100%;\n}\n.throughout[data-v-29d8fc14] {\n    position: absolute;\n    width: 100%;\n    top: 7px;\n    height: 3px;\n    background: #a8cff0;\n}\n\n", ""]);
+exports.push([module.i, "\n.timeline[data-v-29d8fc14] {\n    position: relative;\n    height: 100%;\n    width: 100%;\n}\n.throughout[data-v-29d8fc14] {\n    position: absolute;\n    width: 100%;\n    top: 7px;\n    height: 3px;\n    background: #6d7993;\n}\n\n", ""]);
 
 // exports
 
@@ -49422,7 +49422,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         period: Object,
         background: {
             type: String,
-            default: '#3490dc'
+            default: '#96858f'
         }
     },
 
@@ -49565,7 +49565,7 @@ var render = function() {
                         x2: line.x + "%",
                         y2: "97.5%",
                         "stroke-width": "2",
-                        stroke: "green",
+                        stroke: "#9099a2",
                         "stroke-dasharray": "1%"
                       }
                     })
@@ -50612,7 +50612,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     data: function data() {
         return {
-            selected: 0
+            selected: 0,
+            allItems: this.items
         };
     },
 
@@ -50622,7 +50623,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     computed: {
         validItems: function validItems() {
-            return this.items.sort(function (a, b) {
+            return this.allItems.sort(function (a, b) {
                 return a.name.localeCompare(b.name);
             });
         },
@@ -50866,7 +50867,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.nav-link[data-v-e3ba188a] {\n    margin: 0 5px;\n    padding: 3px 6px;\n}\n.selected[data-v-e3ba188a] {\n    background: #3490dc;\n    color: #fff;\n}\n.selected[data-v-e3ba188a]:hover {\n  color: #fff;\n  background-color: #227dc7;\n  border-color: #2176bd;\n}\n.text-right[data-v-e3ba188a] {\n    padding-right: 1em;\npadding: 0.5em 2.25em;\n}\n", ""]);
+exports.push([module.i, "\n.nav-link[data-v-e3ba188a] {\n    margin: 0 5px;\n    padding: 3px 6px;\n}\n.selected[data-v-e3ba188a] {\n    background: #6d7993;\n    color: #fff;\n}\n.selected[data-v-e3ba188a]:hover {\n  color: #fff;\n  opacity: 0.8;\n  border-color: #2176bd;\n}\n.text-right[data-v-e3ba188a] {\n    padding-right: 1em;\npadding: 0.5em 2.25em;\n}\n", ""]);
 
 // exports
 
