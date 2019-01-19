@@ -27,7 +27,8 @@
 
        data: function() {
             return {
-                selected: 0
+                selected: 0,
+                allItems: this.items
             }
         },
 
@@ -37,7 +38,7 @@
 
         computed: {
             validItems: function() {
-                return this.items.sort(function(a, b) {
+                return this.allItems.sort(function(a, b) {
                     return a.name.localeCompare(b.name)
                 })
             },
