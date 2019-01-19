@@ -1,6 +1,25 @@
 <header>
     <div class="container">
         <a class="navbar-brand" href="{{ url('/') }}" style="padding: 15px 10px">
+            <svg width="0" height="0" viewbox="0 0 32 32">
+                <g style="fill:none; stroke:#ccc; stroke-width:4; stroke-linecap:round; stroke-linejoin: round">
+                <circle cx="16" cy="16" r="12"/>
+                <path d="M16 16 L0 16"/>
+                </g>
+            </svg>
+            <svg width="32" height="32" viewbox="0 0 32 32">
+                <g style="fill:none; stroke:#ccc; stroke-width:4; stroke-linecap:round; stroke-linejoin: round">
+                <path d="M2 6 l 28 0"/>
+                <path d="M2 16 l 28 0"/>
+                <path d="M2 26 l 28 0"/>
+                </g>
+                <g style="fill:#fff; stroke:#ccc; stroke-width:1.5">
+                <circle cx="8" cy="6" r="3.5"/>
+                <circle cx="18" cy="16" r="3.5"/>
+                <circle cx="26" cy="26" r="3.5"/>
+                </g>
+            </svg>
+            &nbsp;&nbsp;
             {{ config('app.name') }}
         </a>
     </div>
