@@ -48460,7 +48460,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.card[data-v-b9bc2c0a] {\n    -webkit-transition: -webkit-box-shadow 150ms;\n    transition: -webkit-box-shadow 150ms;\n    transition: box-shadow 150ms;\n    transition: box-shadow 150ms, -webkit-box-shadow 150ms;\n}\n.card[data-v-b9bc2c0a]:hover {\n    -webkit-box-shadow: 0px 0px 0px 2px #ccc;\n            box-shadow: 0px 0px 0px 2px #ccc;\n}\n.card-title[data-v-b9bc2c0a] {\n    font-size: 1rem;\n    font-weight: 400;\n}\n.url[data-v-b9bc2c0a] {\n    white-space: nowrap;\n    overflow: hidden;\n}\n.spin[data-v-b9bc2c0a] {\n  -webkit-animation: spin-data-v-b9bc2c0a 2s infinite linear;\n          animation: spin-data-v-b9bc2c0a 2s infinite linear;\n    -webkit-transform-origin: center;\n            transform-origin: center;\n}\n@-webkit-keyframes spin-data-v-b9bc2c0a {\n0% {\n    -webkit-transform: rotate(0deg);\n            transform: rotate(0deg);\n}\n100% {\n    -webkit-transform: rotate(359deg);\n            transform: rotate(359deg);\n}\n}\n@keyframes spin-data-v-b9bc2c0a {\n0% {\n    -webkit-transform: rotate(0deg);\n            transform: rotate(0deg);\n}\n100% {\n    -webkit-transform: rotate(359deg);\n            transform: rotate(359deg);\n}\n}\n.fade-enter-active[data-v-b9bc2c0a], .fade-leave-active[data-v-b9bc2c0a] {\n  -webkit-transition: opacity .5s;\n  transition: opacity .5s;\n}\n.fade-enter[data-v-b9bc2c0a], .fade-leave-to[data-v-b9bc2c0a] {\n  opacity: 0;\n}\n.slide-enter-active[data-v-b9bc2c0a] {\n   -webkit-transition-duration: 0.2s;\n           transition-duration: 0.2s;\n   -webkit-transition-timing-function: ease-in;\n           transition-timing-function: ease-in;\n}\n.slide-leave-active[data-v-b9bc2c0a] {\n   -webkit-transition-duration: 0.2s;\n           transition-duration: 0.2s;\n   -webkit-transition-timing-function: ease-out;\n           transition-timing-function: ease-out;\n}\n.slide-enter-to[data-v-b9bc2c0a], .slide-leave[data-v-b9bc2c0a] {\n   max-height: 100px;\n   overflow: hidden;\n}\n.slide-enter[data-v-b9bc2c0a], .slide-leave-to[data-v-b9bc2c0a] {\n   overflow: hidden;\n   max-height: 0;\n}\n.status[data-v-b9bc2c0a] {\n    margin-left: 2px;\n}\n.icons[data-v-b9bc2c0a] {\n    fill: none;\n    stroke: #ccc;\n    stroke-width: 3;\n}\n", ""]);
+exports.push([module.i, "\n.card[data-v-b9bc2c0a] {\n    -webkit-transition: -webkit-box-shadow 150ms;\n    transition: -webkit-box-shadow 150ms;\n    transition: box-shadow 150ms;\n    transition: box-shadow 150ms, -webkit-box-shadow 150ms;\n}\n.card[data-v-b9bc2c0a]:hover {\n    -webkit-box-shadow: 0px 0px 0px 2px #ccc;\n            box-shadow: 0px 0px 0px 2px #ccc;\n}\n.card-title[data-v-b9bc2c0a] {\n    font-size: 1rem;\n    font-weight: 400;\n}\n.url[data-v-b9bc2c0a] {\n    white-space: nowrap;\n    overflow: hidden;\n}\n.spin[data-v-b9bc2c0a] {\n  -webkit-animation: spin-data-v-b9bc2c0a 2s infinite linear;\n          animation: spin-data-v-b9bc2c0a 2s infinite linear;\n    -webkit-transform-origin: center;\n            transform-origin: center;\n}\n@-webkit-keyframes spin-data-v-b9bc2c0a {\n0% {\n    -webkit-transform: rotate(0deg);\n            transform: rotate(0deg);\n}\n100% {\n    -webkit-transform: rotate(359deg);\n            transform: rotate(359deg);\n}\n}\n@keyframes spin-data-v-b9bc2c0a {\n0% {\n    -webkit-transform: rotate(0deg);\n            transform: rotate(0deg);\n}\n100% {\n    -webkit-transform: rotate(359deg);\n            transform: rotate(359deg);\n}\n}\n.fade-enter-active[data-v-b9bc2c0a], .fade-leave-active[data-v-b9bc2c0a] {\n  -webkit-transition: opacity .5s;\n  transition: opacity .5s;\n}\n.fade-enter[data-v-b9bc2c0a], .fade-leave-to[data-v-b9bc2c0a] {\n  opacity: 0;\n}\n.slide-enter-active[data-v-b9bc2c0a] {\n   -webkit-transition-duration: 0.2s;\n           transition-duration: 0.2s;\n   -webkit-transition-timing-function: ease-in;\n           transition-timing-function: ease-in;\n}\n.slide-leave-active[data-v-b9bc2c0a] {\n   -webkit-transition-duration: 0.2s;\n           transition-duration: 0.2s;\n   -webkit-transition-timing-function: ease-out;\n           transition-timing-function: ease-out;\n}\n.slide-enter-to[data-v-b9bc2c0a], .slide-leave[data-v-b9bc2c0a] {\n   max-height: 100px;\n   overflow: hidden;\n}\n.slide-enter[data-v-b9bc2c0a], .slide-leave-to[data-v-b9bc2c0a] {\n   overflow: hidden;\n   max-height: 0;\n}\n.status[data-v-b9bc2c0a] {\n    margin-left: 2px;\n}\n.icons[data-v-b9bc2c0a] {\n    fill: none;\n    stroke: #ccc;\n    stroke-width: 3;\n}\n.server-info[data-v-b9bc2c0a] {\n    padding-left: 2em;\n    text-indent: -2em;\n    margin-bottom: 0.5em;\n}\n\n", ""]);
 
 // exports
 
@@ -48471,6 +48471,13 @@ exports.push([module.i, "\n.card[data-v-b9bc2c0a] {\n    -webkit-transition: -we
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -48786,36 +48793,41 @@ var render = function() {
                     _vm._v(" "),
                     env.status.details
                       ? _c("div", [
-                          _c("em", [_vm._v("Web server:")]),
-                          _vm._v(
-                            "\n                             " +
-                              _vm._s(env.status.details.apache_version) +
-                              "\n                        "
-                          ),
-                          _c("br"),
+                          _c("div", { staticClass: "server-info" }, [
+                            _c("em", [_vm._v("Web server:")]),
+                            _vm._v(
+                              "\n                            " +
+                                _vm._s(env.status.details.apache_version) +
+                                "\n                        "
+                            )
+                          ]),
                           _vm._v(" "),
-                          _c("em", [_vm._v("Database server:")]),
-                          _vm._v(
-                            "\n                             " +
-                              _vm._s(env.status.details.mysql_version) +
-                              "\n                        "
-                          ),
-                          _c("br"),
+                          _c("div", { staticClass: "server-info" }, [
+                            _c("em", [_vm._v("Database server:")]),
+                            _vm._v(
+                              "\n                             " +
+                                _vm._s(env.status.details.mysql_version) +
+                                "\n                        "
+                            )
+                          ]),
                           _vm._v(" "),
-                          _c("em", [_vm._v("PHP version:")]),
-                          _vm._v(
-                            "\n                             " +
-                              _vm._s(env.status.details.php_version) +
-                              "\n                        "
-                          ),
-                          _c("br"),
+                          _c("div", { staticClass: "server-info" }, [
+                            _c("em", [_vm._v("PHP version:")]),
+                            _vm._v(
+                              "\n                             " +
+                                _vm._s(env.status.details.php_version) +
+                                "\n                        "
+                            )
+                          ]),
                           _vm._v(" "),
-                          _c("em", [_vm._v("Laravel version:")]),
-                          _vm._v(
-                            "\n                             " +
-                              _vm._s(env.status.details.laravel_version) +
-                              "\n                    "
-                          )
+                          _c("div", { staticClass: "server-info" }, [
+                            _c("em", [_vm._v("Laravel version:")]),
+                            _vm._v(
+                              "\n                             " +
+                                _vm._s(env.status.details.laravel_version) +
+                                "\n                        "
+                            )
+                          ])
                         ])
                       : _vm._e()
                   ],

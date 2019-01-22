@@ -68,17 +68,24 @@
                     <hr/>
 
                     <div v-if="env.status.details">
-                        <em>Web server:</em>
-                             {{ env.status.details.apache_version }}
-                        <br/>
-                        <em>Database server:</em>
+                        <div class="server-info">
+                            <em>Web server:</em>
+                            {{ env.status.details.apache_version }}
+                        </div>
+
+                        <div class="server-info">
+                            <em>Database server:</em>
                              {{ env.status.details.mysql_version }}
-                        <br/>
-                        <em>PHP version:</em>
+                        </div>
+
+                        <div class="server-info">
+                            <em>PHP version:</em>
                              {{ env.status.details.php_version }}
-                        <br/>
-                        <em>Laravel version:</em>
+                        </div>
+                        <div class="server-info">
+                            <em>Laravel version:</em>
                              {{ env.status.details.laravel_version }}
+                        </div>
                     </div>
                 </li>
             </ul>
@@ -218,4 +225,11 @@
     stroke: #ccc;
     stroke-width: 3;
 }
+
+.server-info {
+    padding-left: 2em;
+    text-indent: -2em;
+    margin-bottom: 0.5em;
+}
+
 </style>

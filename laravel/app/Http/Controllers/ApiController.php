@@ -60,23 +60,37 @@ class ApiController extends Controller
 
     public function info()
     {
+        $data['mysql_version'] = $this->getDbVersion();
+        $data['php_version'] = $this->getPhpVersion();
+        $data['laravel_version'] = $this->getLaravelVersion();
+        $data['apache_version'] = $this->getWebServerVersion();
 
-        $mysql = 'mysql -V';
-        $process = new Process($mysql);
-        $process->run();
+        return $data;
+    }
 
-        $data['mysql_version']  = $process->getOutput();
+    private function getWebServerVersion()
+    {
+        return apache_get_version();
+    }
 
-        $data['php_version'] =  phpversion();
-        $data['apache_version'] = apache_get_version();
+    private function getDbVersion()
+    {
+        $pdo     = \DB::connection()->getPdo();
+        $version = $pdo->query('select version()')->fetchColumn();
+        return $version;
+    }
 
+    private function getPhpVersion()
+    {
         /*
         $data['sapi'] = php_sapi_name();
         $data['user'] = php_uname();
         */
+        return phpversion();
+    }
 
-        $data['laravel_version'] = app()->version();
-
-        return $data;
+    private function getLaravelVersion()
+    {
+        return app()->version();
     }
 }
