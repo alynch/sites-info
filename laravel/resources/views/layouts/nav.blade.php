@@ -1,8 +1,8 @@
 <header>
     <div class="container">
         <a class="navbar-brand" href="{{ url('/') }}" style="padding: 15px 10px">
-        <svg width="30px" height="30px" viewBox="0 0 20 20">
-            <g transform="translate(-8.000000, -8.000000)">
+        <svg width="20px" height="20px" viewBox="0 0 20 20">
+            <g transform="translate(-8, -8)">
                 <path d="M12,17 L12,15 L14,15 L14,21 L12,21 L12,19 L8,19 L8,17 L12,17 Z M24,10 L28,10 L28,12 L24,12 L24,14 L22,14 L22,8 L24,8 L24,10 Z M17,24 L17,22 L19,22 L19,28 L17,28 L17,26 L8,26 L8,24 L17,24 Z M21,24 L28,24 L28,26 L21,26 L21,24 Z M8,10 L20,10 L20,12 L8,12 L8,10 Z M16,17 L28,17 L28,19 L16,19 L16,17 Z" fill="#999"></path>
             </g>
         </svg>
