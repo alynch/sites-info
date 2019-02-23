@@ -4,6 +4,6 @@
 
 <form method="POST" action="/environments">
     @csrf
-    @include('environments.form', ['title' => 'New Environment'])
+    @include('environments.form', ['title' => 'New environment'])
 </form>
 @endsection

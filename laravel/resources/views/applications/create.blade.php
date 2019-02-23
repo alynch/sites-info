@@ -2,12 +2,11 @@
 
 @section('content')
 
-<h1>New Application</h1>
 
 <form method="POST" action="/applications">
     @csrf
 
-    @include('applications.form')
+    @include('applications.form', ['title' => 'New application'])
 
 </form>
 @endsection

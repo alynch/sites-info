@@ -8,6 +8,6 @@
         :pluralize_filters="true"
         :filters="{{ $unit_types }}"
         :items="{{ $units }}">
-        Academic Units
+        Academic units
     </filterable-list>
 @endsection

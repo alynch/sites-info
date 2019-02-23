@@ -1,5 +1,11 @@
 <div class="card">
 
+    @if (isset($title))
+    <div class="card-header">
+        <h2>{{ $title }}</h2>
+    </div>
+    @endif
+
     <div class="card-body">
 
         @include('errors')
