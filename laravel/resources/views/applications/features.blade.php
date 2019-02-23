@@ -11,12 +11,8 @@
                 {{ $feature->name }}
             </label>
 
-              <input type="checkbox" class="mt-3"
-                    id="features-{{ $feature->id }}"
-                    @if ($application->features->contains($feature->id)) checked @endif
-                    name="features[]"
-                    value="{{ $feature->id }}"/>
-            </div>
+            @include('applications.' . $feature->type)
+        </div>
         @endforeach
     </div>
 </div>

@@ -17,8 +17,16 @@
 
 	<div class="form-group">
 	    <label for="type">Type:</label>
-	    <input type="text" id="type" name="type" class="form-control"
-		value="{{ $feature->type ?: old('type') }}" />
+            <select name="type" id="type" class="form-control">
+                <option value="">Select one</option>
+                @foreach ($feature->getTypes() as $item)
+                    <option value="{{ $item }}"
+                        @if ($feature->type == $item) selected @endif
+                    >
+                    {{ $item }}
+                    </option>
+                @endforeach
+            </select>
 	</div>
 
 	<div class="form-group">
