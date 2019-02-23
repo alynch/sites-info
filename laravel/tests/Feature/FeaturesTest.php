@@ -101,7 +101,7 @@ class FeaturesTest extends TestCase
 
         $this->get('/features/'. $data->id . '/edit')
             ->assertSee(e($data->name))
-            ->assertSee($data->code);
+            ->assertSee($data->type);
     }
 
 
