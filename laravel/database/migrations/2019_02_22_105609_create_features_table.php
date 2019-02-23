@@ -18,6 +18,7 @@ class CreateFeaturesTable extends Migration
             $table->string('name');
             $table->string('label')->nullable();
             $table->enum('type', ['boolean', 'string']);
+            $table->text('description')->nullable();
             $table->timestamps();
         });
     }

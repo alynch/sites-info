@@ -27,6 +27,7 @@ class FeaturesForm extends FormRequest
             'name' => 'required',
             'type' => 'required',
             'label' => 'nullable',
+            'description' => 'nullable',
         ];
     }
 }

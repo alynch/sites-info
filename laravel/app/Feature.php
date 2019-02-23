@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Feature extends Model
 {
-    protected $fillable = ['name', 'label', 'type'];
+    protected $fillable = ['name', 'label', 'type', 'description'];
 
     public function applications()
     {
