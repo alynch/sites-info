@@ -44,6 +44,10 @@
 
             change(search) {
                 this.search = search;
+
+                if (localStorage) {
+                    localStorage.setItem('dashboard_filter', JSON.stringify(this.searchField));
+                }
             },
 
             filteredItems(id) {
@@ -52,9 +56,14 @@
                 }
 
                 return this.array.filter(item => {
-                    console.log(item);
                     return item.group_id == id;
                 })
+            }
+        },
+
+        mounted: function() {
+            if (localStorage) {
+                this.searchField = JSON.parse(localStorage.getItem('dashboard_filter')) || this.searchField;
             }
         }
     }

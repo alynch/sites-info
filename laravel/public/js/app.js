@@ -48315,6 +48315,8 @@ module.exports = function listToStyles (parentId, list) {
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Card__ = __webpack_require__(49);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Card___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Card__);
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 //
 //
 //
@@ -48341,7 +48343,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
-/* harmony default export */ __webpack_exports__["default"] = ({
+/* harmony default export */ __webpack_exports__["default"] = (_defineProperty({
     components: {
         CardComponent: __WEBPACK_IMPORTED_MODULE_0__Card___default.a
     },
@@ -48360,6 +48362,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     methods: {
         change: function change(search) {
             this.search = search;
+
+            if (localStorage) {
+                localStorage.setItem('dashboard_filter', JSON.stringify(this.searchField));
+            }
         },
         filteredItems: function filteredItems(id) {
             if (!id) {
@@ -48367,12 +48373,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }
 
             return this.array.filter(function (item) {
-                console.log(item);
                 return item.group_id == id;
             });
         }
     }
-});
+
+}, 'mounted', function mounted() {
+    if (localStorage) {
+        this.searchField = JSON.parse(localStorage.getItem('dashboard_filter')) || this.searchField;
+    }
+}));
 
 /***/ }),
 /* 49 */
