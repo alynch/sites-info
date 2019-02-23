@@ -13,7 +13,7 @@
     <ul class="list-group list-group-flush">
         @foreach ($features as $feature)
             <li class="list-group-item">
-                <a href="/features/{{ $feature->id }}/edit">
+                <a href="/features/{{ $feature->id }}">
                      {{ $feature->name }}</a>
                 ({{ $feature->type }})
 

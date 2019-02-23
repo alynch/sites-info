@@ -39,6 +39,7 @@ class FeaturesController extends Controller
     public function create()
     {
         $feature = new Feature;
+
         return view('features.create')
             ->with('feature', $feature);
     }
@@ -66,7 +67,8 @@ class FeaturesController extends Controller
      */
     public function show(Feature $feature)
     {
-        //
+        return view('features.show')
+            ->with('feature', $feature);
     }
 
     /**
