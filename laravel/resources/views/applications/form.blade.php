@@ -32,13 +32,15 @@
 
         <div class="form-group">
             <label for="gitlab_id">Gitlab ID:</label>
-            <input type="text" id="gitlab_id" name="gitlab_id" class="form-control"
+            <input type="text" id="gitlab_id" name="gitlab_id" class="form-control col-md-2"
                 value="{{ $application->gitlab_id }}"/>
         </div>
     </div>
 </div>
 
         @include('applications.environments')
+
+        @include('applications.features')
 
         @include('applications.timeline')
 

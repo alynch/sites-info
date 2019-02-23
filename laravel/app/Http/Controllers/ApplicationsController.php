@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Unit;
 use App\Applications;
+use App\Feature;
 use App\Environments;
 use App\ApplicationGroups;
 
@@ -53,6 +54,7 @@ class ApplicationsController extends Controller
     {
         $application = new Applications;
         $environments = Environments::orderBy('sort_order')->get();
+        $features = Feature::all();
         $groups = ApplicationGroups::all();
         $units = Unit::all();
 
@@ -64,6 +66,7 @@ class ApplicationsController extends Controller
         return view('applications.create')
             ->with('groups', $groups)
             ->with('units', $units)
+            ->with('features', $features)
             ->with('environments', $environments)
             ->with('application', $application);
     }
@@ -118,7 +121,7 @@ class ApplicationsController extends Controller
      */
     public function show(Applications $application)
     {
-        $application->load('environments', 'units');
+        $application->load('environments', 'features', 'units');
 
         return view('applications.show')
             ->with('application', $application);
@@ -133,6 +136,8 @@ class ApplicationsController extends Controller
     public function edit(Applications $application)
     {
         $environments = Environments::orderBy('sort_order')->get();
+        $features = Feature::all();
+
         $groups = ApplicationGroups::all();
 
         // Get coordinates for graph
@@ -165,6 +170,7 @@ class ApplicationsController extends Controller
             ->with('units', $units)
             ->with('groups', $groups)
             ->with('environments', $environments)
+            ->with('features', $features)
             ->with('application', $application);
     }
 
@@ -180,6 +186,7 @@ class ApplicationsController extends Controller
 
 
         $validatedData = $request->validate($this->validationRules);
+
 
         $validatedData['all_year'] = ($request->input('all_year')) ? 1 : 0;
 
@@ -205,6 +212,11 @@ class ApplicationsController extends Controller
             })->filter();
 
             $application->environments()->sync($env);
+        }
+
+        if (request('features')) {
+            $features = collect(request('features'));
+            $application->features()->sync($features);
         }
 
         $units = request('units', []);

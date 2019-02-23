@@ -26,6 +26,9 @@
                             <a class="nav-link" href="/environments">Environments</a>
                         </li>
                         <li>
+                            <a class="nav-link" href="/features">Features</a>
+                        </li>
+                        <li>
                             <a class="nav-link" href="/application-groups">Application groups</a>
                         </li>
                         <li>

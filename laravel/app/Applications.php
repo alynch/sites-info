@@ -39,6 +39,16 @@ class Applications extends Model
         ->orderBy('sort_order', 'desc');
     }
 
+    public function features()
+    {
+        return $this->belongsToMany(
+            Feature::class,
+            'application_features',
+            'application_id',
+            'feature_id'
+        );
+    }
+
     public function units()
     {
         return $this->belongsToMany(

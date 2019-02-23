@@ -11,6 +11,18 @@
 |
 */
 
+Route::get('/i', function () {
+    $pdo     = \DB::connection()->getPdo();
+
+    $db_version = $pdo->query('select version()')->fetchColumn();
+
+    $laravel_version = app()::VERSION;
+
+    dd($db_version, $laravel_version);
+});
+
+
+
 Route::get('/', function () {
     return redirect('home');
 });
@@ -21,6 +33,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/dashboard', 'HomeController@dashboard');
 
 Route::resource('/units', UnitsController::class);
+Route::resource('/features', FeaturesController::class);
 Route::resource('/environments', EnvironmentsController::class);
 Route::resource('/application-groups', ApplicationGroupsController::class);
 Route::resource('/applications', ApplicationsController::class);
