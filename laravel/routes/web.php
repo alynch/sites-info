@@ -32,7 +32,9 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/dashboard', 'HomeController@dashboard');
 
+Route::post('/webhooks/units/update', 'UnitsController@update');
 Route::resource('/units', UnitsController::class);
+
 Route::resource('/features', FeaturesController::class);
 Route::resource('/environments', EnvironmentsController::class);
 Route::resource('/application-groups', ApplicationGroupsController::class);

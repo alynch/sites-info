@@ -15,7 +15,7 @@ class UnitsController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth')->except('update');
     }
 
     /**
@@ -46,5 +46,19 @@ class UnitsController extends Controller
 
         return view('units.show')
             ->with('unit', $unit);
+    }
+
+    /**
+     * Update the specified resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request)
+    {
+        $unit = $request->get('unit');
+
+        $current_unit = Unit::updateOrCreate(['id' => $unit['id']], $unit);
+
+        return response()->json(['message' => 'Unit was updated.'], 200);
     }
 }
