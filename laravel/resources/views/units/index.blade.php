@@ -4,7 +4,7 @@
     <filterable-list
         filter_id="type_id"
         filter_name="code"
-        item_name="short_name"
+        item_name="name"
         :pluralize_filters="true"
         :filters="{{ $unit_types }}"
         :items="{{ $units }}">
