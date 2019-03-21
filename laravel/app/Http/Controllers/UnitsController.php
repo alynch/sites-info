@@ -55,9 +55,22 @@ class UnitsController extends Controller
      */
     public function update(Request $request)
     {
-        $unit = $request->get('unit');
+        $data = $request->get('unit');
 
-        $current_unit = Unit::updateOrCreate(['id' => $unit['id']], $unit);
+        switch ($request->get('event')) {
+            case 'create':
+            Unit::create($data);
+            break;
+            case 'update':
+            $unit = Unit::where('code', $data['code'])->firstOrFail();
+            $r = $unit->update($data);
+            break;
+            case 'delete':
+            $unit = Unit::where('code', $data['code'])->firstOrFail();
+            $unit->delete();
+            break;
+        }
+        //$current_unit = Unit::updateOrCreate(['id' => $unit['id']], $unit);
 
         return response()->json(['message' => 'Unit was updated.'], 200);
     }
