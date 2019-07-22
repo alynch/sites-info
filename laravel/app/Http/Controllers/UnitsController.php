@@ -57,6 +57,14 @@ class UnitsController extends Controller
     {
         $data = $request->get('unit');
 
+        /*
+        if (!$this->verifySignature($request)) {
+            return response('Unauthorized.', 403);
+        }
+        */
+
+        \Log::info($request);
+
         switch ($request->get('event')) {
             case 'create':
                 Unit::create($data);
@@ -73,5 +81,16 @@ class UnitsController extends Controller
         //$current_unit = Unit::updateOrCreate(['id' => $unit['id']], $unit);
 
         return response()->json(['message' => 'Unit was updated.'], 200);
+    }
+
+    private function verifySignature($key, $payload)
+    {
+        //ksort($payload);
+        //return hash_hmac('sha256', json_encode($payload), $key);
+
+        $generated = hash_hmac('sha256', json_encode($payload), $key);
+
+        return hash_equals($generated, $this->header($request, 'X-Hub-Signature'));
+        return true;
     }
 }

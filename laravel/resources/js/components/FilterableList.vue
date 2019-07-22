@@ -149,4 +149,4 @@
     padding-right: 1em;
 padding: 0.5em 2.25em;
 }
-</style>padding: 0.75rem 1.25rem;
+</style>

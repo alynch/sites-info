@@ -67,24 +67,35 @@
 
                     <hr/>
 
+                   <div v-if="env.status.stats">
+                        <div class="server-info">
+                            <em>No. of petitions per month</em>
+                            <sparkline :data="env.status.stats">
+                            </sparkline>
+                        </div>
+                    </div>
+
                     <div v-if="env.status.details">
                         <div class="server-info">
                             <em>Web server:</em>
-                            {{ env.status.details.apache_version }}
+                            {{ env.status.details.apache }}
                         </div>
 
                         <div class="server-info">
                             <em>Database server:</em>
-                             {{ env.status.details.mysql_version }}
+                             {{ env.status.details.mysql }}
                         </div>
 
                         <div class="server-info">
                             <em>PHP version:</em>
-                             {{ env.status.details.php_version }}
+                             {{ env.status.details.php }}
+                                <br/>
+                             {{ env.status.details.php_details }}
+
                         </div>
                         <div class="server-info">
                             <em>Laravel version:</em>
-                             {{ env.status.details.laravel_version }}
+                             {{ env.status.details.laravel }}
                         </div>
                     </div>
                 </li>
@@ -95,7 +106,11 @@
 </template>
 
 <script>
+    import Sparkline from './Sparkline'
     export default {
+        components: {
+            Sparkline
+        },
 
        data: function() {
             return {
@@ -126,8 +141,6 @@
 
                 es.addEventListener('message', function(event) {
                     card.cardData = JSON.parse(event.data);
-
-
                     if (card.cardData[0]) {
                         card.status = (card.cardData[0].status.running) ? 'OK' : 'Down';
                         card.ip = card.cardData[0].status.ip;

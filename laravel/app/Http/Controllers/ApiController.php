@@ -64,6 +64,8 @@ class ApiController extends Controller
         $data['php_version'] = $this->getPhpVersion();
         $data['laravel_version'] = $this->getLaravelVersion();
         $data['apache_version'] = $this->getWebServerVersion();
+        $data['php_details']['post_max_size'] = ini_get('post_max_size');
+        $data['php_details']['upload_max_filesize'] = ini_get('upload_max_filesize');
 
         return $data;
     }
