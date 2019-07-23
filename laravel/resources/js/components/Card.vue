@@ -68,11 +68,8 @@
                     <hr/>
 
                    <div v-if="env.status.stats">
-                        <div class="server-info">
-                            <em>No. of petitions per month</em>
-                            <sparkline :data="env.status.stats">
-                            </sparkline>
-                        </div>
+                        <sparkline title="No. of petitions per month" :data="env.status.stats">
+                        </sparkline>
                     </div>
 
                     <div v-if="env.status.details">
